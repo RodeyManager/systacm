@@ -1,0 +1,4 @@
+[ERROR] - [2013-05-04 01:33:34] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-05-04 01:33:34] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`
+[ERROR] - [2013-05-04 01:33:34] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-05-04 01:33:34] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('系统配置', '生成配置文件', '生成配置文件成功', '2', '127.0.0.1', '2', '1367602414')

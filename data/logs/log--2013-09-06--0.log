@@ -1,0 +1,107 @@
+
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_guestbook` WHERE `id`='14'
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::find_by] : SELECT * FROM `syst_guestbook_reply` WHERE `gid`='14'
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::doSQL] : DELETE FROM `syst_guestbook_reply` WHERE `gid`=14
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_guestbook` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook_reply` WHERE `gid`=17
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getTop] : SELECT * FROM `syst_guestbook_reply` WHERE `gid`=17 ORDER BY `id` DESC LIMIT 0,3
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook_reply` WHERE `gid`=4
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getTop] : SELECT * FROM `syst_guestbook_reply` WHERE `gid`=4 ORDER BY `id` DESC LIMIT 0,3
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:46] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:20:46] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_guestbook` WHERE `id`='17'
+[ERROR] - [2013-09-06 22:20:46] - [Mysql] - [Mysql::find_by] : SELECT * FROM `syst_guestbook_reply` WHERE `gid`='17'
+[ERROR] - [2013-09-06 22:20:46] - [Mysql] - [Mysql::doSQL] : DELETE FROM `syst_guestbook_reply` WHERE `gid`=17
+[ERROR] - [2013-09-06 22:20:47] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:20:47] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:20:47] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_guestbook` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-09-06 22:20:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:47] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook_reply` WHERE `gid`=4
+[ERROR] - [2013-09-06 22:20:47] - [Mysql] - [Mysql::getTop] : SELECT * FROM `syst_guestbook_reply` WHERE `gid`=4 ORDER BY `id` DESC LIMIT 0,3
+[ERROR] - [2013-09-06 22:20:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:20:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:10] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:10] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:10] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_guestbook` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-09-06 22:21:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:10] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook_reply` WHERE `gid`=4
+[ERROR] - [2013-09-06 22:21:10] - [Mysql] - [Mysql::getTop] : SELECT * FROM `syst_guestbook_reply` WHERE `gid`=4 ORDER BY `id` DESC LIMIT 0,3
+[ERROR] - [2013-09-06 22:21:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:12] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:12] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:12] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_guestbook` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-09-06 22:21:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:12] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook_reply` WHERE `gid`=4
+[ERROR] - [2013-09-06 22:21:12] - [Mysql] - [Mysql::getTop] : SELECT * FROM `syst_guestbook_reply` WHERE `gid`=4 ORDER BY `id` DESC LIMIT 0,3
+[ERROR] - [2013-09-06 22:21:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:15] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-09-06 22:21:15] - [Mysql] - [Mysql::find_by] : SELECT * FROM `syst_manager` WHERE `aname`='rodey'
+[ERROR] - [2013-09-06 22:21:15] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:15] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook_reply`
+[ERROR] - [2013-09-06 22:21:15] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_guestbook_reply` (gid, content, add_time, uname) VALUES ('18', '回复内容', '1378477274', 'rodey(管理员)')
+[ERROR] - [2013-09-06 22:21:15] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:15] - [Mysql] - [Mysql::execute] : UPDATE `syst_guestbook` SET reply='1',id='18',update_time='1378477274' WHERE `id`='18' LIMIT 1
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_guestbook` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook_reply` WHERE `gid`=18
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getTop] : SELECT * FROM `syst_guestbook_reply` WHERE `gid`=18 ORDER BY `id` DESC LIMIT 0,3
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook_reply` WHERE `gid`=4
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getTop] : SELECT * FROM `syst_guestbook_reply` WHERE `gid`=4 ORDER BY `id` DESC LIMIT 0,3
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:16] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_guestbook` WHERE `id`='18'
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::find_by] : SELECT * FROM `syst_guestbook_reply` WHERE `gid`='18'
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::doSQL] : DELETE FROM `syst_guestbook_reply` WHERE `gid`=18
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_guestbook` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook_reply` WHERE `gid`=4
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::getTop] : SELECT * FROM `syst_guestbook_reply` WHERE `gid`=4 ORDER BY `id` DESC LIMIT 0,3
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:19] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:24] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:24] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook`
+[ERROR] - [2013-09-06 22:21:24] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_guestbook` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-09-06 22:21:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:24] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_guestbook_reply` WHERE `gid`=4
+[ERROR] - [2013-09-06 22:21:24] - [Mysql] - [Mysql::getTop] : SELECT * FROM `syst_guestbook_reply` WHERE `gid`=4 ORDER BY `id` DESC LIMIT 0,3
+[ERROR] - [2013-09-06 22:21:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1
+[ERROR] - [2013-09-06 22:21:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_guestbook_type` WHERE `id`=1

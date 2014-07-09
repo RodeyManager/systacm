@@ -1,0 +1,109 @@
+{include file="../header_content.html"}
+	
+	<!-- Tag列表 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['sms_list']}</a>
+				<a href="{$__CURL__}index_group" class="m-header-btns">{$lang['smses_list']}</a>
+				<a href="{$__CURL__}add" class="m-header-btns">{$lang['add_smses']}</a>
+				<a href="javascript:void(0);" class="m-header-btns m-add-sms-type">+{$lang['add_sms_type']}</a>
+				<span class="m-title">{$lang['sms_type_list']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<input type="hidden" name="id" value="" />
+				<table class="table table-condensed m-table">
+					<tr class="m-table-theader">
+						<th><input type="checkbox" id="check_box" onclick="_S('check[]');" /></th>
+						<th>{$lang['type_id']}</th>
+						<th>{$lang['type_name']}</th>
+						<th>{$lang['sms_count']}</th>
+						<th>{$lang['type']}</th>
+						<th>{$lang['add_time']}</th>
+						<th>{$lang['handle']}</th>
+					</tr>
+					{if is_array($types)}
+					{foreach item=type from=$types}
+						<tr>
+							<td><input type="checkbox" value="{$type.id}" name="check[]" /></td>
+							<td>{$type.id}</td>
+							<td><a href="{$__CURL__}index/type_id/{$type.id}" title="">{$type.name}</a></td>
+							<td>{$type.sms_count}</td>
+							<td>{$type.disabled_title}</td>
+							<td>{$type.add_time|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+							<td>
+								<a href="javascript:void(0);" class="m-mini-btn m-mini-edit" title="{$lang['edit']}" data-id="{$type.id}" data-time="{$sms.add_time|date_format:"%Y-%m-%d %H:%M:%S"}" data-name="{$type.name}" title="{$lang['edit']}">{$lang['view']}</a>
+								{if $type['disabled'] eq 0}
+								<a href="javascript:void(0);"  class="m-mini-btn m-mini-nodel" title="{$lang['delete_tips']}">{$lang['delete']}</a>
+								{else}
+								<a href="javascript:_D('{$type.id}', '{$__CURL__}del_sms_type');void(0);"  class="m-mini-btn m-mini-del" data-id="{$type.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+								{/if}
+							</td>
+						</tr>
+					{/foreach}
+					{else}
+						<tr>
+							<td colspan="6">{$smses}</td>
+						</tr>	
+					{/if}
+				</table>
+			</div>
+			<div class="m-footer">
+				<form action="#" method="POST" accept-charset="utf-8">
+					<div class="m-footer-left">
+						<label class="m_select_all m-f-btn" data-selected="{$lang['select_all']}" data-unselected="{$lang['unselect_all']}" for="check_box">{$lang['select_all']}</label>
+						<a href="javascript:{$__CURL__}index" class="m_add m-f-btn">{$lang['add_sms']}</a>
+						<a href="{$__CURL__}add" class="m_edit m-f-btn">{$lang['add_smses']}</a>
+						<a href="javascript:_DS('{$__CURL__}del_sms_type');void(0);" class="m_delete m-f-btn">{$lang['delete']}</a>
+					</div>
+					<div class="m-footer-right m-footer-pagetion">{$page_link}</div>
+				</form>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<script type="text/javascript">
+		var content;
+		$(document).ready(function(){
+			//修改类型
+			$('.m-mini-edit').click(function(){
+				var than = $(this);
+				var oname = $(this).data('name');
+				var type_id = $(this).data('id');
+				window.top.art.dialog.prompt('{$lang.put_sms_type}', function(data){
+					$.post('{$__CURL__}edit_sms_type', { type_name:data, type_id:type_id }, function(rdata){
+						if(rdata === 'OK'){
+							than.parent().siblings('td').eq(2).text(data);
+							than.data('name', data);
+							_POP({ title:'{$lang.edit}', content:'{$lang.edit}{$lang.success}!', icon:'success' });
+						}else{
+							_POP({ title:'{$lang.edit}', content:'{$lang.edit}{$lang.fail}!', icon:'error' });
+						}
+					});
+				}, oname);
+			});
+			//
+			$('.m-add-sms-type').click(function(){
+				window.top.art.dialog.prompt('{$lang.put_sms_type}', function(data){
+					$.post('{$__CURL__}add_sms_type', { type_name:data }, function(rdata){
+						if(rdata != 'NO'){
+							rdata = rdata.split('-+-');
+							if(rdata[0] === 'OK'){
+								_POP({ title:'{$lang.add}', content:'{$lang.edit}{$lang.success}!', icon:'success' });
+								window.location.href = '{$__CURL__}sms_type';
+							}
+						}else{
+							_POP({ title:'{$lang.add}', content:'{$lang.edit}{$lang.fail}!', icon:'error' });
+						}
+					});
+				});
+			});
+		});//end
+	</script>
+{include file="../footer.html"}

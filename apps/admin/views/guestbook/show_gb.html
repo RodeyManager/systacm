@@ -1,0 +1,72 @@
+{include file="../header.html"}
+	
+	<!-- 用户修改 -->
+	<div class="mcontainer">
+		<div class="m-u-show">
+				<fieldset>
+					<legend>{$lang.base_info}</legend>
+					<table class="table table-bordered m-table">
+						<tr>
+							<td width="15%" class="alignr td_bold">{$lang['guestbook_type']}：</td>
+							<td>[ {$gbook.type} ]</td>
+						</tr>
+						<tr>
+							<td width="15%" class="alignr td_bold">{$lang['guestbook_uname']}：</td>
+							<td>{$gbook.uname}</td>
+						</tr>
+						<tr>
+							<td width="15%" class="alignr td_bold">{$lang['guestbook_uemail']}：</td>
+							<td>{$gbook.uemail}</td>
+						</tr>
+						<tr>
+							<td width="15%" class="alignr td_bold">{$lang['guestbook_uphone']}：</td>
+							<td>{$gbook.uphone}</td>
+						</tr>
+						<tr>
+							<td width="15%" class="alignr td_bold">{$lang['guestbook_ucompany']}：</td>
+							<td>{$gbook.ucompany}</td>
+						</tr>
+						<tr>
+							<td width="15%" class="alignr td_bold">{$lang['guestbook_title']}：</td>
+							<td>{$gbook.title}</td>
+						</tr>
+						<tr>
+							<td width="15%" class="alignr td_bold">{$lang['guestbook_content']}：</td>
+							<td>{$gbook.content}</td>
+						</tr>
+						<tr>
+							<td width="15%" class="alignr td_bold">{$lang.is_disabled}：</td>
+							<td>{$gbook.disabled}</td>
+						</tr>
+						<tr>
+							<td width="15%" class="alignr td_bold">{$lang.add_time}：</td>
+							<td>{$gbook.add_time|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+						</tr>
+						<tr>
+							<td width="15%" class="alignr td_bold">{$lang.guestbook_reply_state}：</td>
+							<td>{$gbook.reply}</td>
+						</tr>
+						{if !empty($gbook['reply_list']) and is_array($gbook['reply_list'])}
+						<tr>
+							<td width="15%" class="alignr td_bold">{$lang.guestbook_reply_list}：</td>
+							<td>
+								{foreach item=reply from=$gbook['reply_list'] name=rep}
+								<hr style="height:1px;padding:0px;margin:2px; background:#222;"/>
+								<ul class="reply-list-ul">
+									<li><b>{$lang['reply_uname']}：</b> {$reply.uname}</li>
+									<li><b>{$lang['reply_content']}：</b> {$reply.content}</li>
+									<li><b>{$lang['reply_time']}：</b> {$reply.add_time|date_format:"%Y-%m-%d %H:%M:%S"}</li>
+									<li class="reply-list-serial">{$smarty.foreach.rep.index}</li>
+								</ul>
+								{/foreach}
+							</td>
+						</tr>
+						{/if}
+
+					</table>
+				</fieldset>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+{include file="../footer.html"}

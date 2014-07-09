@@ -1,0 +1,92 @@
+{include file="../header_content.html"}
+
+	<link rel="stylesheet" href="{$__SYSJS__}/Tags/jquery.tagsinput.css" />	
+	<script type="text/javascript" src="{$__SYSJS__}/Tags/jquery.tagsinput.min.js"></script>
+	<link rel="stylesheet" href="{$__SYSJS__}/formValidator/roadey.css" />
+	<script src="{$__SYSJS__}/formValidator/formValidator.min.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.formValidator.initConfig({ autotip:true, formid:"role-form", submitOnce:true, onerror:function(msg){ art.dialog.alert(msg);} });
+		$("#name").formValidator({ onshow:"{$lang.v_p_name}",onfocus:"{$lang.v_name_len}" })
+					.inputValidator({ min:2,max:30,onerror:"{$lang.v_name_len}" })
+					.regexValidator({ regexp:"reg_name",datatype:"enum",onerror:"{$lang.role_name}{$lang.v_format_fail}" })
+					.ajaxValidator({
+						type: 'get',
+						datatype : "html",
+						async : true,
+						url: '{$__CURL__}check_role_name',
+						success: function(data){
+							if(data == '1') 	return true;
+							else				return false;
+						},
+						onerror : "{$lang.v_name_no}",
+						onwait : "{$lang.v_name_ing}"
+					});
+	});
+	</script>	
+	<!-- Tag列表 -->
+	<div class="mcontainer">
+		
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['role_list']}</a>
+				<span class="m-title">{$lang['role_add']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="role-form" action="{$__CURL__}insert_role" method="POST">
+					<input type="hidden" name="id" value="" />
+					<table class="table table-condensed m-table">
+						<tr>
+							<td width="10%" style="border:none">{$lang['role_name']}：</td>
+							<td style="border:none">
+								<input type="text" name="name" id="name" />
+							</td>
+						</tr>
+						<tr>
+							<td>{$lang['role_level']}：</td>
+							<td>
+								<input type="text" name="level" id="level" value="" />
+							</td>
+						</tr>
+						<tr>
+							<td>{$lang.role_module}</td>
+							<td>
+								<input type="text" name="module" id="module" value="" />
+							</td>
+						</tr>
+						<tr>
+							<td>{$lang.role_method}</td>
+							<td><input type="text" name="method" id="method" value="c,u,r,d" /></td>
+						</tr>	
+					</table>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#module').tagsInput({ width: '50%', height: '100', defaultText: 'Add a module' });
+			$('#method').tagsInput({ width: '50%', height: '100', defaultText: 'Add a method' });
+			$('#role-form').ajaxForm({
+				success: function(data){
+					if(data === 'OK'){
+						_POP({ title: '{$lang.add_success}', content: '{$lang.add_success}', icon: 'success' });
+						window.location.href="{$__CURL__}index";
+					}else{
+						_POP({ title: '{$lang.add_fail}', content: '{$lang.add_fail}', icon: 'error' });
+					}
+				}
+			});
+		});//end
+	</script>
+{include file="../footer.html"}

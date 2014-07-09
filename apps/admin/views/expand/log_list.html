@@ -1,0 +1,96 @@
+{include file="../header_content.html"}
+	<script src="{$__AJS__}/HushuilongClipboard/HushuilongClipboard.js"></script>
+	<div class="mcontainer">
+		<div class="m-main">
+			<form id="backup-form" action="{$__CURL__}export" method="POST">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="javascript:_CLOG('{$__CURL__}clear_log');void(0);" class="m-header-btns">{$lang['clear_log']}</a>
+				<a href="javascript:_CLOG('{$__CURL__}clear_week_log');void(0);" class="m-header-btns">{$lang['clear7_log']}</a>
+				<a href="javascript:_CLOG('{$__CURL__}clear_month_log');void(0);" class="m-header-btns">{$lang['clear30_log']}</a>
+				<span class="m-title">{$lang['log_list']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<input type="hidden" name="tables" value="" />
+				<table class="table table-condensed m-table">
+					<tr class="m-table-theader">
+						<th><input type="checkbox" id="check_box" onclick="_S('check[]');" /></th>
+						<th>{$lang['log_id']}</th>
+						<th>{$lang['log_state']}</th>
+						<th>{$lang['log_user']}</th>
+						<th>{$lang['log_module']}</th>
+						<th>{$lang['log_action']}</th>
+						<th>{$lang['log_msg']}</th>
+						<th>{$lang['log_ip']}</th>
+						<th>{$lang['log_time']}</th>
+						<th>{$lang['handle']}</th>
+					</tr>
+					{if is_array($logs)}
+					{foreach item=log from=$logs}
+						<tr>
+							<td><input type="checkbox" value="{$log.id}" name="check[]" /></td>
+							<td>{$log.id}</td>
+							<td>
+								{if $log.state==0}
+									<a href="javascript:void(0);" class="m-mini-state m-mini-error" title="{$lang['log_state']}: {$lang.error}">{$lang['log_state']}</a>
+								{elseif $log.state==1}
+									<a href="javascript:void(0);" class="m-mini-state m-mini-success" title="{$lang['log_state']}: {$lang.success}">{$lang['log_state']}</a>
+								{elseif $log.state==2}
+									<a href="javascript:void(0);" class="m-mini-state m-mini-wraning" title="{$lang['log_state']}: {$lang.wraning}">{$lang['log_state']}</a>
+								{else}
+									<a href="javascript:void(0);" class="m-mini-state m-mini-noknow" title="{$lang['log_state']}: {$lang.noknow}">{$lang['delete']}</a>
+								{/if}
+							</td>
+							<td>{$log.user}</td>
+							<td>{$log.module}</td>
+							<td>{$log.action}</td>
+							<td>{$log.massage}</td>
+							<td>{$log.ip}</td>
+							<td>{$log.add_time|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+							<td>
+								<a href="javascript:_D('{$log.id}', '{$__CURL__}del_log');void(0);"  class="m-mini-btn m-mini-del" data-id="{$log.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+							</td>
+						</tr>
+					{/foreach}
+					{else}
+						<tr>
+							<td colspan="10">{$logs}</td>
+						</tr>	
+					{/if}
+				</table>
+			</div>
+			<div class="m-footer">
+					<div class="m-footer-left">
+						<label class="m_select_all m-f-btn" data-selected="{$lang['select_all']}" data-unselected="{$lang['unselect_all']}" for="check_box">{$lang['select_all']}</label>
+						<a href="javascript:_DS('{$__CURL__}del_log');void(0);" class="m_delete m-f-btn">{$lang['delete']}</a>
+					</div>
+					<div class="m-footer-right m-footer-pagetion">{$page_link}</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+		});//end
+		function _CLOG(url){
+			art.dialog.confirm('{$lang.clear_logs_tips}', function(){
+				$.post(url, function(data){
+					//_Dat(data);return;
+					if(data === 'OK'){
+						_POP({ title:'{$lang.clear_log}',content:'{$lang.clear_log}{$lang.success}！',icon:'success' });
+						window.location.reload();
+					}else{
+						_POP({ title:'{$lang.clear_log}',content:'{$lang.clear_log}{$lang.fail}！',icon:'error' });
+					}
+				});
+			}, function(){
+				this.close();
+			});
+		}
+	</script>
+{include file="../footer.html"}

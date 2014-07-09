@@ -1,0 +1,28 @@
+{include file="../header_content.html"}
+	
+	<!-- 更新缓存 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<span class="m-title">{$lang['up_cache']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<ul class="m-c-ul">
+					<li><a href="javascript:void(0);" class="m-mini-btn m-header-tab m-maker-index"/>{$lang.maker_index}</a>{$lang.maker_index}</li>
+					<li><a href="javascript:void(0);" class="m-mini-btn m-header-tab m-maker-cat"/>{$lang.maker_cat}</a>{$lang.maker_cat}</li>
+					<li><a href="javascript:void(0);" class="m-mini-btn m-header-tab m-maker-archive"/>{$lang.maker_archive}</a>{$lang.maker_archive}</li>
+					<li><a href="javascript:_A('{$__BASE__}/admin/main/up_cache');" class="m-mini-btn m-header-tab m-maker-cache"/>{$lang.up_cache}</a>{$lang.up_cache}</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+		});
+	</script>
+{include file="../footer.html"}

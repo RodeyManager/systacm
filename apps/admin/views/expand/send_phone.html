@@ -1,0 +1,131 @@
+{include file="../header_content.html"}
+	<link rel="stylesheet" href="{$__SYSJS__}/jscal2/jscal2.css" />
+	<link rel="stylesheet" href="{$__SYSJS__}/jscal2/win2k.css" />
+	<script type="text/javascript" src="{$__SYSJS__}/jscal2/jscal2.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/jscal2/cn.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/jQuery.artTxtCount.js"></script>
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}subphone" class="m-header-btns" title="{$lang['subphone_list']}">{$lang['subphone_list']}</a>
+				<span class="m-title">{$lang['subphone_push']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center" style="position:relative;">
+				<!-- 发送表单 Start -->
+				<form action="{$__CURL__}phone_sending" id="send-mails-form" class="send-mails-form" method="POST" accept-charset="utf-8" style="display:block;">
+					<table>
+						<tr>
+							<td class="alignr">{$lang['subphone_number']}：</td>
+							<td>
+								<textarea name="phones" id="phones"  placeholder="{$lang['subphone_phone_formate']}" class="span4 asms-input" style="height:150px;"></textarea>
+								<em class="explain">{$lang['subphone_phone_tips']}</em>
+							</td>
+						</tr>
+						<tr>
+							<td class="alignr">{$lang['subphone_content']}：</td>
+							<td>
+								<textarea name="pcontent" id="pcontent" class="span4 asms-input" style="height:150px;"></textarea>
+								<span id="pcontent-tips"></span>
+								<em class="explain">{$lang['subphone_content_tips']}</em>
+							</td>
+						</tr>
+						<tr>
+							<td class="alignr">{$lang['subemail_sendtime']}：</td>
+							<td>
+								<div class="time-div">
+								    <input class="span3" name="send_time" value="{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}" id="send_time" type="text" class="select-tile span4 asms-input" />
+								    <label id="start_time_l" class="m-mini-btn m-mini-time"></label>
+									<em class="explain">{$lang['subemail_sendtime_tips']}</em>
+								</div>
+								{literal}
+								<script type="text/javascript">
+									Calendar.setup({ 
+										trigger: 'start_time_l',
+										inputField : "send_time",
+										dateFormat: "%Y-%m-%d %H:%M:%S",
+										showTime: true,
+										weekNumbers: true 
+									});
+								</script>
+								{/literal}
+							</td>
+						</tr>
+					</table>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+				<!-- 发送表单 End -->
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<!-- 邮件列表 Start -->
+		<div class="subemails-list-con">
+			<h2 class="subemails-list-title">{$lang['subphone_list']}</h2>
+			<ul class="subemails-list-ul">
+				{if is_array($subphones)}
+					{foreach item=subphone from=$subphones}
+					<li><a href="javascript:_SELECT_EMAIL('{$subphone.phone}');void(0);">{$subphone.phone} ({$subphone.name})</a></li>
+					{/foreach}
+				{else}
+					{$subphones}
+				{/if}
+			</ul>
+			<a href="javascript:void(0);" class="subphones-list-open-btn">打开手机列表</a>
+		</div>
+		<!-- 邮件列表 End -->
+		<div class="scroll_loading_item">
+			<embed class="embed" src="{$__AIMAGES__}/send_loading.swf" type="application/x-shockwave-flash" width="200" height="100" wmode="transparent"></embed>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//页面操作
+			var flag = true;
+			$('.subphones-list-open-btn').bind('click dbclick', function(){
+				if(flag){
+					$('.subemails-list-con').stop().animate({ right: 0 });
+					flag = false;
+				}else{
+					$('.subemails-list-con').stop().animate({ right: -298 });
+					flag = true;
+				}
+			});
+			
+			$('#pcontent').artTxtCount($('#pcontent-tips'), 300);
+			//提交
+			$('#phones').live('focusin focusout', function(){ tips('#emails'); });
+			$('#pcontent').live('focusin focusout', function(){ tips('#pcontent'); });
+			$('#send-mails-form').submit(function(){
+				if($('#phones').val() == '') { return tips_error($('#phones')); }
+				if($('#pcontent').val() == '') { return tips_error($('#pcontent')); }
+				$('.scroll_loading_item').show();
+				$(this).ajaxSubmit({
+					success: function(data){
+						if(data){
+							_POP({ title: '{$lang.subphone_push}', width: 400, content: data, icon: 'success', time: 10 });
+						}
+						$('.scroll_loading_item').hide();
+					}
+				}); 
+				return false;
+			});
+			
+		});//end
+		function _SELECT_EMAIL(phone){
+			 var phones = $('#phones').val();
+			 if(phones == '' || phones.length == 0){
+			 	$('#phones').val(phone);
+			 }else{
+			 	$('#phones').val(phones + ",\n" + phone);
+			 }
+		}
+	</script>
+{include file="../footer.html"}

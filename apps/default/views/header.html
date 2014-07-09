@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]>   
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="ie7 lte9 lte8 lte7">  
+<![endif]--><!--[if IE 8 ]>
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="ie8 lte9 lte8">
+<![endif]--><!--[if IE 9 ]>
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" class="ie9 lte9">
+<![endif]--><!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<title>{if $title}{$title}{else}{$lang['title']}{/if} - {powerby}</title>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="keywords" content="{$lang['keywords']}" />
+	<meta name="description" content="{$lang['description']}" />
+	<meta name="name" content="rodey" cn-name="天蝎飞碟"/>
+	<meta name="email" content="rodeyluo@gmail.com" />
+	<meta name="qq" content="453474593" />
+	<meta name="mobile phone number" content="13723722479" />
+	<meta name="website" content="www.systacm.com | www.roadey.com" />
+	<link rel="icon" href="{$__BASE__}/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="{$__BASE__}/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="{$__BASE__}/f-128.png" type="images/x-icon" />
+	<link type="text/css" rel="stylesheet" href="{$__SYSCSS__}/bootstrap/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="{$__ACSS__}/globa.css?v={$smarty.now}" />
+	<link type="text/css" rel="stylesheet" href="{$__ACSS__}/main.css?v={$smarty.now}" />	
+	<!--[if IE]>
+	<script src=”http://html5shiv.googlecode.com/svn/trunk/html5.js”></script>
+	< ![endif]-->
+	<script src="{$__SYSJS__}/jquery-1.9.1.min.js?v={$smarty.now+5}"></script>
+	<script src="{$__SYSJS__}/jquery.easing.js?v={$smarty.now+2}"></script>
+	<script src="{$__SYSCSS__}/bootstrap/js/bootstrap.min.js"></script>
+	<script src="{$__AJS__}/SY.js?v={$smarty.now}"></script>
+	<script src="{$__AJS__}/main.js?v={$smarty.now}"></script>
+	<script> var base = '{$__BASE__}'; var curl = base + '/default/index/'</script>
+</head>
+<body>
+	<div class="header-con">
+		<header id="header" class="header">
+			<div class="logo" id="logo"><a href="{$__CURL__}index"></a></div>
+			<div class="nav">
+				<ul>
+					<li><a href="{$__CURL__}index">{$lang['home']}</a><em></em></li>
+					<li><a href="{$__CURL__}server">{$lang['product_and_server']}</a><em></em></li>
+					<li><a href="{$__CURL__}cases">{$lang['cases']}</a><em></em></li>
+					<li><a href="{$__CURL__}help">{$lang['helper']}</a><em></em></li>
+					<li><a href="{$__CURL__}about">{$lang['about_us']}</a><em></em></li>
+					<li><a href="{$__CURL__}contact">{$lang['contanct_us']}</a><em></em></li>
+				</ul>
+			</div>
+		</header><!-- /header -->
+	</div>

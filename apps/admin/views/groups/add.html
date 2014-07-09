@@ -1,0 +1,108 @@
+{include file="../header_content.html"}
+
+	<link rel="stylesheet" href="{$__SYSJS__}/Tags/jquery.tagsinput.css" />	
+	<script type="text/javascript" src="{$__SYSJS__}/Tags/jquery.tagsinput.min.js"></script>
+	<link rel="stylesheet" href="{$__SYSJS__}/formValidator/roadey.css" />
+	<script src="{$__SYSJS__}/formValidator/formValidator.min.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.formValidator.initConfig({ autotip:true, formid:"group-form", submitOnce:true, onerror:function(msg){ art.dialog.alert(msg);} });
+		$("#name").formValidator({ onshow:"{$lang.v_p_name}",onfocus:"{$lang.v_name_len}" })
+					.inputValidator({ min:2,max:30,onerror:"{$lang.v_name_len}" })
+					.regexValidator({ regexp:"reg_name",datatype:"enum",onerror:"{$lang.group_name}{$lang.v_format_fail}" })
+					.ajaxValidator({
+						type: 'get',
+						datatype : "html",
+						async : true,
+						url: '{$__CURL__}check_group_name',
+						success: function(data){
+							if(data == '1') 	return true;
+							else				return false;
+						},
+						onerror : "{$lang.v_name_no}",
+						onwait : "{$lang.v_name_ing}"
+					});
+	});
+	</script>	
+	<!-- Tag列表 -->
+	<div class="mcontainer">
+		
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['group_list']}</a>
+				<span class="m-title">{$lang['group_add']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="group-form" action="{$__CURL__}insert_group" method="POST">
+					<table class="table table-condensed m-table">
+						<tr>
+							<td width="10%" style="border:none">{$lang['group_name']}：</td>
+							<td style="border:none">
+								<input type="text" name="name" id="name" />
+							</td>
+						</tr>
+						<tr>
+							<td>{$lang['group_value']}：</td>
+							<td>
+								<input type="text" name="value" id="value" value="" />
+							</td>
+						</tr>
+						<tr>
+							<td>{$lang.group_point}</td>
+							<td>
+								<input type="text" name="point" id="point" value="" />
+							</td>
+						</tr>
+						<tr>
+								<td width="30%"> {$lang.is_disabled}：</td>
+								<td>
+									<div class="m-lock-div">
+										<input type="hidden" name="disabled" id="disabled" value="1" />
+										<span class="m-lock-btns"><i class="on_off_btn"></i></span>
+										<span class="m-disabled-tips">{$lang['disabled_false']}</span>
+									</div>
+								</td>
+							</tr>
+					</table>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#group-form').ajaxForm({
+				success: function(data){
+					if(data === 'OK'){
+						_POP({ title: '{$lang.add_success}', content: '{$lang.add_success}', icon: 'success' });
+						window.location.href="{$__CURL__}index";
+					}else{
+						_POP({ title: '{$lang.add_fail}', content: '{$lang.add_fail}', icon: 'error' });
+					}
+				}
+			});
+			//可用性
+			$('.on_off_btn').click(function(){
+				var disabled = $('#disabled').val();
+				if(disabled == 1){
+					$('.on_off_btn').animate({ left: '0px' });
+					$('#disabled').val(0);
+					$('.m-disabled-tips').text('{$lang['disabled_true']}');
+				}else if(disabled == 0){
+					$('.on_off_btn').animate({ left: '50px' });
+					$('#disabled').val(1);
+					$('.m-disabled-tips').text('{$lang['disabled_false']}');
+				}
+			});
+		});//end
+	</script>
+{include file="../footer.html"}

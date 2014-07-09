@@ -1,0 +1,168 @@
+{include file="../header_content.html"}
+	
+	<link rel="stylesheet" href="{$__SYSJS__}/Tags/jquery.tagsinput.css" />	
+	<script type="text/javascript" src="{$__SYSJS__}/Tags/jquery.tagsinput.min.js"></script>
+	<link rel="stylesheet" href="{$__SYSJS__}/formValidator/roadey.css" />
+	<script src="{$__SYSJS__}/formValidator/formValidator.min.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_config.js"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_all.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+		});	
+	</script>
+	<!-- 添加用户 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['archive_list']}</a>
+				<span class="m-title">{$lang['add_archive']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="archive_form" action="{$__CURL__}mod" method="POST">
+					<input type="hidden" name="id" value="{$archive.id}" />
+					<div class="m-header-tab-btns">
+						<a class="m-mini-btn m-header-tab m-tab-on" ref="m-tab-con1">{$lang.base_info}</a>
+						<a class="m-mini-btn m-header-tab " ref="m-tab-con2">{$lang.content_info}</a>
+						<a class="m-mini-btn m-header-tab" ref="m-tab-con3">{$lang.seo_info}</a>
+						<a class="m-mini-btn m-header-tab" ref="m-tab-con4">{$lang.expand_info}</a>
+						<a class="m-mini-btn m-header-tab" ref="m-tab-con5">{$lang.fileds_info}</a>
+					</div>
+					<div class="m-tab-list">
+						<table class="table m-table m-tab-cons" id="m-tab-con1">
+							<tr>
+								<td width="10%">所属栏目：</td>
+								<td>
+									<select name="cat_id">
+										{foreach from=$categorys item=category key=k}
+										{if $archive.cat_id == $category.id}
+										<option value="{$category.id}" selected="selected">{$category.name}</option>
+										{else}
+										<option value="{$category.id}">{$category.name}</option>
+										{/if}
+										{/foreach}
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.title}：</td>
+								<td><input type="text" name="title" id="title" value="{$archive.title}" class="span6"/></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.sub_title}：</td>
+								<td><input type="text" name="sub_title" id="sub_title" value="{$archive.sub_title}" class="span6" /></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.intro}：</td>
+								<td><textarea name="intro" id="intro" class="span6" >{$archive.intro}</textarea></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.tag}：</td>
+								<td><input type="text" name="tag" id="tag" value="{$archive.tag}" class="span6" /></td>
+							</tr>
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con2">
+							<tr>
+								<td width="10%">{$lang.content}：</td>
+								<td>
+									<textarea id="content" name="content">{$archive.content}</textarea>
+									<script type="text/javascript">
+										var editor = new UE.ui.Editor();
+    									editor.render("content");
+									</script>
+								</td>
+							</tr>
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con3">
+							<tr>
+								<td width="10%">{$lang.seo_title}：</td>
+								<td><input type="text" name="seo_title" id="seo_title" value="{$archive.seo_title}" class="span6" /></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.seo_keyword}：</td>
+								<td><input type="text" name="seo_keyword" id="seo_keyword" value="{$archive.seo_keyword}" class="span6" /></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.seo_desc}：</td>
+								<td><textarea name="seo_desc" id="seo_desc" class="span6">{$archive.seo_desc}</textarea></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.url_rule}：</td>
+								<td><input type="text" name="url_rule" id="url_rule" value="{$archive.url_rule}" class="span6" /></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.is_html}：</td>
+								<td>
+									<div class="m-lock-div">
+										<input type="hidden" name="is_html" id="is_html" value="{$archive.is_html}" />
+										<span class="m-lock-btns"><i class="on_off_btn"></i></span>
+										<span class="m-disabled-tips">{$lang.is_html_yes}</span>
+									</div>
+								</td>
+							</tr>
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con4">
+
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con5">
+							
+						</table>
+					</div>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#tag').tagsInput({ width:'446', height: '80' });
+			$('#seo_keyword').tagsInput({ width:'446', height: '80' });
+			$('#archive_form').submit(function(){
+				editor.sync();
+				$(this).ajaxSubmit({
+					success: function(data){
+						if(data === 'OK'){
+							_POP({ title: '{$lang.edit_archive}', content: '{$lang.edit}{$lang.success}', icon: 'success' });
+							window.location.href="{$__CURL__}index";
+						}else{
+							_POP({ title: '{$lang.edit_archive}', content: '{$lang.edit}{$lang.fail}', icon: 'error' });
+						}
+					}
+				}); 
+				return false;
+			});
+			//是否生成Html控制
+			var is_html = $('#is_html').val();
+			if(is_html == 1){
+				$('.on_off_btn').animate({ left: '50px' });
+				$('.m-disabled-tips').text('{$lang.is_html_yes}');
+			}else if(is_html == 0){
+				$('.on_off_btn').animate({ left: '0px' });
+				$('.m-disabled-tips').text('{$lang.is_html_no}');
+			}
+			$('.on_off_btn').click(function(){
+				is_html = $('#is_html').val();
+				if(is_html == 1){
+					$('.on_off_btn').animate({ left: '0px' });
+					$('#is_html').val(0);
+					$('.m-disabled-tips').text('{$lang.is_html_no}');
+				}else if(is_html == 0){
+					$('.on_off_btn').animate({ left: '50px' });
+					$('#is_html').val(1);
+					$('.m-disabled-tips').text('{$lang.is_html_yes}');
+				}
+			});
+		});
+	</script>
+
+{include file="../footer.html"}

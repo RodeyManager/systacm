@@ -1,0 +1,988 @@
+[ERROR] - [2013-04-14 13:21:25] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 13:45:27] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:45:27] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='ab38da316bccebbfde3c2a3442fbdcda'  LIMIT 0, 1
+[error] - [2013-04-14 13:45:27] - [后台登录] - [登录] : 登录失败！
+[ERROR] - [2013-04-14 13:45:45] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:45:45] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='10da548e192e41604c0a4ea255e7cf26'  LIMIT 0, 1
+[error] - [2013-04-14 13:45:45] - [后台登录] - [登录] : 登录失败！
+[ERROR] - [2013-04-14 13:45:57] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:45:57] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='b912c48273352ac2e82dee2c8f21863c'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:45:57] - [Mysql] - [Mysql::doSQL] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='b912c48273352ac2e82dee2c8f21863c'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:45:57] - [Mysql] - [Mysql::execute] : UPDATE `syst_user` SET point='445' WHERE `id`='2' LIMIT 1
+[ERROR] - [2013-04-14 13:45:58] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 13:45:58] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, add_time, user_id) VALUES ('后台登录', '登录', '登录成功！', '1', '127.0.0.1', '1365918357', '2')
+[ERROR] - [2013-04-14 13:45:58] - [Mysql] - [Mysql::execute] : UPDATE `syst_user` SET last_login_time='1365918358',last_login_ip='127.0.0.1' WHERE `id`='2' LIMIT 1
+[ERROR] - [2013-04-14 13:46:00] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 13:46:00] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_user`
+[ERROR] - [2013-04-14 13:46:00] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_archive`
+[ERROR] - [2013-04-14 13:46:42] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 13:46:42] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, add_time, user_id) VALUES ('后台登录', '退出', '退出成功！', '1', '127.0.0.1', '1365918402', '2')
+[ERROR] - [2013-04-14 13:47:17] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:47:17] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='ab867239ef247506c47b3b9d0b91bce4'  LIMIT 0, 1
+[error] - [2013-04-14 13:47:17] - [后台登录] - [登录] : 登录失败！
+[ERROR] - [2013-04-14 13:47:36] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:47:36] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='b912c48273352ac2e82dee2c8f21863c'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:47:36] - [Mysql] - [Mysql::doSQL] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='b912c48273352ac2e82dee2c8f21863c'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:47:36] - [Mysql] - [Mysql::execute] : UPDATE `syst_user` SET point='450' WHERE `id`='2' LIMIT 1
+[ERROR] - [2013-04-14 13:47:36] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 13:47:36] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, add_time, user_id) VALUES ('后台登录', '登录', '登录成功！', '1', '127.0.0.1', '1365918456', '2')
+[ERROR] - [2013-04-14 13:47:36] - [Mysql] - [Mysql::execute] : UPDATE `syst_user` SET last_login_time='1365918456',last_login_ip='127.0.0.1' WHERE `id`='2' LIMIT 1
+[ERROR] - [2013-04-14 13:47:38] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 13:47:38] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_user`
+[ERROR] - [2013-04-14 13:47:38] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_archive`
+[ERROR] - [2013-04-14 13:49:37] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 13:49:37] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('后台登录', '退出', '退出成功！', '1', '127.0.0.1', '2', '1365918577')
+[ERROR] - [2013-04-14 13:49:52] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:49:52] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='ba804786d90c385b32aed728690264da'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:49:52] - [后台登录] - [登录] : 登录失败！
+[ERROR] - [2013-04-14 13:51:30] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:51:30] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='c879d3b5c48ba406e494a226b682ea8d'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:51:30] - [后台登录] - [登录] : 登录失败！
+[ERROR] - [2013-04-14 13:52:00] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:52:00] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='4965e44056cfcdae3edab0161732d760'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:52:00] - [后台登录] - [登录] : 登录失败！
+[ERROR] - [2013-04-14 13:52:27] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:52:27] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='d44844f0efacd6dfb0e82e5698cd4aaa'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:52:27] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 13:52:27] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('后台登录', '登录', '登录失败！', '0', '127.0.0.1', '', '1365918747')
+[ERROR] - [2013-04-14 13:52:56] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:52:56] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='41fba21d14ba995e328ca3f639448178'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:52:56] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 13:52:56] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('后台登录', '登录', '登录失败！', '0', '127.0.0.1', '', '1365918776')
+[ERROR] - [2013-04-14 13:54:14] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:54:14] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='6e96997b864d48f53bed603f98a85e9d'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:54:14] - [后台登录] - [登录] : 登录失败！
+[ERROR] - [2013-04-14 13:55:22] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:55:22] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='4965e44056cfcdae3edab0161732d760'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:55:22] - [后台登录] - [登录] : 登录失败！
+[ERROR] - [2013-04-14 13:56:03] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:56:03] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='d4b2b06df6afc042416bb7750dcd99d2'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:56:03] - [后台登录] - [登录] : 登录失败！
+[ERROR] - [2013-04-14 13:57:28] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:57:28] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='7167478ca9e28279484eaca3388c65e1'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:57:28] - [后台登录] - [登录] : 登录失败！
+[ERROR] - [2013-04-14 13:57:46] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:57:46] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='b757df672585a1ed96695f93e8d4d8bc'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:57:46] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 13:57:46] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('后台登录', '登录', '登录失败！', '0', '127.0.0.1', '', '1365919066')
+[ERROR] - [2013-04-14 13:59:03] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:59:03] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='10da548e192e41604c0a4ea255e7cf26'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:59:03] - [后台登录] - [登录] : 登录失败！
+[ERROR] - [2013-04-14 13:59:25] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 13:59:25] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='34fde590053e79eae4e866ed9d1e68cc'  LIMIT 0, 1
+[ERROR] - [2013-04-14 13:59:25] - [后台登录] - [登录] : 登录失败！
+[ERROR] - [2013-04-14 14:02:08] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:02:08] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='b757df672585a1ed96695f93e8d4d8bc'  LIMIT 0, 1
+[ERROR] - [2013-04-14 14:02:08] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:02:08] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('后台登录', '登录', '登录失败！', '0', '127.0.0.1', '', '1365919328')
+[ERROR] - [2013-04-14 14:06:42] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:06:42] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='b912c48273352ac2e82dee2c8f21863c'  LIMIT 0, 1
+[ERROR] - [2013-04-14 14:06:42] - [Mysql] - [Mysql::doSQL] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='b912c48273352ac2e82dee2c8f21863c'  LIMIT 0, 1
+[ERROR] - [2013-04-14 14:06:42] - [Mysql] - [Mysql::execute] : UPDATE `syst_user` SET point='455' WHERE `id`='2' LIMIT 1
+[ERROR] - [2013-04-14 14:06:42] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:06:42] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('后台登录', '登录', '登录成功！', '1', '127.0.0.1', '2', '1365919602')
+[ERROR] - [2013-04-14 14:06:42] - [Mysql] - [Mysql::execute] : UPDATE `syst_user` SET last_login_time='1365919602',last_login_ip='127.0.0.1' WHERE `id`='2' LIMIT 1
+[ERROR] - [2013-04-14 14:06:44] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:06:44] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_user`
+[ERROR] - [2013-04-14 14:06:45] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_archive`
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=0
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=0
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=0
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=0
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:06:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=0
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=0
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=0
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=0
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=0
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:08:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=0
+[ERROR] - [2013-04-14 14:09:39] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:09:39] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:09:39] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:10:39] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:10:39] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:10:39] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:10:39] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:10:39] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:10:39] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:10:39] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:10:39] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:10:40] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:10:40] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:20] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:12:20] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_log` WHERE `id`='23'
+[ERROR] - [2013-04-14 14:12:20] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:12:20] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('日志', '删除日志', '成功', '1', '127.0.0.1', '2', '1365919940')
+[ERROR] - [2013-04-14 14:12:21] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:12:21] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:12:21] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:12:21] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:21] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:22] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:22] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:22] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:22] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:22] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:31] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:12:31] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_log` WHERE `id`='25'
+[ERROR] - [2013-04-14 14:12:31] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_log` WHERE `id`='24'
+[ERROR] - [2013-04-14 14:12:31] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:12:31] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('日志', '删除日志', '成功', '1', '127.0.0.1', '2', '1365919951')
+[ERROR] - [2013-04-14 14:12:32] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:12:32] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:12:32] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:12:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:12:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:06] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:13:06] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:13:06] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:13:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:43] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:13:43] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:13:43] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:13:43] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:43] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:43] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:43] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:43] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:43] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:43] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:47] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:13:47] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:13:47] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 12, 12
+[ERROR] - [2013-04-14 14:13:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:47] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:53] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:13:53] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:13:53] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:13:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:13:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:19:09] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:19:09] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:19:09] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:19:09] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:19:09] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:19:09] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:19:09] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:19:09] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:19:09] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:19:09] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:19:15] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:19:15] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 14:19:18] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:19:18] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 14:19:49] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:19:49] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:19:49] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:19:49] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '运行SQL命令行', '完成', '1', '127.0.0.1', '2', '1365920389')
+[ERROR] - [2013-04-14 14:20:10] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:20:10] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:20:10] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:20:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:50] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:20:50] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:20:50] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:20:51] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:51] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:51] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:51] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:51] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:51] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:20:51] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:50] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:22:50] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:22:50] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:22:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:54] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:22:54] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:22:54] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:22:54] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:54] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:54] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:54] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:54] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:54] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:22:54] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:24] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:23:24] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:23:24] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:23:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:24] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:27] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:23:27] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:23:27] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:23:27] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:27] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:27] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:27] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:27] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:27] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:23:27] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:18] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:35:18] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:35:18] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:35:18] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:18] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:18] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:18] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:18] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:19] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:19] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:22] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:35:22] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 14:35:29] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:35:29] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:35:29] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_tag`
+[ERROR] - [2013-04-14 14:35:29] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_tag`
+[ERROR] - [2013-04-14 14:35:30] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_tag`
+[ERROR] - [2013-04-14 14:35:30] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_user`
+[ERROR] - [2013-04-14 14:35:30] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:35:30] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_user`
+[ERROR] - [2013-04-14 14:35:30] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_user_group`
+[ERROR] - [2013-04-14 14:35:30] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user_group`
+[ERROR] - [2013-04-14 14:35:34] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:35:34] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:35:34] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:35:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:35:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 12, 12
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:39] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:36:39] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:36:39] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:36:39] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:39] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:39] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:39] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:39] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:39] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:39] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:45] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:36:45] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 14:36:51] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:36:51] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:36:51] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_cattype`
+[ERROR] - [2013-04-14 14:36:51] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_cattype`
+[ERROR] - [2013-04-14 14:36:51] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_cattype`
+[ERROR] - [2013-04-14 14:36:51] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-14 14:36:51] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_config`
+[ERROR] - [2013-04-14 14:36:57] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:36:57] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:36:57] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:36:57] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:57] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:57] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:57] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:57] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:57] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:36:57] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:41:24] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:41:24] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_user`
+[ERROR] - [2013-04-14 14:41:24] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_archive`
+[ERROR] - [2013-04-14 14:42:10] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:42:10] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_user`
+[ERROR] - [2013-04-14 14:42:10] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_archive`
+[ERROR] - [2013-04-14 14:43:09] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:43:09] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_user`
+[ERROR] - [2013-04-14 14:43:10] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_archive`
+[ERROR] - [2013-04-14 14:43:18] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:43:18] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 14:43:32] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:43:32] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:43:32] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_sms`
+[ERROR] - [2013-04-14 14:43:32] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_sms`
+[ERROR] - [2013-04-14 14:43:33] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_sms`
+[ERROR] - [2013-04-14 14:43:33] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_user`
+[ERROR] - [2013-04-14 14:43:33] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:43:33] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_user`
+[ERROR] - [2013-04-14 14:43:33] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_user_group`
+[ERROR] - [2013-04-14 14:43:33] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user_group`
+[ERROR] - [2013-04-14 14:43:53] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:43:53] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:43:53] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:43:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:43:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:43:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:43:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:43:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:43:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:43:53] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:49:31] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:49:31] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 14:49:40] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:49:40] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:49:40] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_keyword`
+[ERROR] - [2013-04-14 14:49:40] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_keyword`
+[ERROR] - [2013-04-14 14:49:40] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_keyword`
+[ERROR] - [2013-04-14 14:49:40] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_level`
+[ERROR] - [2013-04-14 14:49:40] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_level`
+[ERROR] - [2013-04-14 14:49:40] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_level`
+[ERROR] - [2013-04-14 14:49:40] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_log`
+[ERROR] - [2013-04-14 14:49:40] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_log`
+[ERROR] - [2013-04-14 14:49:40] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_log`
+[ERROR] - [2013-04-14 14:49:40] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_manager`
+[ERROR] - [2013-04-14 14:49:41] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_manager`
+[ERROR] - [2013-04-14 14:49:41] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_manager`
+[ERROR] - [2013-04-14 14:49:41] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_notice`
+[ERROR] - [2013-04-14 14:49:41] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_notice`
+[ERROR] - [2013-04-14 14:50:12] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:50:12] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '备份数据库', '备份数据库成功', '2', '127.0.0.1', '2', '1365922211')
+[ERROR] - [2013-04-14 14:50:34] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:50:34] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:50:34] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:50:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:50:35] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:50:35] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:50:35] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:50:35] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:50:35] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:50:35] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:50:35] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:51:43] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:51:43] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 14:51:48] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:51:48] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '备份数据库', '备份数据库成功', '2', '127.0.0.1', '2', '1365922307')
+[ERROR] - [2013-04-14 14:51:54] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:51:54] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:51:54] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:51:55] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:51:55] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:51:55] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:51:55] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:51:55] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:51:55] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:51:55] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:51:55] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:53:57] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:53:57] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:53:57] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:53:58] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:53:58] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:53:58] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:53:58] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:53:58] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:53:58] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:53:58] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:53:58] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:54:03] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:54:03] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 14:54:10] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 14:54:10] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '备份数据库', '删除备份数据库成功', '2', '127.0.0.1', '2', '1365922449')
+[ERROR] - [2013-04-14 14:54:37] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 14:54:37] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 14:54:37] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 14:54:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:54:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:54:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:54:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:54:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:54:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:54:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 14:54:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 15:37:50] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 15:37:50] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_user`
+[ERROR] - [2013-04-14 15:37:50] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_archive`
+[ERROR] - [2013-04-14 15:38:31] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 15:38:31] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_user`
+[ERROR] - [2013-04-14 15:38:31] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_user` LIMIT 0, 12
+[ERROR] - [2013-04-14 15:39:06] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_category`
+[ERROR] - [2013-04-14 15:39:07] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_category`
+[ERROR] - [2013-04-14 15:39:07] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_category` ORDER BY `add_time` ASC LIMIT 0, 12
+[ERROR] - [2013-04-14 17:42:36] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 17:42:37] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 17:42:37] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 17:42:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 17:42:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 17:42:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 17:42:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 17:42:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 17:42:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 17:42:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 17:42:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 20:14:25] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 20:14:25] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_log` WHERE `id`='29'
+[ERROR] - [2013-04-14 20:14:25] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 20:14:25] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('日志', '删除日志', '成功', '1', '127.0.0.1', '2', '1365941665')
+[ERROR] - [2013-04-14 20:14:27] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 20:14:28] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 20:14:28] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 20:14:28] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 20:14:28] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 20:14:28] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 20:14:28] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 20:14:28] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 20:14:28] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 20:14:28] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 20:14:28] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 20:14:28] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 21:49:24] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:49:24] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_user`
+[ERROR] - [2013-04-14 21:49:24] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_archive`
+[ERROR] - [2013-04-14 21:49:27] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:49:27] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('后台登录', '退出', '退出成功！', '1', '127.0.0.1', '2', '1365947367')
+[ERROR] - [2013-04-14 21:49:43] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 21:49:43] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='b912c48273352ac2e82dee2c8f21863c'  LIMIT 0, 1
+[ERROR] - [2013-04-14 21:49:44] - [Mysql] - [Mysql::doSQL] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='b912c48273352ac2e82dee2c8f21863c'  LIMIT 0, 1
+[ERROR] - [2013-04-14 21:49:44] - [Mysql] - [Mysql::execute] : UPDATE `syst_user` SET point='460' WHERE `id`='2' LIMIT 1
+[ERROR] - [2013-04-14 21:49:44] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:49:44] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('后台登录', '登录', '登录成功！', '1', '127.0.0.1', '2', '1365947384')
+[ERROR] - [2013-04-14 21:49:44] - [Mysql] - [Mysql::execute] : UPDATE `syst_user` SET last_login_time='1365947384',last_login_ip='127.0.0.1' WHERE `id`='2' LIMIT 1
+[ERROR] - [2013-04-14 21:49:47] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:49:47] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_user`
+[ERROR] - [2013-04-14 21:49:47] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_archive`
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 21:49:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 21:50:09] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:50:10] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 21:50:29] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:50:29] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '备份数据库', '删除备份数据库成功', '2', '127.0.0.1', '2', '1365947429')
+[ERROR] - [2013-04-14 21:53:04] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:53:04] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 21:53:10] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:53:10] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:53:10] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_notice`
+[ERROR] - [2013-04-14 21:53:10] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_notice`
+[ERROR] - [2013-04-14 21:53:10] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_notice`
+[ERROR] - [2013-04-14 21:53:10] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_role`
+[ERROR] - [2013-04-14 21:53:10] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_role`
+[ERROR] - [2013-04-14 21:53:10] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_role`
+[ERROR] - [2013-04-14 21:53:10] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_scores`
+[ERROR] - [2013-04-14 21:53:11] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_scores`
+[ERROR] - [2013-04-14 21:53:16] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:53:16] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:53:16] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_notice`
+[ERROR] - [2013-04-14 21:53:17] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_notice`
+[ERROR] - [2013-04-14 21:53:17] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_notice`
+[ERROR] - [2013-04-14 21:53:17] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_role`
+[ERROR] - [2013-04-14 21:53:17] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_role`
+[ERROR] - [2013-04-14 21:53:17] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_role`
+[ERROR] - [2013-04-14 21:53:17] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_scores`
+[ERROR] - [2013-04-14 21:53:17] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_scores`
+[ERROR] - [2013-04-14 21:53:22] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:53:22] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:53:22] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_notice`
+[ERROR] - [2013-04-14 21:53:22] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_notice`
+[ERROR] - [2013-04-14 21:53:22] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_notice`
+[ERROR] - [2013-04-14 21:53:22] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_role`
+[ERROR] - [2013-04-14 21:53:22] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_role`
+[ERROR] - [2013-04-14 21:53:22] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_role`
+[ERROR] - [2013-04-14 21:53:22] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_scores`
+[ERROR] - [2013-04-14 21:53:22] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_scores`
+[ERROR] - [2013-04-14 21:53:34] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:53:34] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '备份数据库', '删除备份数据库成功', '2', '127.0.0.1', '2', '1365947614')
+[ERROR] - [2013-04-14 21:54:16] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:54:16] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '备份数据库', '删除备份数据库成功', '2', '127.0.0.1', '2', '1365947656')
+[ERROR] - [2013-04-14 21:58:17] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:58:17] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '备份数据库', '删除备份数据库成功', '2', '127.0.0.1', '2', '1365947897')
+[ERROR] - [2013-04-14 21:59:02] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:59:02] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 21:59:08] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:59:08] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:59:08] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_scores`
+[ERROR] - [2013-04-14 21:59:08] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_scores`
+[ERROR] - [2013-04-14 21:59:09] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_scores`
+[ERROR] - [2013-04-14 21:59:09] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_sms`
+[ERROR] - [2013-04-14 21:59:09] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_sms`
+[ERROR] - [2013-04-14 21:59:18] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 21:59:18] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '备份数据库', '删除备份数据库成功', '2', '127.0.0.1', '2', '1365947958')
+[ERROR] - [2013-04-14 22:00:31] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:00:31] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 22:00:38] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:00:38] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:00:38] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-14 22:00:38] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_config`
+[ERROR] - [2013-04-14 22:00:39] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-14 22:00:39] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_download`
+[ERROR] - [2013-04-14 22:00:39] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_download`
+[ERROR] - [2013-04-14 22:00:39] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_download`
+[ERROR] - [2013-04-14 22:00:39] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:00:39] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:00:45] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:00:45] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:00:45] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-14 22:00:45] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_config`
+[ERROR] - [2013-04-14 22:00:45] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-14 22:00:45] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_download`
+[ERROR] - [2013-04-14 22:00:45] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_download`
+[ERROR] - [2013-04-14 22:00:46] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_download`
+[ERROR] - [2013-04-14 22:00:46] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:00:46] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:00:46] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:00:46] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_user_group`
+[ERROR] - [2013-04-14 22:00:46] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user_group`
+[ERROR] - [2013-04-14 22:00:52] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:00:52] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:00:52] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-14 22:00:52] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_config`
+[ERROR] - [2013-04-14 22:00:52] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-14 22:00:52] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_download`
+[ERROR] - [2013-04-14 22:00:52] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_download`
+[ERROR] - [2013-04-14 22:00:52] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_download`
+[ERROR] - [2013-04-14 22:00:53] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:00:53] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:00:53] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:00:53] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_tag`
+[ERROR] - [2013-04-14 22:00:53] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_tag`
+[ERROR] - [2013-04-14 22:00:53] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_tag`
+[ERROR] - [2013-04-14 22:00:53] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_user_group`
+[ERROR] - [2013-04-14 22:00:53] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user_group`
+[ERROR] - [2013-04-14 22:01:14] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:01:14] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '备份数据库', '删除备份数据库成功', '2', '127.0.0.1', '2', '1365948074')
+[ERROR] - [2013-04-14 22:02:37] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:02:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:38] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:49] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:03:49] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '备份数据库', '删除备份数据库成功', '2', '127.0.0.1', '2', '1365948229')
+[ERROR] - [2013-04-14 22:03:55] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:03:55] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:03:55] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:03:55] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:55] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:55] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:55] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:03:56] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:07:09] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:07:09] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 22:07:15] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:07:15] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:07:16] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_category`
+[ERROR] - [2013-04-14 22:07:16] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_category`
+[ERROR] - [2013-04-14 22:07:16] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_category`
+[ERROR] - [2013-04-14 22:07:16] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_catmodel`
+[ERROR] - [2013-04-14 22:07:16] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_catmodel`
+[ERROR] - [2013-04-14 22:07:26] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:07:26] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:07:27] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_category`
+[ERROR] - [2013-04-14 22:07:27] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_category`
+[ERROR] - [2013-04-14 22:07:27] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_category`
+[ERROR] - [2013-04-14 22:07:27] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_catmodel`
+[ERROR] - [2013-04-14 22:07:27] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_catmodel`
+[ERROR] - [2013-04-14 22:07:27] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_catmodel`
+[ERROR] - [2013-04-14 22:07:27] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_tag`
+[ERROR] - [2013-04-14 22:07:27] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_tag`
+[ERROR] - [2013-04-14 22:07:27] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_tag`
+[ERROR] - [2013-04-14 22:07:27] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_user`
+[ERROR] - [2013-04-14 22:07:27] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:07:36] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:07:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:08:48] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:08:49] - [Mysql] - [Mysql::Stable] : SHOW TABLE STATUS FROM `systacm`
+[ERROR] - [2013-04-14 22:08:56] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:08:56] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:08:56] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:08:56] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:08:56] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:08:56] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_ips`
+[ERROR] - [2013-04-14 22:08:56] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_ips`
+[ERROR] - [2013-04-14 22:08:56] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_ips`
+[ERROR] - [2013-04-14 22:08:56] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_keyword`
+[ERROR] - [2013-04-14 22:08:56] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_keyword`
+[ERROR] - [2013-04-14 22:08:56] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:08:56] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '备份数据库', '备份数据库成功', '2', '127.0.0.1', '2', '1365948536')
+[ERROR] - [2013-04-14 22:09:03] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:09:03] - [Mysql] - [Mysql::doSQL] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:09:03] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:09:03] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:09:03] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_flinks`
+[ERROR] - [2013-04-14 22:09:03] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_ips`
+[ERROR] - [2013-04-14 22:09:03] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_ips`
+[ERROR] - [2013-04-14 22:09:03] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_ips`
+[ERROR] - [2013-04-14 22:09:03] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_keyword`
+[ERROR] - [2013-04-14 22:09:04] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_keyword`
+[ERROR] - [2013-04-14 22:09:04] - [Mysql] - [Mysql::doSQL] : SELECT * FROM `syst_keyword`
+[ERROR] - [2013-04-14 22:09:04] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_manager`
+[ERROR] - [2013-04-14 22:09:04] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_manager`
+[ERROR] - [2013-04-14 22:09:04] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:09:04] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('数据库', '备份数据库', '备份数据库成功', '2', '127.0.0.1', '2', '1365948544')
+[ERROR] - [2013-04-14 22:09:10] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:09:10] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:09:10] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:09:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:09:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:09:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:09:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:09:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:09:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:09:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:09:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:09:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:09:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:09:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:09:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:36:50] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:36:50] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:36:50] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:36:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:36:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:36:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:36:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:36:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:36:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:36:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:36:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:36:50] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:36:51] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:36:51] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:36:51] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:37:10] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:37:10] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_log` WHERE `id`='49'
+[ERROR] - [2013-04-14 22:37:10] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_log` WHERE `id`='48'
+[ERROR] - [2013-04-14 22:37:10] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_log` WHERE `id`='47'
+[ERROR] - [2013-04-14 22:37:10] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_log` WHERE `id`='46'
+[ERROR] - [2013-04-14 22:37:10] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_log` WHERE `id`='45'
+[ERROR] - [2013-04-14 22:37:10] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_log` WHERE `id`='44'
+[ERROR] - [2013-04-14 22:37:11] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:37:11] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:37:11] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:37:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:37:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:37:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:37:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:37:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:37:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:37:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:37:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:37:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:37:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:37:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:37:12] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:41] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:38:41] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:38:41] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 12, 12
+[ERROR] - [2013-04-14 22:38:41] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:41] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:41] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:41] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:41] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:41] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:41] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:41] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:48] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:38:48] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:38:48] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 24, 12
+[ERROR] - [2013-04-14 22:38:48] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:48] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:48] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:49] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:49] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:38:49] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:02] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:39:02] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:39:02] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:39:02] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:03] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:03] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:03] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:03] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:03] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:03] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:03] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:03] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:03] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:03] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:03] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:33] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:39:33] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:39:33] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:39:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:33] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:39:34] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:56:36] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:56:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:56:37] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:01] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:57:01] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:57:01] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:57:01] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:01] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:01] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:01] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:01] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:01] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:01] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:01] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:01] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:02] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:02] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:02] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:06] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:57:06] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:57:06] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:57:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:06] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:07] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:07] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:07] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:07] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:10] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:57:10] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:57:10] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:57:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:10] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:11] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 22:57:14] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 22:57:14] - [Mysql] - [Mysql::Dtable] : TRUNCATE TABLE `syst_log` 
+[ERROR] - [2013-04-14 22:57:15] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:57:15] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:57:15] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 22:59:25] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 22:59:25] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 22:59:25] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 23:00:08] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 23:00:08] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 23:00:08] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 23:12:05] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:12:05] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('后台登录', '退出', '退出成功！', '1', '127.0.0.1', '2', '1365952325')
+[ERROR] - [2013-04-14 23:12:19] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 23:12:19] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='f58b77d1a0d2a959c0f37d99afe27a4d'  LIMIT 0, 1
+[ERROR] - [2013-04-14 23:12:19] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:12:19] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, add_time) VALUES ('后台登录', '登录', '登录失败！', '0', '127.0.0.1', '1365952339')
+[ERROR] - [2013-04-14 23:13:24] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 23:13:24] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='b912c48273352ac2e82dee2c8f21863c'  LIMIT 0, 1
+[ERROR] - [2013-04-14 23:13:24] - [Mysql] - [Mysql::doSQL] : SELECT  *  FROM `syst_manager` WHERE `aname`='rodey' AND `apass`='b912c48273352ac2e82dee2c8f21863c'  LIMIT 0, 1
+[ERROR] - [2013-04-14 23:13:25] - [Mysql] - [Mysql::execute] : UPDATE `syst_user` SET point='465' WHERE `id`='2' LIMIT 1
+[ERROR] - [2013-04-14 23:13:25] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:13:25] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('后台登录', '登录', '登录成功！', '1', '127.0.0.1', '2', '1365952405')
+[ERROR] - [2013-04-14 23:13:25] - [Mysql] - [Mysql::execute] : UPDATE `syst_user` SET last_login_time='1365952405',last_login_ip='127.0.0.1' WHERE `id`='2' LIMIT 1
+[ERROR] - [2013-04-14 23:13:28] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:13:28] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_user`
+[ERROR] - [2013-04-14 23:13:28] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_archive`
+[ERROR] - [2013-04-14 23:13:35] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 23:13:35] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 23:13:35] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 23:13:35] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 23:13:35] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 23:13:58] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:13:58] - [Mysql] - [Mysql::destroy] : DELETE FROM `syst_log` WHERE `id`='1'
+[ERROR] - [2013-04-14 23:13:59] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 23:13:59] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 23:13:59] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 23:13:59] - [Mysql] - [Mysql::getOne] : SELECT * FROM `syst_user` WHERE `id`=2
+[ERROR] - [2013-04-14 23:14:05] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:14:06] - [Mysql] - [Mysql::Dtable] : TRUNCATE TABLE `syst_log` 
+[ERROR] - [2013-04-14 23:14:06] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_user`
+[ERROR] - [2013-04-14 23:14:06] - [Mysql] - [Mysql::getRows] : SELECT COUNT(`id`) AS num_rows FROM `syst_log`
+[ERROR] - [2013-04-14 23:14:07] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_log` ORDER BY `id` DESC LIMIT 0, 12
+[ERROR] - [2013-04-14 23:14:56] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:14:56] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='1' 
+[ERROR] - [2013-04-14 23:14:56] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='2' 
+[ERROR] - [2013-04-14 23:14:56] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='3' 
+[ERROR] - [2013-04-14 23:14:56] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='4' 
+[ERROR] - [2013-04-14 23:14:56] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='6' 
+[ERROR] - [2013-04-14 23:14:56] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='8' 
+[ERROR] - [2013-04-14 23:43:15] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:43:15] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='1' 
+[ERROR] - [2013-04-14 23:43:15] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='2' 
+[ERROR] - [2013-04-14 23:43:15] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='3' 
+[ERROR] - [2013-04-14 23:43:15] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='4' 
+[ERROR] - [2013-04-14 23:43:15] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='6' 
+[ERROR] - [2013-04-14 23:43:15] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='8' 
+[ERROR] - [2013-04-14 23:43:29] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:43:29] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='1' 
+[ERROR] - [2013-04-14 23:43:29] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='2' 
+[ERROR] - [2013-04-14 23:43:29] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='3' 
+[ERROR] - [2013-04-14 23:43:30] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='4' 
+[ERROR] - [2013-04-14 23:43:30] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='6' 
+[ERROR] - [2013-04-14 23:43:30] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='8' 
+[ERROR] - [2013-04-14 23:43:35] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:43:35] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='1' 
+[ERROR] - [2013-04-14 23:43:35] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='2' 
+[ERROR] - [2013-04-14 23:43:35] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='3' 
+[ERROR] - [2013-04-14 23:43:35] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='4' 
+[ERROR] - [2013-04-14 23:43:35] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='6' 
+[ERROR] - [2013-04-14 23:43:35] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='8' 
+[ERROR] - [2013-04-14 23:44:28] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:44:28] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-14 23:47:49] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:47:49] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='1' 
+[ERROR] - [2013-04-14 23:47:49] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='2' 
+[ERROR] - [2013-04-14 23:47:49] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='3' 
+[ERROR] - [2013-04-14 23:47:49] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='4' 
+[ERROR] - [2013-04-14 23:47:49] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='6' 
+[ERROR] - [2013-04-14 23:47:49] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='8' 
+[ERROR] - [2013-04-14 23:47:54] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:47:54] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='1' 
+[ERROR] - [2013-04-14 23:47:54] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='2' 
+[ERROR] - [2013-04-14 23:47:54] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='3' 
+[ERROR] - [2013-04-14 23:47:54] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='4' 
+[ERROR] - [2013-04-14 23:47:54] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='6' 
+[ERROR] - [2013-04-14 23:47:54] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='8' 
+[ERROR] - [2013-04-14 23:47:59] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:47:59] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-14 23:48:29] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:48:29] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-14 23:52:10] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:52:10] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-14 23:57:14] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:57:14] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-14 23:58:44] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-14 23:58:44] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`

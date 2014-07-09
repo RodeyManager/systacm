@@ -1,0 +1,175 @@
+{include file="../header_content.html"}
+	
+	<!-- 添加用户 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-center">
+				<form id="config_form" action="{$__CURL__}mod_set" method="POST">
+					<div class="m-header-tab-btns tab-btns-mini">
+						<a class="m-mini-btn m-header-tab m-tab-mini m-tab-on" ref="m-tab-con3">{$lang.attachment_set}</a>
+						<a class="m-mini-btn m-header-tab m-tab-mini create-set" ref="m-tab-con9">{$lang.create_set}</a>
+					</div>
+					<div class="m-tab-list">
+						<table class="table m-table m-tab-cons" id="m-tab-con3">
+							<tr class="m-table-theader">
+								<th>{$lang.var_info}</th>
+								<th>{$lang.var_value}</th>
+								<th>{$lang.var_name}</th>
+								<th>{$lang.var_type}</th>
+							</tr>
+							{if is_array($attacs)}
+							{foreach item=attac from=$attacs}
+							<tr>
+								<td class="alignr" style="padding-right:10px;">{$attac.var_info}：</td>
+								<td>
+									<input type="hidden" name="ids[]" value="{$attac.id}">
+									{if $attac.var_type=='int'}
+									<input type="text" name="mod__{$attac.var_name}" id="{$attac.var_name}" value="{$attac.var_value}" class="span3"/>
+									{elseif $attac.var_type=='string'}
+									<input type="text" name="mod__{$attac.var_name}" id="{$attac.var_name}" value="{$attac.var_value}" class="span6"/>
+									{elseif $attac.var_type==bigstring}
+									<textarea name="mod__{$attac.var_name}" rows="3" class="span6">{$attac.var_value}</textarea>
+									{elseif $attac.var_type==bool}
+										{if $attac.var_value==1}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$attac.var_name}" value="1" checked />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$attac.var_name}" value="0" />{$lang.close}</label>
+										{else}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$attac.var_name}" value="1" />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$attac.var_name}" value="0" checked />{$lang.close}</label>
+										{/if}
+									{/if}
+									<em class="explain">{if $attac.var_rmark}{$attac.var_rmark}{/if}</em>
+								</td>
+								<td>{$attac.var_name}</td>
+								<td>{$attac.var_type}</td>
+							</tr>
+							{/foreach}
+							{/if}
+						</table>
+					</div>
+					<div class="m-input-div form-btns">
+						<input type="submit" name="mod__submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+				<form id="create-form" action="{$__CURL__}create_set" method="POST" accept-charset="utf-8">
+					<table class="table m-table m-tab-cons" id="m-tab-con9">
+							<tr>
+								<td class="alignr">{$lang.var_type}：</td>
+								<td>
+									<label style="padding-right:30px;"><input type="radio" name="var_type" id="var_type" value="string" checked />{$lang.string}</label>
+									<label style="padding-right:30px;"><input type="radio" name="var_type" id="var_type" value="bigstring" />{$lang.bigstring}</label>
+									<label style="padding-right:30px;"><input type="radio" name="var_type" id="var_type" value="bool" />{$lang.bool}</label>
+									<label style="padding-right:30px;"><input type="radio" name="var_type" id="var_type" value="int" />{$lang.int}</label>
+									<em class="explain">{$lang.var_type_isnotnull}</em>
+								</td>	
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.var_name}：</td>
+								<td><input type="text" name="var_name" id="var_name" value="" class="span2" /><em class="explain">{$lang.var_name_isnotnull}</em></td>	
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.var_value}：</td>
+								<td><input type="text" name="var_value" id="var_value" value="" class="span4" /><em class="explain">{$lang.var_value_isnotnull}</em></td>	
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.var_info}：</td>
+								<td><input type="text" name="var_info" id="var_info" value="" class="span6 title" /><em class="explain">{$lang.var_info_isnotnull}</em></td>	
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.var_rmark}：</td>
+								<td><input type="text" name="var_rmark" id="var_rmark" value="" class="span6 title" /><em class="explain">{$lang.var_rmark_isnull}</em></td>	
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.var_group}：</td>
+								<td>
+									<select name="group_id" class="span2">
+										<option value="1">{$lang.site_set}</option>
+										<option value="2">{$lang.masker_set}</option>
+										<option value="3">{$lang.attachment_set}</option>
+										<option value="4">{$lang.email_set}</option>
+										<option value="5">{$lang.phone_set}</option>
+										<option value="6">{$lang.user_set}</option>
+										<option value="7">{$lang.map_set}</option>
+										<option value="8">{$lang.safe_set}</option>
+									</select>
+									<em class="explain">{$lang.var_group_isnotnull}</em>
+								</td>	
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.save_notice}：</td>
+								<td><em class="explain em-warn">{$lang.save_rmark}</em></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div class="m-input-div">
+										<input type="submit" name="submit" value="{$lang.save_var}" id="submit" class="m-input-btns" />
+										<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+										<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+									</div>
+								</td>
+							</tr>
+						</table>
+						
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.m-tab-mini').click(function(){
+				if($(this).hasClass('create-set'))
+					$('.form-btns').hide();
+				else
+					$('.form-btns').show();
+			});
+			//Create
+			$('#var_name').live('focusin focusout', function(){ 
+				tips_check('#var_name','{$__CURL__}check_var','{$lang.var_name_isnotnull}','{$lang.var_name_bein}','{$lang.var_name_beun}'); 
+			});
+			$('#var_info').live('focusin focusout', function(){ tips('#var_info'); });
+			$('#var_value').live('focusin focusout', function(){ tips_success('#var_value'); });
+			$('#var_rmark').live('focusin focusout', function(){ tips_success('#var_rmark'); });
+			$('#var_type').live('focusin focusout', function(){ tips('#var_type'); });
+			$('#group_id').live('focusin focusout', function(){ tips('#group_id'); });
+
+
+			$('#create-form').submit(function(){
+				if($('#var_name').val() == ''){ return tips_error('#var_name'); }
+				if($('#var_value').val() == ''){ return tips_error('#var_value'); }
+				if($('#var_info').val() == ''){ return tips_error('#var_info'); }
+				if($('#var_type').val() == ''){ return tips_error('#var_type'); }
+				if($('#group_id').val() == ''){ return tips_error('#group_id'); }
+				$(this).ajaxSubmit({
+					success: function(data){
+						if(data === 'OK'){
+							_POP({ title: '{$lang.save_var}', content: '{$lang.save_var}{$lang.success}', icon: 'success' });
+							window.location.href="{$__CURL__}index";
+						}else{
+							_POP({ title: '{$lang.save_var}', content: '{$lang.save_var}{$lang.fail}', icon: 'error' });
+						}
+					}
+				}); 
+				return false;
+			});
+			//mod
+			$('#config_form').submit(function(){
+				$(this).ajaxSubmit({
+					success: function(data){
+						if(data === 'OK'){
+							_POP({ title: '{$lang.save_var}', content: '{$lang.save_var}{$lang.success}', icon: 'success' });
+							window.location.href="{$__CURL__}index";
+						}else{
+							_POP({ title: '{$lang.save_var}', content: '{$lang.save_var}{$lang.fail}', icon: 'error' });
+						}
+					}
+				});
+				return false;
+			});
+		});//end ready
+
+	</script>
+
+{include file="../footer.html"}

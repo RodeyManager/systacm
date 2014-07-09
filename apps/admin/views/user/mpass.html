@@ -1,0 +1,147 @@
+{include file="../header_content.html"}
+	<script src="{$__SYSJS__}/jquery.form.js" type="text/javascript" charset="UTF-8"></script>
+	<link rel="stylesheet" href="{$__SYSJS__}/formValidator/roadey.css" />
+	<script src="{$__SYSJS__}/formValidator/formValidator.min.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$.formValidator.initConfig({ autotip:true, formid:"user_form", submitOnce:true, onerror:function(msg){ art.dialog.alert(msg);} });
+			
+			$("#mod_pass").formValidator({ empty:true,onshow:"{$lang.v_pass_empty}",onfocus:"{$lang.pass_len}",onempty:"{$lang.v_pass_empty}" })
+						.inputValidator({ min:6,max:16,onerror:"{$lang.pass_len}" }).defaultPassed();
+			$("#mod_pass_confirm").formValidator({ empty:true,onshow:"{$lang.v_pass_to}",onfocus:"{$lang.pass_to_no}",oncorrect:"{$lang.pass_to_no}" })
+						.compareValidator({ desid:"mod_pass",operateor:"=",onerror:"{$lang.pass_to_no}" }).defaultPassed();
+
+		});
+	</script>
+	<!-- 添加用户 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['user_list']}</a>
+				<a href="{$__CURL__}add" class="m-header-btns">{$lang['add_user']}</a>
+				<span class="m-title">{$lang['edit_user']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+			<form id="user_form" action="{$__CURL__}update" method="POST">
+				<input type="hidden" name="id" value="{$user.id}" />
+				<div class="m-header-tab-btns">
+					<a class="m-mini-btn m-header-tab m-tab-on" ref="m-tab-con4">{$lang.mod_pass}</a>
+				</div>
+				<div class="m-tab-list">
+					<table class="table m-table m-tab-cons" id="m-tab-con4">
+						<tr>
+							<th colspan="2" style="font-size: 18px;">{$lang.pass_for_base}</th>
+						</tr>
+						<tr>
+							<td>{$lang.password}：</td>
+							<td><input type="password" id="mod_pass" name="mod_pass" /></td>
+						</tr>
+						<tr>
+							<td>{$lang.password_confirm}：</td>
+							<td><input type="password" id="mod_pass_confirm" name="mod_pass_confirm" /></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<a href="javascript:_MPASS('{$__CURL__}mod_pass', true);void(0);" id="sub_mod_pass" class="m-input-btns">{$lang.mod_pass}</a>
+								<a href="javascript:_MPASS('{$__CURL__}mod_pass', false);void(0);" id="reset_mod_pass" class="m-input-btns">{$lang.cancel}</a>
+							</td>
+						</tr>
+						<tr>
+							<th colspan="2" style="font-size: 18px;">{$lang.pass_for_email}</th>
+						</tr>
+						<tr>
+							<td>{$lang.password}：</td>
+							<td>
+								<div class="time-div">
+									<input type="text" name="email_modpass" id="email_modpass" value="" class="span3"/>
+									<i data-id="{$user.id}" class="m-mini-btn m-mini-email_pass" title="{$lang['send_email']}"></i>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th colspan="2" style="font-size: 18px;">{$lang.pass_for_phone}</th>
+						</tr>
+						<tr>
+							<td>{$lang.password}：</td>
+							<td>
+								<div class="time-div">
+									<input type="text" name="phone_modpass" id="phone_modpass" value="" class="span3"/>
+									<i data-id="{$user.id}" class="m-mini-btn m-mini-phone_pass" title="{$lang['send_phone']}"></i>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+		</div>
+		<div class="clear"></div>
+		
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			//tab
+			$('.m-tab-cons').hide();
+			$('.m-tab-cons:first').show();
+			$('.m-header-tab').click(function(){
+				if($(this).attr('ref') == 'm-tab-con4'){
+					$('#uedit').addClass('m-input-btns-false');
+					$('#uedit').attr('disabled', 'disabled');
+					$('#reset').addClass('m-input-btns-false');
+					$('#reset').attr('disabled', 'disabled');
+				}else{
+					$('#uedit').removeClass('m-input-btns-false');
+					$('#uedit').removeAttr('disabled');
+					$('#reset').removeClass('m-input-btns-false');
+					$('#reset').removeAttr('disabled');
+				}
+				var tab_con_list = $('.m-tab-cons');
+				$('.m-tab-cons').hide();
+				$('#'+ $(this).attr('ref')).fadeIn();
+				$('.m-header-tab').removeClass('m-tab-on');
+				$(this).addClass('m-tab-on');
+			});
+
+			
+			//邮箱修改密码
+			$('.m-mini-email_pass').click(function(){
+				var id = '{$user.id}';
+				var email = '{$user.email}';
+				$.post('{$__CURL__}email_modpass', { id: id, email: email }, function(data){
+					if(data === 'OK') 
+						_POP({ title:'{$lang.send_email}',content:'{$lang.send_success}！',icon:'success' });
+					else 
+						_POP({ title:'{$lang.send_email}',content:'{$lang.send_fail}！',icon:'error' });
+				});
+			});
+
+		});
+		//修改密码
+		function _MPASS(url, flag){
+			if(!flag){
+				$('#mod_pass').val('');
+				$('#mod_pass_confirm').val('');
+			}else{
+				if(url == '') return false;
+				var pass = $('#mod_pass').val();
+				var pass_to = $('#mod_pass_confirm').val();
+				var id = '{$user.id}';
+				if(pass == ''){ _Dat('{$lang.pass_no_empty}！'); return false; }
+				if(pass.length < 6 || pass.length > 16){ _Dat('{$lang.pass_len}！'); return false; }
+				if(pass != pass_to){ _Dat('{$lang.pass_to_no}！'); return false; }
+				$.post(url, { id: id, pass: pass }, function(data){
+					if(data === 'OK') 
+						_POP({ title:'{$lang.edit}{$lang.password}',content:'{$lang.edit}{$lang.success}！',icon:'success' });
+					else 
+						_POP({ title:'{$lang.edit}{$lang.password}',content:'{$lang.edit}{$lang.success}！',icon:'error' });
+				});
+			}
+		}
+		
+	</script>
+
+{include file="../footer.html"}

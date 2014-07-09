@@ -1,0 +1,281 @@
+{include file="../header_content.html"}
+	<script type="text/javascript" src="{$__SYSJS__}/SWFUpload/swfupload.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/SWFUpload/handlers.js"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_config.js"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_all.js"></script>
+	<script type="text/javascript" src="http://api.51ditu.com/js/maps.js" ></script>
+	<script type="text/javascript" src="http://api.51ditu.com/js/ezmarker.js"></script>
+	<script type="text/javascript" src="http://api.51ditu.com/js/ipposition.js"></script>
+	<script type="text/javascript">
+	var swfu;
+	$(document).ready(function(){
+
+		swfu = new SWFUpload({
+				flash_url : "{$__SYSJS__}/SWFUpload/swfupload.swf",
+				upload_url: "{$__CURL__}upload_logo",
+				file_post_name : "resnet_logo",
+
+				// File Upload Settings
+				file_size_limit : "2MB",	// 2MB
+				file_types:"*.jpg;*.jpeg;*.png;*.gif;",
+				file_types_description:"All Files",
+				file_upload_limit : "100",
+				file_queue_error_handler : fileQueueError,
+				upload_progress_handler : function(file, bytesLoaded){
+					$('#divFileProgressContainer').show();
+					$('#thumbnails').attr({ 'src':'{$__AIMAGES__}/Loading_bar_1s.gif', width:300, height:16 });
+				},
+				upload_error_handler : uploadError,
+				upload_success_handler :  function(file, serverData){
+					var serverData = serverData.replace(/(^\s*)|(\s*$)/g,"");
+					$('#thumbnails').attr({ 'src': serverData, width:300});
+					$('#resnet_logo').val(serverData);
+				},
+				upload_complete_handler : uploadComplete,
+
+				// Button Settings
+				button_image_url: '{$__AIMAGES__}/swfupload_btn.png',
+				button_placeholder_id : "ButtonPlaceholder",
+				button_width: 76,
+				button_height: 30,
+				button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+				button_cursor: SWFUpload.CURSOR.HAND
+			});
+
+	});
+	</script>
+	<style type="text/css">
+		.swfupload{ float:left;color: #DCF323;background: #2599B2; cursor:pointer; }
+	</style>
+	<!-- 添加用户 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang.resnet_list}</a>
+				<a href="{$__CURL__}add" class="m-header-btns">{$lang.add_resnet}</a>
+				<span class="m-title">{$lang.eidt_resnet}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="resnet-form" action="{$__CURL__}mod" method="POST">
+					<input type="hidden" name="id" value="{$resnet.id}" />
+					<div class="m-tab-list">
+						<table class="table m-table m-tab-cons" id="m-tab-con1">
+							<tr>
+								<td width="10%" class="alignr">{$lang.net_name}：</td>
+								<td>
+									<input type="text" name="net_name" id="net_name" value="{$resnet.net_name}" class="span4"/>
+									<em class="explain">{$lang.net_name_tips}</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr">{$lang.net_address}：</td>
+								<td>
+									<input type="text" name="net_address" id="net_address" value="{$resnet.net_address}" class="span6"/>
+									<em class="explain">{$lang.net_address_tips}</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr">{$lang.net_hotline}：</td>
+								<td>
+									<input type="text" name="net_hotline" id="net_hotline" value="{$resnet.net_hotline}" class="span4"/>
+									<em class="explain">{$lang.net_hotline_tips}</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr">{$lang.net_tid}：</td>
+								<td>
+									<select name="net_tid" id="net_tid" class="span2"/>
+										{if !empty($ntypes)}
+										{html_options options=$ntypes selected=$resnet.net_tid}
+										{/if}
+									</select>
+									<em class="explain">{$lang.net_tid_tips}</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr">{$lang.net_u_name}：</td>
+								<td>
+									<input type="text" name="net_u_name" id="net_u_name" value="{$resnet.net_u_name}" class="span3"/>
+									<em class="explain">{$lang.net_u_name_tips}</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr">{$lang.net_u_phone}：</td>
+								<td>
+									<input type="text" name="net_u_phone" id="net_u_phone" value="{$resnet.net_u_phone}" class="span3"/>
+									<em class="explain">{$lang.net_u_phone_tips}</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr">{$lang.net_region}：</td>
+								<td>
+									<select name="net_region" id="net_region" class="span2"/>
+										{if !empty($areas)}
+										{html_options options=$areas selected=$resnet.net_region}
+										{/if}
+									</select>
+									<em class="explain">{$lang.net_region_tips}</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr">{$lang.net_map}：</td>
+								<td>
+									<script type="text/javascript">
+										var ez = new LTEZMarker("ezmarker");
+									    ez.setDefaultView(new LTPoint({$resnet.net_mapx}, {$resnet.net_mapy}), {$resnet.net_mapz});//设置默认值
+										ez.setPlaceList(true);//在地图上显示地图搜索控件
+			    						ez.setSearch(true);//在地图上显示搜索控件
+									</script>
+									<span id="markerTips">
+										(
+										{if !empty($resnet.net_mapx)}
+										{$lang.ezmarker_yes}
+										{else}
+										{$lang.ezmarker_no}
+										{/if}
+										)
+									</span>
+									<em class="explain">{$lang.net_map_tips}</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr">{$lang.net_pic}：</td>
+								<td>
+									<div class="m-lock-div">
+										<input type="radio" name="banner_select" id="is_local" checked />{$lang.local_upload}&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" name="banner_select" id="is_webpic" />{$lang.web_image}&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="javascript:_PUP('{$__RURL__}main/upload');void(0);">{$lang.select_libimgs}</a>
+									</div>
+									<div class="clear"></div>
+									<input type="text" name="net_pic" id="banner" value="{$resnet.net_pic}" readonly class="span6" style="margin:10px 0px;"/>
+									<div class="time-div">
+										<div id="divFileProgressContainer" style="display:none;margin: 20px 0px;">
+											<img id="thumbnails" src="{$resnet.net_pic}" border="0" />
+										</div>
+										<div class="upload_btns">
+											<span class="m-header-btns" id="ButtonPlaceholder"></span>
+											<span class="m-header-btns" style="padding:5px 10px;cursor: pointer;" onclick="swfu.startUpload();">{$lang.upload_img}</span>
+											<div class="clear"></div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr">{$lang.net_msg}：</td>
+								<td>
+									<textarea name="net_msg" id="net_msg">{$resnet.net_msg}</textarea>
+									<script type="text/javascript">
+										var editor = new UE.ui.Editor();
+    									editor.render("net_msg");
+									</script>
+									<em class="explain">{$lang.net_msg_tips}</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr"> {$lang.net_status}：</td>
+								<td>
+									<div class="m-lock-div">
+										<input type="hidden" name="disabled" id="disabled" value="{$resnet.disabled}" />
+										{if $resnet.disabled eq 1}
+										<span class="m-lock-btns"><i class="on_off_btn" style="left:50px;"></i></span>
+										<span class="m-disabled-tips">{$lang['disabled_false']}</span>
+										{else}
+										<span class="m-lock-btns"><i class="on_off_btn" style="left:0px;"></i></span>
+										<span class="m-disabled-tips">{$lang['disabled_true']}</span>
+										{/if}
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('input[name="banner_select"]').click(function(){
+				if($('#is_local').attr('checked')){
+					$('.upload_btns').show();
+					$('#banner').attr('readonly', 'true');
+					$('#banner').val('');
+				}else{
+					$('.upload_btns').hide();
+					$('#banner').removeAttr('readonly');
+					$('#banner').val('http://');
+					$('#banner').focusout(function(){
+						if($('#banner').val() !== 'http://'){
+							$('#divFileProgressContainer').show();
+							$('#thumbnails').attr({ 'src': $('#banner').val(), width:150});
+						}else{
+							return false;
+						}
+					});
+				}
+			});
+			
+			//可用性
+			$('.on_off_btn').click(function(){
+				var disabled = $('#disabled').val();
+				if(disabled == 1){
+					$('.on_off_btn').animate({ left: '0px' });
+					$('#disabled').val(0);
+					$('.m-disabled-tips').text('{$lang['disabled_true']}');
+				}else if(disabled == 0){
+					$('.on_off_btn').animate({ left: '50px' });
+					$('#disabled').val(1);
+					$('.m-disabled-tips').text('{$lang['disabled_false']}');
+				}
+			});
+			//Create
+			$('#net_name').live('focusin focusout', function(){ tips('#net_name'); });
+			$('#net_address').live('focusin focusout', function(){ tips('#net_address'); });
+			$('#net_hotline').live('focusin focusout', function(){ tips('#net_hotline'); });
+			$('#net_tid').live('focusin focusout', function(){ tips('#net_tid'); });
+			$('#net_u_name').live('focusin focusout', function(){ tips_success('#net_u_name'); });
+			$('#net_u_phone').live('focusin focusout', function(){ tips_success('#net_u_phone'); });
+			$('#net_region').live('focusin focusout', function(){ tips('#net_region'); });
+			$('#net_pic').live('focusin focusout', function(){ tips_success('#net_pic'); });
+			$('#net_msg').live('focusin focusout', function(){ tips_success('#net_msg'); });
+
+			$('#resnet-form').submit(function(){
+				editor.sync();
+
+				if($('#net_name').val() == '') { return tips_error($('#net_name')); }
+				if($('#net_address').val() == '') { return tips_error($('#net_address')); }
+				if($('#net_hotline').val() == '') { return tips_error($('#net_hotline')); }
+				if($('#net_tid').val() == '') { return tips_error($('#net_tid')); }
+				if($('#net_region').val() == '') { return tips_error($('#net_region')); }
+
+				$(this).ajaxSubmit({
+					success: function(data){
+						/*_Dat(data);
+						return;*/
+						if(data === 'OK'){
+							_POP({ title: '{$lang.edit_resnet}', content: '{$lang.edit}{$lang.success}', icon: 'success' });
+							window.location.href="{$__CURL__}index";
+						}else{
+							_POP({ title: '{$lang.edit_resnet}', content: '{$lang.edit}{$lang.fail}', icon: 'error' });
+						}
+					}
+				}); 
+				return false;
+			});
+			
+		});//end ready.
+	function _PUP(url){
+		window.open(url);
+	}
+	</script>
+
+{include file="../footer.html"}

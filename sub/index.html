@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+		<title>hhhhhhhh</title>
+		<meta http-equiv="Content-Type" content="ContentType:text/text/html; charset=UTF-8" />
+		<script type="text/javascript" src="http://systacm.com/statics/js/jquery-1.7.2.min.js" encoding="UTF-8"></script>
+	</head>
+
+<body>
+	<h2>Sun Directory S</h2>
+	<table>
+		<tr><th><input type="checkbox" id="check-box" onclick="selectall('userid[]');"></th></tr>
+		<tr><td><input type="checkbox" value='1' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='2' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='3' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='4' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='5' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='6' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='7' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='8' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='9' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='10' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='11' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='12' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='13' name="userid[]"></td></tr>
+		<tr><td><input type="checkbox" value='14' name="userid[]"></td></tr>
+	</table>
+	<script type="text/javascript">
+
+	function selectall(name){
+		if($('#check-box').attr('checked') == 'checked'){
+			$('input[name="'+name+'"]').each(function(){
+				$(this).attr('checked', 'checked');
+			});
+		}else{
+			$('input[name="'+name+'"]').each(function(){
+				$(this).removeAttr('checked');
+			});
+		}
+	}
+
+	</script>
+</body>
+</html>

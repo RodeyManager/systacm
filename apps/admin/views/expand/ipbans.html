@@ -1,0 +1,152 @@
+{include file="../header_content.html"}
+	<link rel="stylesheet" href="{$__SYSJS__}/jscal2/jscal2.css" />
+	<link rel="stylesheet" href="{$__SYSJS__}/jscal2/win2k.css" />
+	<script type="text/javascript" src="{$__SYSJS__}/jscal2/jscal2.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/jscal2/cn.js"></script>
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="javascript:_ADDIPBAN('{$__CURL__}add_ipban');void(0);" class="m-header-btns">{$lang['ipbans_add']}</a>
+				<span class="m-title">{$lang['ipbans_list']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<table class="table table-condensed m-table">
+					<tr class="m-table-theader">
+						<th><input type="checkbox" id="check_box" onclick="_S('check[]');" /></th>
+						<th>{$lang['ipbans_id']}</th>
+						<th>{$lang['ipbans_addr']}</th>
+						<th>{$lang['ipbans_reason']}</th>
+						<th>{$lang['ipbans_eunlock_time']}</th>
+						<th>{$lang['add_time']}</th>
+						<th>{$lang['handle']}</th>
+					</tr>
+					{if is_array($ipbans)}
+					{foreach item=ipban from=$ipbans}
+						<tr>
+							<td><input type="checkbox" value="{$ipban.id}" name="check[]" /></td>
+							<td>{$ipban.id}</td>
+							<td>{$ipban.ip_addr}</td>
+							<td>{$ipban.reason}</td>
+							<td>
+								{$ipban.eunlock_time|date_format:"%Y-%m-%d %H:%M:%S"}
+								{if $ipban.eunlock_time > $smarty.now}
+								<i data-id="{$ipban.id}" data-value="{$ipban.eunlock_time}" class="m-mini-btn m-mini-time" title="{$lang['ipbans_eunlock_time_out']}" disabled="true" />
+								{else}
+								<i class="m-mini-btn m-mini-untime" id="untime-i" title="{$lang['ipbans_eunlock_time_over']}" disabled="true" />
+								{/if}
+							</td>
+							<td>{$ipban.add_time|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+							<td>
+								<a href="javascript:_D('{$ipban.id}', '{$__CURL__}del_ipban');void(0);"  class="m-mini-btn m-mini-del" data-id="{$ipban.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+							</td>
+						</tr>
+					{/foreach}
+					{else}
+						<tr>
+							<td colspan="10">{$ipbans}</td>
+						</tr>	
+					{/if}
+				</table>
+			</div>
+			<div class="m-footer">
+					<div class="m-footer-left">
+						<label class="m_select_all m-f-btn" data-selected="{$lang['select_all']}" data-unselected="{$lang['unselect_all']}" for="check_box">{$lang['select_all']}</label>
+						<a href="javascript:_DS('{$__CURL__}del_ipban');void(0);" class="m_delete m-f-btn">{$lang['delete']}</a>
+					</div>
+					<div class="m-footer-right m-footer-pagetion">{$page_link}</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<!-- 添加表单 Start -->
+	<form action="" id="add_ipban" method="POST" accept-charset="utf-8" style="display:none;">
+		<table>
+			<tr>
+				<td class="alignr">{$lang['ipbans_addr']}：</td>
+				<td>
+					<textarea name="ipaddrs" id="ipaddrs"  placeholder="{$lang['ipbans_ipaddrs_formate']}" class="span4 asms-input" style="height:150px;"></textarea>
+					<em class="explain">{$lang['ipbans_ipaddrs_tips']}</em>
+				</td>
+			</tr>
+			<tr>
+				<td class="alignr">{$lang['ipbans_reason']}：</td>
+				<td>
+					<input type="text" name="reason" id="reason" value="" class="span4 asms-input" />
+					<em class="explain">{$lang['ipbans_reason_tips']}</em>
+				</td>
+			</tr>
+			<tr>
+				<td class="alignr">{$lang['ipbans_eunlock_time']}：</td>
+				<td>
+					<div class="time-div">
+					    <input class="span3" name="eunlock_time" value="" id="eunlock_time" type="text" class="select-tile span4 asms-input" />
+					    <label id="start_time_l" class="m-mini-btn m-mini-time"></label>
+						<em class="explain">{$lang['ipbans_eunlock_time_tips']}</em>
+					</div>
+					{literal}
+					<script type="text/javascript">
+						Calendar.setup({ 
+							trigger: 'start_time_l',
+							inputField : "eunlock_time",
+							dateFormat: "%Y-%m-%d %H:%M:%S",
+							showTime: true,
+							weekNumbers: true 
+						});
+					</script>
+					{/literal}
+				</td>
+			</tr>
+		</table>
+	</form>
+	<!-- 添加表单 End -->
+	<script type="text/javascript">
+		var content;
+		$(document).ready(function(){
+			content = $('#add_ipban').html();
+			$('#add_ipban').empty();
+
+			//改变解禁时间
+			$('.m-mini-untime').click(function(){
+				//alert($('#untime').val());
+			});
+		});//end
+		function _ADDIPBAN(url){
+			$('#ipaddrs').live('focusin focusout', function(){ tips('#ipaddrs'); });
+			var add_sms = art.dialog({
+				id: 'ADDIPBAN',
+				title: '{$lang.ipbans_add}',
+				content: content,
+				okVal: '{$lang.add}',
+				cancelVal: '{$lang.cancel}',
+				ok: function(){
+					var ipaddrs = $('#ipaddrs').val();
+					var eunlock_time = $('#eunlock_time').val();
+					var reason = $('#reason').val();
+					if(ipaddrs == '') 	{ window.top.art.dialog({ id:'IPBANS01', content:'{$lang.ipbans_t_ipaddrs}', icon: 'error', time:5 }); return false; };
+					if(eunlock_time == ''){ eunlock_time = 0; }
+					$.post(url, { ipaddrs:ipaddrs, reason:reason, eunlock_time:eunlock_time }, function(data){
+						/*_Dat(data);return;*/
+						if('OK' === data){
+							_POP({ title:'{$lang.ipbans_add}', content:'{$lang.ipbans_add}{$lang.success}!', icon:'success' });
+							window.location.reload();
+						}else if('UIPS' === data){
+							_POP({ title:'{$lang.ipbans_add}', content:'{$lang.ipbans_t_ipaddrs}', icon:'warning' });
+						}else if('IPIN' === data){
+							_POP({ title:'{$lang.ipbans_add}', content:'{$lang.ipbans_ipin}', icon:'face-smile' });
+						}else{
+							_POP({ title:'{$lang.ipbans_add}', content:'{$lang.ipbans_add}{$lang.fail}!', icon:'error' });
+						}
+					});
+					
+				},
+				cancel: function(){ this.close(); }
+			});
+		}
+		
+	</script>
+{include file="../footer.html"}

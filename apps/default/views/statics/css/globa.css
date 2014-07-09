@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+/*
+ * Author: Rodey
+ * Date: 2013-5-17
+ */
+
+*{ padding:0px;margin:0px; font-size:12px;font-family: Microsoft YaHei;}
+html, body{padding:0px;margin:0px; font-size:12px;font-family: Microsoft YaHei;}
+/*html5*/
+article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block}
+/* list tags */
+a{
+ 	text-decoration: none;
+ 	color:#555;
+ 	transition: all 0.25s ease-in-out;
+ 	-moz-transition: all 0.25s ease-in-out;
+ 	-webkit-transition: all 0.25s ease-in-out;
+ 	text-transform: 
+ }
+a:hover{
+	text-decoration: none;color:#2599B2;
+	transition: all 0.25s ease-in-out;
+ 	-moz-transition: all 0.25s ease-in-out;
+ 	-webkit-transition: all 0.25s ease-in-out;
+}
+/* layout classes */
+.clear{clear:both;}
+.line{ height:1px;width: 100%; }
+.alignr{ text-align: right;}
+.alignl{ text-align: left;}
+.mb-10{margin-bottom: 10px;}
+.mb-20{margin-bottom: 20px;}
+.mb-30{margin-bottom: 30px;}
+.mb-50{margin-bottom: 50px;}
+.mb-100{margin-bottom: 100px;}
+.mb-200{margin-bottom: 200px;}
+.mh-10{display:block;height:10px;}
+.mh-20{display:block;height:20px;}
+.mh-50{display:block;height:50px;}
+.mh-100{display:block;height:100px;}
+.mh-200{display:block;height:200px;}
+
+/* page style */
+.pages-main{width: 100%;padding: 0px 0px;background: #E5E5E5;}
+.pages-banner{width: 100%;height:200px;min-height:100px;max-height: 200px;text-align:center;background: #00D1C7;}
+.pages-banner-img{display: block;width: 980px;height: 200px;margin:0 auto; border: none;outline: none;}
+.pages-con{width: 980px;margin: 0 auto;}
+.pages-left{width: 200px;padding: 20px 0px; background: none; float:left;min-height: 500px;}
+.pages-right{width: 760px;padding: 20px 0px; background: none; float: right;min-height: 500px;}
+

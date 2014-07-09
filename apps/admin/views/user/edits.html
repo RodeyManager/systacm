@@ -1,0 +1,28 @@
+{include file="../header_content.html"}
+	
+	<!-- 批量编辑用户 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['user_list']}</a>
+				<span class="m-title">{$title}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="user_form" action="{$__CURL__}create" method="POST">
+					<table class="table m-table">
+						<tr><th>批量编辑用户</th></tr>
+					</table>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="提交" id="uadd" class="m-input-btns" />
+						<input type="reset" name="reset" value="取消" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">返回</a>
+					</div>
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<script type="text/javascript"></script>
+
+{include file="../footer.html"}

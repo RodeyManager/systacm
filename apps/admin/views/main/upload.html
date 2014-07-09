@@ -1,0 +1,35 @@
+{include file="../header_content.html"}
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			if(art.dialog.data('id')){
+				document.write(art.dialog.data('id'));
+			}
+			$('.attac-list li').find('img').click(function(){
+				/*alert($(this).attr('src'));
+				return;*/
+				window.opener.banner.value = $(this).attr('src');
+				window.close();
+			});
+		});
+	</script>
+	<style type="text/css">
+		.attac-list{ list-style-type:none; }
+		.attac-list li{ list-style-type:none; float:left;display:block;text-align:center;margin:10px;line-height:50px; }
+		.attac-list li img{ display:block;width:200px;height:50px;border:none;cursor:pointer;text-align:center;line-height:50px;}
+	</style>
+	<div class="mcontainer">
+		<div class="m-center">
+			<ul class="attac-list" style="">
+				{if is_array($attacs)}
+				{foreach item=attac from=$attacs}
+				<li><img src="{$__BASE__}/{$attac.file_path}" border="0"/></li>
+				{/foreach}
+				{else}
+				<li></li>
+				{/if}
+			</ul>
+		</div>
+	</div>	
+
+{include file="../footer.html"}

@@ -1,0 +1,231 @@
+{include file="../header_content.html"}
+	
+	<!-- Tag列表 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['sms_list']}</a>
+				<a href="javascript:_SEND('{$__CURL__}add_sms');void(0);" class="m-header-btns">{$lang['add_sms']}</a>
+				<a href="{$__CURL__}add" class="m-header-btns">{$lang['add_smses']}</a>
+				<a href="{$__CURL__}index_group" class="m-header-btns">{$lang['smses_list']}</a>
+				<span class="m-title">{$lang['sms_list']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<table>
+					<tr>
+						<td style="padding-right:60px;">
+							<label><input type="radio" name="send_type" id="send_smses" checked />{$lang.send_smses}</label>
+						</td>
+						<td>
+							<label><input type="radio" name="send_type" id="send_group" />{$lang.send_group}</label>
+						</td>
+					</tr>
+				</table>
+				<div class="send_smses" style="margin:20px 0px;">
+					<form id="send_sms_form" action="{$__CURL__}add_smses" method="POST">
+						<input type="hidden" name="send_sms_type" id="send_sms_type" value="1" />
+						<table>
+							<tr><td colspan="2"></td></tr>
+							<tr>
+								<td class="alignr">{$lang.sms_type}：</td>
+								<td>
+									<select name="type_id" id="type_id">
+										<option value="0">{$lang.sms_s_type}...</option>
+										{foreach item=type from=$types}
+										<option value="{$type.id}">{$type.name}</option>
+										{/foreach}
+									</select>
+									<a href="javascript:void(0);" class="add_sms_type" title="{$lang.add_sms_type}">{$lang.add_sms_type}</a>
+									<em class="explain">{$lang.sms_s_type}</em>
+								</td>
+							</tr>
+							<tr id="send_group_tr" style="display:none;">
+								<td class="alignr">{$lang.select_group}：</td>
+								<td>
+									{if $groups}
+										<select name="group_id" id="group_id">
+											<option value="">{$lang.select_group}</option>
+											{foreach item=group from=$groups}
+											<option value="{$group.id}">{$group.name}</option>}
+											{/foreach}
+										</select>
+									{else}
+										{$lang.group_is_null}&nbsp;&nbsp;&nbsp;<a href="{$__BASE__}/admin/group/add">{$lang.add_group}</a>
+									{/if}
+									<em class="explain">{$lang.select_bi_group}</em>
+								</td>
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.sms_title}：</td>
+								<td><input type="text" name="title" id="send_title" value="" placeholder="{$lang.put_sms_title}" class="span4" />
+									<em class="explain">{$lang.sms_is_nut_title}</em></td>
+							</tr>
+							<tr>	
+								<td class="alignr">{$lang.sms_content}：</td>
+								<td>
+									<textarea name="content" id="send_content"  placeholder="{$lang.put_sms_content}" class="span4" style="height:150px;"></textarea>
+									<em class="explain">{$lang.sms_is_nut_content}</em>
+								</td>
+							</tr>
+							<tr id="send_smses_tr">	
+								<td class="alignr">{$lang.sms_to_user}：</td>
+								<td>
+									<textarea name="to_ids" id="to_ids"  placeholder="{$lang.to_id_format}" class="span4" style="height:150px;"></textarea>
+									<em class="explain">{$lang.add_sms_tips}</em>
+								</td>
+							</tr>
+						</table>
+						<table style="margin-top:20px;">
+							<tr>
+								<td style="padding:0px 100px 0px 50px;">
+									<a href="javascript:void(0);" class="send_sms m-f-btn">{$lang['send_sms']}</a>
+								</td>
+								<td><a href="javascript:window.history.back();void(0);" class="m_edit m-f-btn">{$lang['cancel']}</a></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+
+				<form action="" id="add_sms" method="POST" accept-charset="utf-8" style="display:none;">
+					<table>
+						<tr>
+							<td class="alignr">{$lang.sms_title}：</td>
+							<td><input type="text" name="title" id="title" value="" placeholder="{$lang.put_sms_title}" class="span4 asms-input" />
+								<em class="explain">{$lang.sms_is_nut_title}</em></td>
+						</tr>
+						<tr>	
+							<td class="alignr">{$lang.sms_to_user}：</td>
+							<td>
+								<div class="time-div">
+									<input type="text" name="to_id" id="to_id" value="" placeholder="{$lang.put_select_user}" class="span4 asms-input" />
+									<i data-value="" class="m-mini-btn m-mini-user" style="left:275px;"></i>
+									<em class="explain">{$lang.sms_is_nut_content}</em>
+								</div>
+							</td>
+						</tr>
+						<tr>	
+							<td class="alignr">{$lang.sms_content}：</td>
+							<td><textarea name="content" id="content"  placeholder="{$lang.put_sms_content}" class="span4 asms-input" style="height:150px;"></textarea>
+								<em class="explain">{$lang.sms_is_nut_to_id}</em></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<script type="text/javascript">
+		var content;
+		$(document).ready(function(){
+			$('#send_smses').click(function(){
+				$('#send_group_tr').hide();
+				$('#send_smses_tr').show();
+				$('#send_sms_type').val(1);
+			});
+			$('#send_group').click(function(){
+				$('#send_group_tr').show();
+				$('#send_smses_tr').hide();
+				$('#send_sms_type').val(2);
+				$('#group_id').live('focusin focusout', function(){ tips('#group_id'); });
+			});
+
+			$('#type_id').live('focusin focusout', function(){ tips('#type_id'); });
+			$('#send_title').live('focusin focusout', function(){ tips('#send_title'); });
+			$('#send_content').live('focusin focusout', function(){ tips('#send_content'); });
+			$('#to_ids').live('focusin focusout', function(){ tips('#to_ids'); });
+
+			$('.send_sms').click(function(){
+				var type = $('#send_sms_type').val();
+				var group_id = $('#group_id').val();
+				var to_id 	= $('#to_ids').val();
+				var title = $('#send_title').val();
+				var content = $('#send_content').val();
+				var type_id = $('#type_id').val();
+				$.ajax({
+					url: '{$__CURL__}add_smses',
+					type: 'POST',
+					dataType: 'text',
+					data: { type:type, type_id:type_id, title:title, to_id:to_id, group_id:group_id, content:content },
+					success: function(data){
+						if('SEND_SMSES' == data){
+							_POP({ title:'{$lang.add_smses}', content:'{$lang.add_smses}{$lang.success}！', icon:'success' });
+							window.location.href='{$__CURL__}index';
+						}else if('SEND_GROUP' === data){
+							_POP({ title:'{$lang.add_smses}', content:'{$lang.add_smses}{$lang.success}！', icon:'success' });
+							window.location.href='{$__CURL__}index_group';
+						}else{
+							_POP({ title:'{$lang.add_smses}', content:'{$lang.add_smses}{$lang.fail}！', icon:'error' });
+						}
+					},
+					error: function(){
+						_POP({ title:'{$lang.add_smses}', content:'{$lang.add_smses}{$lang.fail}！', icon:'error', time:10 });
+					}
+				});
+			});
+
+			//发送
+			content = $('#add_sms').html();
+			$('#add_sms').empty();
+
+			//添加类型
+			$('.add_sms_type').live('click', function(){
+				window.top.art.dialog.prompt('{$lang.put_sms_type}', function(data){
+				    // data 代表输入数据;
+				    $.post('{$__CURL__}add_sms_type', { type_name:data }, function(rdata){
+				    	if(rdata != 'NO'){
+					    	var data = rdata.split('-+-');
+					    	if(data[0] === 'OK'){
+					    		var option = '<option value="'+ data[1] +'">'+ data[2] +'</option>';
+					    		$('#type_id').append($(option));
+					    		_POP({ title:'{$lang.add_sms_type}', content:'{$lang.add_sms_type}{$lang.success}!', icon:'success' });
+					    	}else{
+					    		_POP({ title:'{$lang.add_sms_type}', content:'{$lang.add_sms_type}{$lang.fail}!', icon:'error' });
+					    	}
+				    	}
+				    });
+				});
+			});
+
+		});//end
+		function _SEND(url){
+			$('.asms-input').live('focusin focusout', function(){
+				if($(this).val() == '')
+					$(this).next('.explain').css('color', 'red');
+				else
+					$(this).next('.explain').css('color', '#A5A5A5');
+			});
+			var add_sms = art.dialog({
+				id: 'ADDSMS',
+				title: '{$lang.add_sms}',
+				content: content,
+				okVal: '{$lang.send_sms}',
+				cancelVal: '{$lang.cancel}',
+				ok: function(){
+					var title = $('#title').val();
+					var content = $('#content').val();
+					var to_id = $('#to_id').val();
+					if(title == '') 	{ window.top.art.dialog({ id:'SMS01',content:'{$lang.sms_is_nut_title}',icon: 'error',time:5 }); return false; };
+					if(to_id == '') 	{ window.top.art.dialog({ id:'SMS01',content:'{$lang.sms_is_nut_to_id}',icon: 'error',time:5 }); return false; };
+					if(content == '') 	{ window.top.art.dialog({ id:'SMS01',content:'{$lang.sms_is_nut_content}',icon: 'error',time:5 }); return false; };
+					$.post(url, { title:title, to_id:to_id, content:content }, function(data){
+						/*_Dat(data);
+						return;*/
+						if('OK' === data){
+							_POP({ title:'{$lang.add_sms}', content:'{$lang.add_sms}{$lang.success}!', icon:'success' });
+							window.location.reload();
+						}else{
+							_POP({ title:'{$lang.add_sms}', content:'{$lang.add_sms}{$lang.fail}!', icon:'error' });
+						}
+					});
+					
+				},
+				cancel: function(){ this.close(); }
+			});
+		}
+	</script>
+{include file="../footer.html"}

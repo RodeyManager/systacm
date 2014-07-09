@@ -1,0 +1,55 @@
+{include file="../header_content.html"}
+
+	<link rel="stylesheet" href="{$__SYSJS__}/Tags/jquery.tagsinput.css" />	
+	<script type="text/javascript" src="{$__SYSJS__}/Tags/jquery.tagsinput.min.js"></script>
+	<!-- Tag列表 -->
+	<div class="mcontainer">
+		
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['kw_list']}</a>
+				<span class="m-title">{$lang['kw_add']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form action="" onsubmit="return false;" method="POST">
+					<input type="hidden" name="id" value="" />
+					<table class="table table-condensed m-table">
+						<tr>
+							<td width="10%" style="border:none">{$lang['kw_name']}：</td>
+							<td style="border:none">
+								<input type="text" name="keyword_name" id="keyword_name" class="keyword_name"/>
+							</td>
+						</tr>
+					</table>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#keyword_name').tagsInput({ width:'auto', height: '200' });
+			$('#submit').click(function(){
+				var kws = $('#keyword_name').val();
+				$.post(base+'/admin/keyword/insert', 
+					{ kws: kws },
+					 function(data){
+					 	if(data === 'OK') {
+							_POP({ title:'{$lang.tag_add}',content:'{$lang.add_success}！',icon:'success' });
+							window.location.href = base+'/admin/keyword/index';
+						}else{
+							_POP({ title:'{$lang.add_tag}',content:'{$lang.add_fail}！',icon:'error' });
+						}
+				});
+			});
+		});//end
+	</script>
+{include file="../footer.html"}

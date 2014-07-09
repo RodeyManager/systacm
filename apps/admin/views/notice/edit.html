@@ -1,0 +1,152 @@
+{include file="../header_content.html"}
+	
+	<link rel="stylesheet" href="{$__SYSJS__}/formValidator/roadey.css" />
+	<link rel="stylesheet" href="{$__SYSJS__}/jscal2/jscal2.css" />
+	<link rel="stylesheet" href="{$__SYSJS__}/jscal2/win2k.css" />
+	<script type="text/javascript" src="{$__SYSJS__}/jscal2/jscal2.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/jscal2/cn.js"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidator.min.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_config.js"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_all.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.formValidator.initConfig({ autotip:true, formid:"user_form", submitOnce:true, onerror:function(msg){ art.dialog.alert(msg);} });
+		
+	});
+	</script>
+	<!-- 添加用户 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['notice_list']}</a>
+				<span class="m-title">{$lang['add_notice']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="notice-form" action="{$__CURL__}mod" method="POST">
+					<input type="hidden" id="notice_id" name="id" value="{$notice.id}"/>
+					<div class="m-tab-list">
+						<table class="table m-table m-tab-cons" id="m-tab-con1">
+							<tr>
+								<td width="10%">{$lang.notice_title}：</td>
+								<td><input type="text" name="title" id="title" value="{$notice.title}"  class="span4"/></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.notice_content}：</td>
+								<td>
+									<textarea name="content" id="content">{$notice.content}</textarea>
+									<script type="text/javascript">
+										var editor = new UE.ui.Editor();
+    									editor.render("content");
+    									editor.setHeight(100);
+									</script>
+								</td>
+							</tr>
+							<tr>
+								<td>{$lang.start_time}：</td>
+								<td>
+									<div class="time-div">
+									     <input class="span3" name="start_time" value="{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}" id="start_time" type="text" class="select-tile" />
+									     <label id="start_time_l" class="m-mini-btn m-mini-time"></label>
+									</div>
+									{literal}
+									<script type="text/javascript">
+										Calendar.setup({ trigger: 'start_time_l',inputField : "start_time",dateFormat: "%Y-%m-%d %H:%M:%S",showTime: true,weekNumbers: true });
+									</script>
+									{/literal}
+								</td>
+							</tr>
+							<tr>
+								<td>{$lang.end_time}：</td>
+								<td>
+									<div class="time-div">
+									     <input class="span3" name="end_time" value="{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}" id="end_time" type="text" class="select-tile" />
+									     <label id="end_time_l" class="m-mini-btn m-mini-time"></label>
+									</div>{literal}
+									<script type="text/javascript">
+										Calendar.setup({ trigger: 'end_time_l',inputField : "end_time",dateFormat: "%Y-%m-%d %H:%M:%S",weekNumbers: true });
+									</script>{/literal}
+								</td>
+							</tr>
+							<tr>
+								<td width="10%"> {$lang.is_disabled}：</td>
+								<td>
+									<div class="m-lock-div">
+										<input type="hidden" name="disabled" id="disabled" value="{$notice.disabled}" />
+										{if $notice.disabled eq 1}
+										<span class="m-lock-btns"><i class="on_off_btn" style="left:50px;"></i></span>
+										<span class="m-disabled-tips">{$lang['disabled_false']}</span>
+										{else}
+										<span class="m-lock-btns"><i class="on_off_btn" style="left:0px;"></i></span>
+										<span class="m-disabled-tips">{$lang['disabled_true']}</span>
+										{/if}
+									</div>
+								</td>
+							</tr>
+							</tr>
+								<td width="10%">{$lang.show_template}：</td>
+								<td>
+									<select name="type_id" class="span4" >
+										<option value="0">{$lang.please_select}</option>}
+										{if $types}
+										{foreach from=$types item=type key=k}
+										<option value="{$k}">--> {$type}</option>
+										{/foreach}
+										{/if}
+									</select>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//可用性
+			$('.on_off_btn').click(function(){
+				var disabled = $('#disabled').val();
+				if(disabled == 1){
+					$('.on_off_btn').animate({ left: '0px' });
+					$('#disabled').val(0);
+					$('.m-disabled-tips').text('{$lang['disabled_true']}');
+				}else if(disabled == 0){
+					$('.on_off_btn').animate({ left: '50px' });
+					$('#disabled').val(1);
+					$('.m-disabled-tips').text('{$lang['disabled_false']}');
+				}
+			});
+
+			$('#notice-form').submit(function(){
+				editor.sync();
+				$(this).ajaxSubmit({
+					success: function(data){
+						if(data === 'OK'){
+							_POP({ title: '{$lang.edit_notice}', content: '{$lang.edit}{$lang.success}', icon: 'success' });
+							window.location.href="{$__CURL__}index";
+						}else if(data === 'LS'){
+							_POP({ title: '{$lang.edit_notice}', content: '{$lang.notice_time_tip}', icon: 'question' });
+							return false;
+						}else{
+							_POP({ title: '{$lang.edit_notice}', content: '{$lang.edit}{$lang.fail}', icon: 'error' });
+						}
+					}
+				}); 
+				return false;
+			});
+			
+		});//end ready.
+	</script>
+
+{include file="../footer.html"}

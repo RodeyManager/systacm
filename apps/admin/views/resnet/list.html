@@ -1,0 +1,126 @@
+{include file="../header_content.html"}
+	
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}add" class="m-header-btns">{$lang['add_resnet']}</a>
+				<a href="javascript:_MOD('{$__CURL__}edit/id/');void(0);" class="m-header-btns">{$lang['edit_resnet']}</a>
+				<a href="javascript:_NETTYPE_MEMBER();void(0);" class="m-header-btns">{$lang.member_net_type}</a>
+				<span class="m-title">{$lang['resnet_list']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<input type="hidden" name="id" value="" />
+				<table class="table table-condensed m-table">
+					<tr class="m-table-theader">
+						<th><input type="checkbox" id="check_box" onclick="_S('check[]');" /></th>
+						<th>{$lang['net_id']}</th>
+						<th>{$lang['net_name']}</th>
+						<th>{$lang['net_tid']}</th>
+						<th>{$lang['net_address']}</th>
+						<th>{$lang['net_map']}</th>
+						<th>{$lang['net_hotline']}</th>
+						<th>{$lang['net_status']}</th>
+						<th>{$lang['add_time']}</th>
+						<th>{$lang['handle']}</th>
+					</tr>
+					{if is_array($resnets)}
+					{foreach item=resnet from=$resnets}
+						<tr>
+							<td><input type="checkbox" value="{$resnet.id}" name="check[]" /></td>
+							<td>{$resnet.id}</td>
+							<td>{$resnet.net_name}</td>
+							<td>{$resnet.net_type}</td>
+							<td>{$resnet.net_address}</td>
+							<td><i data-id="{$resnet.id}" onclick="_VIEW_MAP('{$__CURL__}view/id/{$resnet.id}');" class="m-mini-btn m-mini-map" title="{$lang['view_map']}"></i></td>
+							<td>{$resnet.net_hotline}</td>
+							<td>
+								{if $resnet.disabled eq 1}
+								<i class="m-mini-btn m-mini-show m-mini-isshow" data-id="{$resnet.id}" data-value="{$resnet.disabled}" title="{$lang.disabled_false}"></i>
+								{else}
+								<i class="m-mini-btn m-mini-show m-mini-usshow" data-id="{$resnet.id}" data-value="{$resnet.disabled}"  title="{$lang.disabled_true}"></i>
+								{/if}
+							</td>
+							<td>
+								{$resnet.add_time|date_format:"%Y-%m-%m %H:%M:%S"}
+							</td>
+							<td>
+								<a href="{$__CURL__}edit/id/{$resnet.id}" class="m-mini-btn m-mini-edit" title="{$lang['edit']}" data-id="{$resnet.id}" data-value="{$resnet.title}">{$lang['edit']}</a>
+								<a href="javascript:_D('{$resnet.id}', '{$__CURL__}del');void(0);"  class="m-mini-btn m-mini-del" data-id="{$resnet.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+							</td>
+						</tr>
+					{/foreach}
+					{else}
+						<tr>
+							<td colspan="7">{$resnets}</td>
+						</tr>	
+					{/if}
+				</table>
+			</div>
+			<div class="m-footer">
+				<form action="#" method="POST" accept-charset="utf-8">
+					<div class="m-footer-left">
+						<label class="m_select_all m-f-btn" data-selected="{$lang['select_all']}" data-unselected="{$lang['unselect_all']}" for="check_box">{$lang['select_all']}</label>
+						<a href="javascript:_SORT('{$__CURL__}sort/id/');void(0);" class="m_edit m-f-btn">{$lang['sort']}</a>
+						<a href="{$__CURL__}add" class="m_add m-f-btn">{$lang['add']}</a>
+						<a href="javascript:_MOD('{$__CURL__}edit/id/');void(0);" class="m_edit m-f-btn">{$lang['edit']}</a>
+						<a href="javascript:_DS('{$__CURL__}del');void(0);" class="m_delete m-f-btn">{$lang['delete']}</a>
+					</div>
+					<div class="m-footer-right m-footer-pagetion">{$page_link}</div>
+				</form>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//显示与隐藏
+			$('.m-mini-show').click(function(){
+				var id = $(this).data('id');
+				var value = $(this).data('value');
+				var url = '{$__CURL__}is_show';
+				var than = $(this);
+				$.post(url, { id: id, disabled: value }, function(data){
+					if(data === 'OK') {
+						_POP({ title:'{$lang.is_disabled}',content:'{$lang.edit}{$lang.success}！', icon:'success' });
+						if(value == 1){
+							than.removeClass('m-mini-isshow').addClass('m-mini-usshow');
+							than.data('value', 0);
+							than.attr('title', '{$lang.disabled_true}');
+						}else{
+							than.removeClass('m-mini-usshow').addClass('m-mini-isshow');
+							than.data('value', 1);
+							than.attr('title', '{$lang.disabled_false}');
+						}
+					}else {
+						_POP({ title:'{$lang.is_disabled}',content:'{$lang.edit}{$lang.fail}！',icon:'error' });
+						return false;
+					}
+				});
+			});
+		});//end
+		function _VIEW_MAP(url){
+			window.top.art.dialog.open(url, {
+				title: '{$lang.net_info}',
+				width: '90%',
+				height: '90%',
+				cancelVal: '{$lang.close}',
+				cancel: function(){ this.close(); }
+			});
+		}
+		//member_net_type
+		function _NETTYPE_MEMBER(){
+			window.top.art.dialog.open('{$__CURL__}net_type_list', {
+				title: '{$lang.member_net_type}',
+				width: '50%',
+				height: 600,
+				cancelVal: '{$lang.close}',
+				cancel: function(){ this.close(); }
+			});
+		}
+	</script>
+{include file="../footer.html"}

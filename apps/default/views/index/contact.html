@@ -1,0 +1,57 @@
+{include file="../header.html"}
+<script>
+	$(document).ready(function(){
+		$('.nav>ul>li').eq(5).find('a').css('color','#01D0C6');
+	});
+</script>
+
+<div class="pages-main">
+	<div class="pages-banner">
+		<img class="pages-banner-img" src="{$__AIMAGES__}/pages-banner/pages-banner-contact.jpg" width="980" height="200" border="0" alt="联系我们-联系盛艺" />
+	</div>
+	<div class="pages-con">
+		<div class="pages-left">
+			<img src="{$__AIMAGES__}/pages-left-contact.jpg" width="200" height="200" border="0" alt="联系我们-联系盛艺设计" />
+		</div>
+		<div class="pages-right pages-contact">
+			<p class="pages-c-pt">
+				感谢您浏览了我们的网站，如果需要更多帮助，<br />
+				欢迎向我们提交需求信息，我们也欢迎您与我们面谈。
+			</p>
+			<h4 class="p-c-h4">联系我们 -> 我们期盼与您有更详细的沟通！</h4>
+			<ul class="pages-contact-ul">
+				<li><i class="p-i-mobile"></i><a href="javascript:void(0);">13723722479</a></li>
+				<li><i class="p-i-qq"></i><a href="http://wpa.qq.com/msgrd?v=3&uin=453474593&site=qq&menu=yes" target="_blank">453474593</a></li>
+				<li><i class="p-i-email"></i><a href="mailto:rodey@systacm.com?subject=写给盛艺" target="_blank" class="p-a-email">rodey@systacm.com</a></li>
+				<li><i class="p-i-addr"></i><a href="javascript:void(0);">广东省深圳市罗湖区泥岗村</a></li>
+				<li><i class="p-i-site"></i><a href="http://www.roadey.com" target="_blank" class="p-a-email">http://www.roadey.com</a></li>
+				<li></li>
+			</ul>
+			<div class="pages-contact-ad"><img src="{$__AIMAGES__}/p-i-addr.jpg" width="300" height="300" border="0" title="点击查看我们的地理位置" onclick="_Open_addr();" alt="联系我们地址" /></div>
+			<div class="clear"></div>
+			<div class="pages-comment-div" id="pages-comment-div">
+				<h4 class="p-c-h4 p-c-h4-1">期待合作 -> 提交您的需求给我们，我们会以最快速度回复您！</h4>
+				<form action="{$__CURL__}comment" onsubmit="return false;" method="POST" class="p-c-form">
+					<input type="hidden" name="token" value="{$__TOKEN__}"/>
+					<p class="subtip" id="subtip"></p>
+					<p>
+						<input type="text" name="uname" id="uname" class="p-c-input p-c-in" placeholder="您的姓名（Name）*" />
+						<input type="text" name="uemail" id="uemail" class="p-c-input p-c-in" placeholder="邮箱地址（Email）*" />
+					</p>
+					<p>
+						<input type="text" name="uphone" id="uphone" class="p-c-input p-c-in" placeholder="电话（Tel Phone）*" />
+						<input type="text" name="ucompany" id="ucompany" class="p-c-input p-c-in" placeholder="公司名称（Company）*" />
+					</p>
+					<p><textarea name="ucomment" id="ucomment" width="620" placeholder="您的需求描述？（Please fill in your demand description?）*" class="p-c-textarea p-c-in"></textarea></p>
+					<p class="p-c-f-pl">
+						<input type="submit" name="usubmit" id="usubmit" value="发送需求" class="p-c-submit" />
+						<span>也可以将您的需求信息直接发送至邮箱：<a href="mailto:rodey@systacm.com?subject=写给盛艺需求" class="p-c-email" target="_blank">rodey@systacm.com</a></span>
+					</p>
+				</form>
+				<div class="clear mb-100"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{include file="../footer.html"}

@@ -1,0 +1,48 @@
+
+	
+	<div id="alogo">
+		<a href="{$__BASE__}/admin/index/index">
+			<img src="{$__AIMAGES__}/logo-2-145x80.png" width="145" height="80" alt="Logo" />
+		</a>
+	</div>
+	<div id="atop-uminfo">
+		<span>{$lang['hello']} {$admin.name|capitalize}!</span>
+		<span>[{$role_name}]</span>
+		<a href="{$__CURL__}logout" id="logout">[{$lang['logout']}]</a>&nbsp;&nbsp;
+		<span onclick="window.location.reload();" style="cursor:pointer;">{$lang.admin_index}</span>
+		<strong>{$lang['now_time']}:&nbsp;&nbsp;</strong>
+		<span id="now-time">&nbsp;</span>
+		<a href="javascript:void(0);" data-tvalue="" id="set-clock">{$lang['clock']}</a>
+		<a class="fast-active" href="javascript:_A('{$__BASE__}/admin/main/up_cache');void(0);" >更新缓存</a>
+	</div>
+	<div id="atop-nav">
+		<ul class="atop-nav-list">
+			{foreach from=$top_menu key=k item=v name=i}
+				{if $v.url != ''}
+					{if $smarty.foreach.i.iteration == 1}
+					<li class="on-current"><a href="{$v.url}" target="_blank"><i class="{$v.class}"></i>{$k}</a></li>
+					{else}
+			   		<li><a href="{$v.url}" target="_blank"><i class="{$v.class}"></i>{$k}</a></li>
+			   		{/if}
+			   	{else}
+			   		{if $smarty.foreach.i.iteration == 1}
+					<li class="on-current"><a href="javascript:_C('{$v.mod}');"><i class="{$v.class}"></i>{$k}</a></li>
+					{else}
+			   		<li><a href="javascript:_C('{$v.mod}', '');"><i class="{$v.class}"></i>{$k}</a></li>
+			   		{/if}
+				{/if}
+				
+		    {/foreach}
+		    <!-- 
+			<li class="on-current"><a href="javascript:_C();"><i class="atop-nav-home"></i>我的面板</a></li>
+			<li><a href="javascript:_C();"><i class="atop-nav-set"></i>设置</a></li>
+			<li><a href="javascript:_C();"><i class="atop-nav-user"></i>用户</a></li>
+			<li><a href="javascript:_C();"><i class="atop-nav-content"></i>内容</a></li>
+			<li><a href="javascript:_C();"><i class="atop-nav-module"></i>模块</a></li>
+			<li><a href="javascript:_C();"><i class="atop-nav-interface"></i>界面</a></li>
+			<li><a href="javascript:_C();"><i class="atop-nav-app"></i>应用</a></li>
+			<li><a href="javascript:_C();"><i class="atop-nav-plugin"></i>插件</a></li>
+			<li><a href="javascript:_C();"><i class="atop-nav-site"></i>进入站点</a></li>
+			-->
+		</ul>
+	</div>

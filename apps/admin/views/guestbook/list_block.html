@@ -1,0 +1,193 @@
+{include file="../header_content.html"}
+	<link rel="stylesheet" href="{$__SYSJS__}/jscal2/jscal2.css" />
+	<link rel="stylesheet" href="{$__SYSJS__}/jscal2/win2k.css" />
+	<script type="text/javascript" src="{$__SYSJS__}/jscal2/jscal2.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/jscal2/cn.js"></script>
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}index" class="m-header-btns" title="列表">▤{$lang['list']}</a>
+				<a href="{$__CURL__}index_block" class="m-header-btns" title="列块">∷{$lang['list_block']}</a>
+				<a href="javascript:_DSS('{$__CURL__}dels');void(0);" class="m-header-btns">{$lang['guestbooks_del']}</a>
+				<span class="m-title">{$lang['guestbook_list']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center" style="position:relative;">
+				<input type="hidden" name="id" value="" />
+				<div class="m-gbs-con" id="m-gbs-con">
+					{if is_array($gbooks)}
+					{foreach item=gbook from=$gbooks}
+					<div class="m-gbs-items">
+						<div class="m-gbs-item">
+							<dl class="m-gbs-item-dl">
+								<dt>{$lang['guestbook_type']}：[ {$gbook.type} ]</dt>
+								<dd><b>{$lang['guestbook_uname']}：</b>{$gbook.uname}(ID:{$gbook.id})</dd>
+								<dd><b>{$lang['guestbook_uemail']}：</b>{$gbook.uemail}</dd>
+								<dd><b>{$lang['guestbook_uphone']}：</b>{$gbook.uphone}</dd>
+								<dd><b>{$lang['guestbook_ucompany']}：</b>{$gbook.ucompany}</dd>
+								<dd><b>{$lang['guestbook_title']}：</b>{$gbook.title}</dd>
+								<dd><b>{$lang['guestbook_content']}：</b>{$gbook.content|truncate:200:"...":true}</dd>
+								<dd><b>{$lang['guestbook_isshow']}：</b>
+									{if $gbook.disabled eq 1}
+									<i class="m-mini-btn m-mini-show m-mini-isshow" data-id="{$gbook.id}" data-value="{$gbook.disabled}" style="float:none;" title="{$lang.guestbook_show_yes}"></i>
+									{else}
+									<i class="m-mini-btn m-mini-show m-mini-usshow" data-id="{$gbook.id}" data-value="{$gbook.disabled}" style="float:none;"  title="{$lang.guestbook_show_no}"></i>
+									{/if}
+								</dd>
+								<dd><b>{$lang['guestbook_time']}：</b>{$gbook.add_time|date_format:"%Y-%m-%d %H:%M:%S"}</dd>
+								<dd>
+									<span><b>{$lang['guestbook_reply_state']}：</b>{$gbook.reply}({$gbook.reply_num})</span>
+									{if !empty($gbook['reply_list'])}
+										{foreach item=reply from=$gbook['reply_list']}
+										<hr style="height:1px;padding:0px;margin:2px; background:#222;"/>
+										<ul>
+											<li><b>{$lang['reply_uname']}：</b> {$reply.uname}</li>
+											<li><b>{$lang['reply_content']}：</b> {$reply.content}</li>
+											<li><b>{$lang['reply_time']}：</b> {$reply.add_time|date_format:"%Y-%m-%d %H:%M:%S"}</li>
+										</ul>
+										{/foreach}
+									{/if}
+								</dd>
+							</dl>
+							<a href="javascript:_VIEW_GB('{$__CURL__}show_gb/id/{$gbook.id}');void(0);" class="m-mini-btn m-mini-view m-gb-view" data-id="{$gbook.id}" title="{$lang['view']}" >{$lang['view']}</a>
+							<a href="javascript:_REPLY('{$__CURL__}reply', '{$gbook.id}');void(0);" class="m-mini-btn m-mini-edit m-gb-edit" title="{$lang['guestbook_reply']}" data-id="{$gbook.id}" data-value="{$gbook.title}">{$lang['guestbook_reply']}</a>
+							<a href="javascript:_D('{$gbook.id}', '{$__CURL__}del');void(0);"  class="m-mini-btn m-mini-del m-gb-del" data-id="{$gbook.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+						</div>
+					</div>
+					{/foreach}
+					{else}
+						<p>{$gbooks}</p>
+					{/if}
+				</div>
+				<div class="clear"></div>
+				<div class="scroll_loading_item">
+					<embed class="embed" src="{$__AIMAGES__}/scroll_loading.swf" type="application/x-shockwave-flash" width="200" height="100" wmode="transparent"></embed>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="m-footer">
+				<form action="#" method="POST" accept-charset="utf-8">
+					<div class="m-footer-left">
+						<label class="m_select_all m-f-btn" data-selected="{$lang['select_all']}" data-unselected="{$lang['unselect_all']}" for="check_box">{$lang['select_all']}</label>
+						<a href="javascript:_DS('{$__CURL__}del');void(0);" class="m_delete m-f-btn">{$lang['delete']}</a>
+						<a href="javascript:_DSS('{$__CURL__}dels');void(0);" class="m_delete m-f-btn">{$lang['guestbooks_del']}</a>
+					</div>
+					<div class="m-footer-right m-footer-pagetion">
+						<a href="javascript:void(0);" class="page_link link_info" disabled="true">共<strong>{$total}</strong>条记录 |  当前显示<strong class="curr-dis">{$__PAGE_SIZE__}</strong>条</a>
+					</div>
+				</form>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="m-go-top"><a href="javascript:void(0);" title="">TOP</a></div>
+	</div>
+	<script src="{$__AJS__}/masonry.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.scroll_loading_item').css('left', ($('.m-center').width() - $('.scroll_loading_item').width())/2 );
+			//显示与隐藏
+			$('.m-mini-show').click(function(){
+				var id = $(this).data('id');
+				var value = $(this).data('value');
+				var url = '{$__CURL__}is_show';
+				var than = $(this);
+				$.post(url, { id: id, disabled: value }, function(data){
+					if(data === 'OK') {
+						_POP({ title:'{$lang.is_disabled}',content:'{$lang.edit}{$lang.success}！', icon:'success' });
+						if(value == 1){
+							than.removeClass('m-mini-isshow').addClass('m-mini-usshow');
+							than.data('value', 0);
+							than.attr('title', '{$lang.disabled_true}');
+						}else{
+							than.removeClass('m-mini-usshow').addClass('m-mini-isshow');
+							than.data('value', 1);
+							than.attr('title', '{$lang.disabled_false}');
+						}
+					}else {
+						_POP({ title:'{$lang.is_disabled}',content:'{$lang.edit}{$lang.fail}！',icon:'error' });
+						return false;
+					}
+				});
+			});
+			var $m_gbs_con = $('#m-gbs-con'), flag = true, start = 1, end = 1;
+			//var masr = new masonry($m_gbs_con);
+			$m_gbs_con.masonry({ itemSelector: '.m-gbs-items' });
+			$(window).scroll(function(event) {
+				// 当滚动到最底部以上100像素时， 加载新内容
+            	if($(document).height() - $(this).scrollTop() - $(this).height() < 50){
+            		if(flag){
+            			start = start + 1;
+            			$('.scroll_loading_item').show();
+            			$.post('{$__CURL__}index_block_scroll', { start: start }, function(data){
+            				if(data == 'NO'){
+            					//alert('已经全部加载完了Y(^_^)Y');
+            					$('.scroll_loading_item').html('已经全部加载完了Y(^_^)Y').stop().fadeOut(2000);
+            					flag = false;
+            				}else{
+            					$('.scroll_loading_item').hide();
+            					var $newBox = $('<div class="newAdd" />').append($(data));
+            					var items = $newBox.find('.m-gbs-items');
+            					var items_len = items.length;
+            					for (var i = 0; i < items_len; i++) {
+            						//console.log(items[i]);
+            						$(items[i]).css('opacity', 0);
+            						$m_gbs_con.append($(items[i])).masonry('appended', $(items[i]));
+            						$(items[i]).animate({ 'opacity': 1 });
+            					};
+            					$('.curr-dis').html(Number($('.curr-dis').html()) + items_len);
+            				}
+            			});
+            		}else{
+            			$('.scroll_loading_item').html('已经全部加载完了Y(^_^)Y').stop().show().fadeOut(2000);
+            			flag = false;
+            			return;
+            		}
+            	}
+			});
+			$(window).scroll(function(){
+				if($('body').scrollTop() > 100){
+					$('.m-go-top').fadeIn('slow');
+				}else if($('body').scrollTop() <= 10){
+					$('.m-go-top').fadeOut('fast');
+				}
+			});
+			$(".m-go-top a").click(function(){ $('html,body').animate({ scrollTop:0 },300); });
+		});//end
+
+		//预览
+		function _VIEW_GB(url) {
+			window.top.art.dialog.open(url, {
+					title: '留言预览',
+					width: 700,
+					height: 500,
+					cancelVal: "{$lang.cancel}",
+					cancel: function(){
+						this.close();
+					}
+				});
+		}
+		//回复
+		function _REPLY(url, id){
+			window.top.art.dialog.prompt('请输入回复内容', function(data){
+				if(data != ''){
+					$.post(url, { id: id, content: data }, function(data){
+						if(data == 'OK'){
+							alert('回复成功');
+							window.location.href = '{$__URL__}';
+						}else if(data == 'NOID'){
+							alert('回复失败, 获取留言ID错误');
+						}else if(data == 'NOCON'){
+							alert('回复内容不能为空，请输入回复内容！');
+						}else{
+							alert('回复失败');
+						}
+					});
+				}
+			}, '回复内容');
+		}
+	</script>
+{include file="../footer.html"}

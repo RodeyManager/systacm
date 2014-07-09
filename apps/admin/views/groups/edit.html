@@ -1,0 +1,127 @@
+{include file="../header_content.html"}
+
+	<link rel="stylesheet" href="{$__SYSJS__}/Tags/jquery.tagsinput.css" />	
+	<script type="text/javascript" src="{$__SYSJS__}/Tags/jquery.tagsinput.min.js"></script>
+	<link rel="stylesheet" href="{$__SYSJS__}/formValidator/roadey.css" />
+	<script src="{$__SYSJS__}/formValidator/formValidator.min.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.formValidator.initConfig({ autotip:true, formid:"group-form", submitOnce:true, onerror:function(msg){ art.dialog.alert(msg);} });
+		$("#name").formValidator({ onshow:"{$lang.v_p_name}",onfocus:"{$lang.v_name_len}" })
+					.inputValidator({ min:2,max:30,onerror:"{$lang.v_name_len}" })
+					.regexValidator({ regexp:"reg_name",datatype:"enum",onerror:"{$lang.group_name}{$lang.v_format_fail}" })
+					/*.ajaxValidator({
+						type: 'get',
+						datatype : "html",
+						async : true,
+						data: { id:$('#id').val() },
+						url: '{$__CURL__}check_group_name',
+						success: function(data){
+							alert(data);
+							return;
+							if(data == '1') 	return true;
+							else				return false;
+						},
+						onerror : "{$lang.v_name_no}",
+						onwait : "{$lang.v_name_ing}"
+					})*/.defaultPassed();
+	});
+	</script>	
+	<!-- Tag列表 -->
+	<div class="mcontainer">
+		
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['group_list']}</a>
+				<a href="{$__CURL__}add" class="m-header-btns">{$lang['group_add']}</a>
+				<span class="m-title">{$lang['group_edit']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="group-form" action="{$__CURL__}edit_group" method="POST">
+					<input type="hidden" name="id" id="id" value="{$group.id}" />
+					<table class="table table-condensed m-table">
+						<tr>
+							<td width="10%" style="border:none">{$lang['group_name']}：</td>
+							<td style="border:none">
+								<input type="text" name="name" id="name" value="{$group.name}" />
+							</td>
+						</tr>
+						<tr>
+							<td>{$lang['group_value']}：</td>
+							<td>
+								<input type="text" name="value" id="value" value="{$group.value}" />
+							</td>
+						</tr>
+						<tr>
+							<td>{$lang.group_point}</td>
+							<td>
+								<input type="text" name="point" id="point" value="{$group.point}" />
+							</td>
+						</tr>
+						<tr>
+							<td>{$lang.is_disabled}：</td>
+							<td>
+							{if $group.disabled == 1}
+								<i data-id="{$group.id}" data-value="{$group.disabled}" class="m-mini-btn m-mini-lock m-mini-inlock" title="{$group.lock}"></i>
+							{else}
+								<i data-id="{$group.id}" data-value="{$group.disabled}" class="m-mini-btn m-mini-lock m-mini-unlock" title="{$group.lock}"></i>
+							{/if}
+							</td>
+						</tr>
+					</table>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#group-form').ajaxForm({
+				success: function(data){
+					if(data === 'OK'){
+						_POP({ title: '{$lang.edit_success}', content: '{$lang.edit_success}', icon: 'success' });
+						window.location.href="{$__CURL__}index";
+					}else{
+						_POP({ title: '{$lang.edit_fail}', content: '{$lang.edit_fail}', icon: 'error' });
+					}
+				}
+			});
+			//解锁,枷锁
+			$('.m-mini-lock').click(function(){
+				var id = '{$user.id}';
+				var value = $(this).data('value');
+				var url = '{$__CURL__}locked';
+				var than = $(this);
+				if(value == 1)
+					content = '{$lang.group_inlock_success}！';
+				else
+					content = '{$lang.group_unlock_success}！';
+				$.post(url, { id: id, disabled: value }, function(data){
+					if(data === 'OK') {
+						_POP({ title:'{$lang.group_locked}',content:content, icon:'success' });
+						if(value == 1){
+							than.removeClass('m-mini-inlock').addClass('m-mini-unlock');
+							than.data('value', 0);
+						}else{
+							than.removeClass('m-mini-unlock').addClass('m-mini-inlock');
+							than.data('value', 1);
+						}
+					}else {
+						_POP({ title:'{$lang.group_locked}',content:'{$lang.handle}{$lang.fail}！',icon:'error' });
+						return false;
+					}
+				});
+			});
+		});//end
+	</script>
+{include file="../footer.html"}

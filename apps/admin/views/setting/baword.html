@@ -1,0 +1,176 @@
+{include file="../header_content.html"}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+		});
+	</script>
+	<!-- 敏感词列表 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="javascript:_ADD_BW('{$__CURL__}add_bw');void(0);" class="m-header-btns">{$lang['add_bw']}</a>
+				<a href="javascript:_ADD_BWS('{$__CURL__}add_bws');void(0);" class="m-header-btns">{$lang['add_bws']}</a>
+				<span class="m-title">{$lang['bw_list']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<input type="hidden" name="id" value="" />
+				<table class="table table-condensed m-table">
+					<tr class="m-table-theader">
+						<th><input type="checkbox" id="check_box" onclick="_S('check[]');" /></th>
+						<th>{$lang['bw_id']}</th>
+						<th>{$lang['baword']}</th>
+						<th>{$lang['reword']}</th>
+						<th>{$lang['bw_level']}</th>
+						<th>{$lang['add_time']}</th>
+						<th>{$lang['handle']}</th>
+					</tr>
+					{if is_array($bawords)}
+					{foreach key=k item=baword from=$bawords}
+						<tr>
+							<td><input type="checkbox" value="{$baword.id}" name="check[]" /></td>
+							<td>{$baword.id}</td>
+							<td>{$baword.baword}</td>
+							<td>{$baword.reword}</td>
+							<td>{$baword.level}</td>
+							<td>{$baword.add_time|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+							<td>
+								<a href="javascript:_D('{$baword.id}', '{$__CURL__}del_bw');void(0);"  class="m-mini-btn m-mini-del" data-id="{$baword.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+							</td>
+						</tr>
+					{/foreach}
+					{else}
+						<tr>
+							<td colspan="6">{$bawords}</td>
+						</tr>	
+					{/if}
+				</table>
+			</div>
+			<div class="m-footer">
+				<form action="#" method="POST" accept-charset="utf-8">
+					<div class="m-footer-left">
+						<label class="m_select_all m-f-btn" data-selected="{$lang['select_all']}" data-unselected="{$lang['unselect_all']}" for="check_box">{$lang['select_all']}</label>
+						<a href="javascript:_ADD_BW('{$__CURL__}add_bw');void(0);" class="m_add m-f-btn">{$lang['add']}</a>
+						<a href="javascript:_DS('{$__CURL__}del_bw');void(0);" class="m_delete m-f-btn">{$lang['delete']}</a>
+					</div>
+					<div class="m-footer-right m-footer-pagetion">{$page_link}</div>
+				</form>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<form action="" method="POST" id="bw_form" style="display:none;">
+		<table>
+			<tr>
+				<td>{$lang.baword}：</td>
+				<td>
+					<input type="text" name="baword" id="baword" class="span2" />
+					<em class="explain">{$lang.bw_isnot_null}</em>
+				</td>
+			</tr>
+			<tr>
+				<td>{$lang.reword}：</td>
+				<td>
+					<input type="text" name="reword" id="reword" class="span2" />
+					<em class="explain">{$lang.rw_is_null}</em>
+				</td>
+			</tr>
+			<tr><td>{$lang.bw_level}：</label></td>
+			<td><select name="level" id="level" class="span2">
+				<option value="1">{$lang.kind}</option>
+				<option value="2">{$lang.risk}</option>
+			</select>
+			<em class="explain">{$lang.level_tips}</em></td></tr>
+		</table>
+	</form>
+	<form action="" method="POST" id="bws_form" style="display:none;">
+		<table>
+			<tr>
+				<td>{$lang.add_bws}：</td>
+				<td>
+					<textarea name="bawords" id="bawords" cols="30" rows="8" required placeholder="{$lang.add_bws_idea}" class="span3"></textarea>
+					<em class="explain">{$lang.add_bws_tips}</em>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<script type="text/javascript">
+		var addbw_content;
+		var addbws_content;
+		$(document).ready(function(){
+			addbw_content = $('#bw_form').html();
+			addbws_content = $('#bws_form').html();
+			$('#bw_form').empty();
+			$('#bws_form').empty();
+		});//end
+		function _ADD_BW(url){
+			var flag = false;
+			$('#reword').live('focusin focusout', function(){ tips('#reword'); });
+			$('#baword').live('focusin focusout', function(){
+				tips_check('#baword', '{$__CURL__}check_bw', '{$lang.bw_isnot_null}', '{$lang.bw_bein}', '{$lang.bw_beun}');
+			});
+			art.dialog({
+				id: 'ADDBW',
+				title: '{$lang.add_bw}',
+				content: addbw_content,
+				okVal: '{$lang.add}',
+				cancelVal: '{$lang.cancel}',
+				ok: function(){
+					var baword = $('#baword').val();
+					var reword = $('#reword').val();
+					var level  = $('#level').val();
+					if(baword == ''){ return tips_error('#baword'); }
+					if(reword == ''){ return tips_error('#baword'); }
+
+					if( baword == '') _Dat('{$lang.bw_isnot_null}');
+					$.post(url, { baword: baword, reword: reword, level: level }, function(data){
+						if('OK' === data){
+							_POP({ title:'{$lang.add_bw}', content:'{$lang.add_bw}{$lang.success}!', icon:'success' });
+							window.location.reload();
+						}else if('IN' === data){
+							_Dat('{$lang.add_bw}{$lang.fail}!<br />{$lang.bw_bein}');
+						}else{
+							_POP({ title:'{$lang.add_bw}', content:'{$lang.add_bw}{$lang.fail}!', icon:'error' });
+						}
+					});
+				},
+				cancel: function(){ this.close(); }
+			});
+		}
+		function _ADD_BWS(url){
+			$('#bawords').live('focusin focusout', function(){
+				if($(this).val() == ''){
+					$(this).next('.explain').removeClass('em-success').addClass('em-error');
+					return false;
+				}else{
+					$(this).next('.explain').removeClass('em-error').addClass('em-success');
+					return true;
+				}
+			});
+			art.dialog({
+				id: 'ADDBWS',
+				title: '{$lang.add_bws}',
+				content: addbws_content,
+				okVal: '{$lang.add}',
+				cancelVal: '{$lang.cancel}',
+				ok: function(){
+					var bawords = $('#bawords').val();
+					if( bawords == '') _Dat('{$lang.bw_isnot_null}');
+					$.post(url, { bawords: bawords }, function(data){
+						if('OK' === data){
+							_POP({ title:'{$lang.add_bws}', content:'{$lang.add_bws}{$lang.success}!', icon:'success' });
+							window.location.reload();
+						}else{
+							_POP({ title:'{$lang.add_bws}', content:'{$lang.add_bws}{$lang.fail}!', icon:'error' });
+						}
+					});
+				},
+				cancel: function(){ this.close(); }
+			});
+		}
+	</script>
+{include file="../footer.html"}

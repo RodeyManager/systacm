@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>{powerby}</title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="{$__ACSS__}/normalize.css" />
+	<link rel="stylesheet" href="{$__SYSJS__}/artDialog/skins/default.css" />
+	<link rel="stylesheet" href="{$__SYSCSS__}/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" href="{$__ACSS__}/layout.css" />
+	<link rel="stylesheet" href="{$__ACSS__}/index.css" />
+	<link rel="stylesheet" href="{$__ACSS__}/main.css" />
+	<script type="text/javascript" src="{$__AJS__}/modernizr-2.6.2.min.js" encoding="UTF-8"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/jquery-1.7.2.min.js" encoding="UTF-8"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/jquery-ui/js/jquery-ui.min.js" encoding="UTF-8"></script>
+	<script type="text/javascript" src="{$__SYSCSS__}/bootstrap/js/bootstrap.min.js" encoding="UTF-8"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/artDialog/jquery.artDialog.js" encoding="UTF-8"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/artDialog/plugins/iframeTools.js" encoding="UTF-8"></script>
+	<script type="text/javascript" src="{$__AJS__}/systacm.js" encoding="UTF-8"></script>
+	<script type="text/javascript" src="{$__AJS__}/main.js" encoding="UTF-8"></script>
+</head>
+<body>
+	
+	<!-- 我的面板 -->
+	<div class="mcontainer">
+		<!-- 左侧 -->
+		<div class="mleft-con" id="mleft-con">
+			<div class="m-con-cake">
+				<h3 class="m-title">{$lang['user_info']}<i class="m-title-grip"></i></h3>
+				<div class="m-info">
+					<span>{$lang['hello']}， {$admin|capitalize}！</span>
+					<span>{$lang['user_role']}： 【{$role_name}】</span>
+					<span>{$lang['prev_login_time']}：<em>{$last_login_time}</em></span>
+					<span>{$lang['prev_login_ip']}：<em>{$last_login_ip}</em></span>
+				</div>
+			</div>
+			<div class="m-con-cake">
+				<h3 class="m-title">{$lang['short_tip']}<i class="m-title-grip"></i></h3>
+				<div class="m-info">
+					<span><img src="{$__CURL__}code" onclick="javascript:this.src='{$__CURL__}code?'+Math.random();" /></span>
+					<span>CODE: <a href="javascript:_GET_CODE();void(0);" title="">获取验证码</a></span><br />
+					<span>{powerby link='yes'}</span>
+				</div>
+			</div>
+			<div class="m-con-cake">
+				<h3 class="m-title">{$lang['statistics']}<i class="m-title-grip"></i></h3>
+				<div class="m-info">
+					<span>{$lang['user_len']}：<a href="{$__RURL__}user/index" title="{$lang['click_see']}">{$user_len}</a></span>
+					<span>{$lang['archive_len']}：{$archive_len}</span>
+					<span>{$lang['guestbooks_len']}：<a href="{$__RURL__}guestbook/index" title="{$lang['click_see']}">{$gbook_len}</a></span>
+				</div>
+			</div>
+		</div>
+		<div class="mright-con" id="mright-con">
+			<div class="m-con-cake">
+				<h3 class="m-title">{$lang['sys_info']}<i class="m-title-grip"></i></h3>
+				<div class="m-info">
+					<span>{$lang['sys_name']}:   <em>V1.2.25 Release 20130305</em>&nbsp;<a href="">[{$lang['check_version']}]</a></span>
+					<span>{$lang['sys_os']}：  <em>{$system}</em></span>
+					<span>{$lang['sys_server']}：  <em>{$apache}</em></span>
+					<div class="m-liner"></div>
+					<span class="m-o-red">{$lang['sys_chomd']}</span>
+					<span class="m-o-red">{$lang['sys_debug']}</span>
+				</div>
+			</div>
+			<div class="m-con-cake">
+				<h3 class="m-title">{$lang['author_info']}<i class="m-title-grip"></i></h3>
+				<div class="m-info">
+					<span>{$lang['sys_name']}:   <em>V1.2.25 Release 20130305</em>&nbsp;<a href="">[{$lang['check_version']}]</a></span>
+					<span>{$lang['author_cat']}：{$lang.author_cat_no}（<a class="m-o-red" href="">{$lang['sys_buy']}</a>） </span>
+					<span>{$lang['author_code']}：2801-6521-6083-9992-4647 ({$lang.author_cater}) </span>
+				</div>
+			</div>
+			<div class="m-con-cake">
+				<h3 class="m-title">{$lang['team']}<i class="m-title-grip"></i></h3>
+				<div class="m-info m-team">
+					<span>{$lang['team_copyright']}：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$lang.team_complan}</span>
+					<span>{$lang['team_plan']}：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$lang.team_planer}</span>
+					<span>{$lang['team_dev']}：&nbsp; {$lang.team_developers}</span>
+					<span>{$lang['team_ui']}：&nbsp; {$lang.team_planer}</span>
+					<span>{$lang['team_server']}：&nbsp; <a href="http://www.aliyun.com/" target="_blank">{$lang.team_server_aliyun}</a></span>
+					<span>{$lang['team_ogsite']}：<a href="{$lang['ogsite_url']}" target="_blank">{$lang['ogsite_url']}</a></span>
+					<span>{$lang['team_blog']}：<a href="{$lang['blog_url']}" target="_blank">{$lang['blog_url']}</a></span>
+				</div>
+			</div>
+			<div class="m-con-cake">
+				<h3 class="m-title">{$lang['warm-tips']}<i class="m-title-grip"></i></h3>
+				<div class="m-info m-warm-tips">
+					<span>{$lang['warm-title']}:</span>
+					<span>{$lang['google']}： <a href="http://www.google.cn/intl/zh-CN/chrome/" target="_blank" title="{$lang['googleChrome']}">{$lang['googleChrome']}</a></span>
+					<span>&nbsp;{$lang['cn360']}： <a href="http://chrome.360.cn/" target="_blank" title="360极速浏览器">{$lang['chrome360']}</a></span>
+					<span>{$lang['ch_mff']}： <a href="http://firefox.com.cn/" target="_blank" title="{$lang['mFF']}">{$lang['mFF']}</a></span>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".m_title").bind('mouseover',function(){ 
+		        $(this).css("cursor","move") 
+		    }); 
+			$( ".mleft-con" ).sortable({ opacity: 0.6, revert: true, cursor: 'move', handle: '.m-title' });
+			$( ".mright-con" ).sortable({ opacity: 0.6, revert: true, cursor: 'move', handle: '.m-title' });
+			$('*[title]').tooltip({
+				animation: true,
+				placement: 'top'
+			});
+		});
+
+		function _GET_CODE(){
+			$.post('{$__CURL__}getCode', function(data){
+				alert(data);
+			});
+		}
+	</script>
+		
+</body>
+</html>

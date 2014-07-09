@@ -1,0 +1,610 @@
+{include file="../header_content.html"}
+	<link rel="stylesheet" href="{$__SYSJS__}/Tags/jquery.tagsinput.css" />	
+	<script type="text/javascript" src="{$__SYSJS__}/Tags/jquery.tagsinput.min.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/SWFUpload/swfupload.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/SWFUpload/plugins/swfupload.queue.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/SWFUpload/plugins/fileprogress.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/SWFUpload/handlers.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/jQuery.artTxtCount.js"></script>
+	<script type="text/javascript" src="{$__AJS__}/goods.js"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_config.js"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_all.js"></script>
+
+	<script type="text/javascript">
+		var swfu, swfus, img_list = new Array(), img_src, img_src_list = new Array(), img, index=0;
+		var astatic = '{$__ASTATIC__}';
+		$(document).ready(function(){
+
+			swfu = new SWFUpload({
+				flash_url : "{$__SYSJS__}/SWFUpload/swfupload.swf",
+				upload_url: "{$__CURL__}upload_pic",
+				file_post_name : swf_set.file_post_name,
+				post_params : { flag : 'upload' },
+
+				// File Upload Settings
+				file_size_limit : swf_set.file_size_limit,	// 2MB
+				file_types: swf_set.file_types,
+				file_types_description: swf_set.file_types_description,
+				file_upload_limit : swf_set.file_upload_limit,
+				file_queue_limit : swf_set.file_queue_limit,
+				file_queue_error_handler : fileQueueError,
+				file_dialog_complete_handler: function(numFilesSelected, numFilesQueued){
+					try {
+						if (numFilesQueued > 0) {
+							/*$('.view-main-pic').empty();
+							$('.view-main-pic').html('<img class="view-pic-img" src="{$__AIMAGES__}/Loading_bar_1s.gif" width="300" height="60" border="0"/>');*/
+							img = add_list_box();
+							this.startUpload();
+						}
+					} catch (ex) {
+						this.debug(ex);
+					}
+				},
+				upload_progress_handler : function(file, bytesLoaded){
+					/*$('#divFileProgressContainer').show();
+					$('#thumbnails').attr({ 'src':'{$__AIMAGES__}/Loading_bar_1s.gif', width:300, height:16 });*/
+				},
+				upload_error_handler : uploadError,
+				upload_success_handler :  function(file, serverData){
+					//var img;
+					//alert(serverData); return;
+
+					var serverData = serverData.replace(/(^\s*)|(\s*$)/g,"");
+					serverData = serverData.split('-+-');
+					var jdata = serverData.join('|');
+					img.find('.view-pic-img-list-s').attr('src', serverData[0]);
+					img.find('.view-pic-img-list-btns').html(
+						'<span class="v-p-i-b-vpath" onclick="goods._VPATH(\'{$__CURL__}view_path/id/'+ serverData[3] +'\');" >路径</span>'+
+						'<span class="v-p-i-b-del" onclick="goods._DEL_PIC(\''+ serverData[3] +'\', \''+ jdata +'\', '+ index +');">删除</span>');
+
+
+					img_src_list.push(serverData);
+					$('.view-main-pic').empty();
+					$('.view-main-pic').html('<img class="view-pic-img" src="'+ serverData[1] +'" width="300" height="300" border="0"/>');
+					//添加隐含域
+					add_hidden_put(jdata);
+				},
+				upload_complete_handler : uploadComplete,
+
+				// Button Settings
+				button_image_url: '{$__AIMAGES__}/upload_btn.png',
+				button_placeholder_id : "add_pic_btn",
+				button_width: 100,
+				button_height: 30,
+				button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+				button_action: SWFUpload.BUTTON_ACTION.SELECT_FILE,
+				button_cursor: SWFUpload.CURSOR.HAND
+			});
+
+			//批量上传
+			swfus = new SWFUpload({
+				flash_url : "{$__SYSJS__}/SWFUpload/swfupload.swf",
+				upload_url: "{$__CURL__}upload_pic",
+				file_post_name : swf_set.file_post_name,
+				post_params : { flag : 'uploads' },
+
+				// File Upload Settings
+				file_size_limit : swf_set.file_size_limit,	// 2MB
+				file_types: swf_set.file_types,
+				file_types_description: swf_set.file_types_description,
+				file_upload_limit : '100',
+				file_queue_limit : '0',
+				file_dialog_start_handler : fileDialogStart,
+				file_queue_hander : fileQueued,
+				file_queue_error_handler : fileQueueError,
+				file_dialog_complete_handler: fileDialogComplete,
+				upload_start_handler : uploadStart,
+				upload_progress_handler : uploadProgress,
+				upload_error_handler : uploadError,
+				upload_success_handler :  function(file, serverData){
+					try {
+        				var progress = new FileProgress(file, this.customSettings.progressTarget);
+				        progress.setComplete();
+				        progress.setStatus("上传成功！");
+				        progress.toggleCancel(false);
+				        editor.setContent(editor.getContent()+'<p align="center"><img src="'+base+'/'+serverData+'" borer="0"/></p>');
+				    	//console.log(serverData);
+				    } catch (ex) {
+				        this.debug(ex);
+				    }
+				},
+				upload_complete_handler : uploadComplete,
+
+				// Button Settings
+				button_image_url: '{$__AIMAGES__}/uploads_btn.png',
+				button_placeholder_id : "add_pics_btn",
+				button_width: 130,
+				button_height: 30,
+				button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+				button_action: SWFUpload.BUTTON_ACTION.SELECTS_FILE,
+				button_cursor: SWFUpload.CURSOR.HAND,
+				custom_settings : {
+					progressTarget : "fsUploadProgress",
+					cancelButtonId : "btnCancel"
+				},
+	            debug: false
+
+			});
+			//字符统计
+			$('#name').artTxtCount($('#name-tips'), 200);
+			$('#intro').artTxtCount($('#intro-tips'), 255);
+
+			function add_list_box(id, url){
+				index++;
+				var new_img = $('<div class="view-pic-img-list-box" id="view-pic-img-list-box'+index+'"><span>'+
+							  '<img class="view-pic-img-list-s" src="{$__AIMAGES__}/Loading_bar_1s.gif" border="0"/></span>'+
+								'<div class="view-pic-img-list-btns">'+
+									'<span class="v-p-i-b-vpath" onclick="goods.VPATH('+ url +', '+ id +');" >路径</span>'+
+									'<span class="v-p-i-b-del" onclick="goods.del_pic('+ id +', \'\', '+ index +');">删除</span>'+
+								'</div>'+
+							'</div>');
+				$('.view-pic-img-list').append(new_img);
+				img_list.push(new_img);
+				return new_img;
+			}
+			function add_hidden_put(value){
+				var hidden = '<input type="hidden" name="pics['+ index +']" value="'+ value +'" id="hidden_put'+ index +'" />';
+				$(hidden).appendTo('#goods-form');
+			}
+		});//end ready
+	function del_hidden_put(value){
+		$('input[name="pics['+ value +']"]').remove();
+	}	
+
+
+	</script>
+	{literal}
+	<style type="text/css">
+		.swfupload{ float:left;color: #DCF323;cursor:pointer;text-indent:-9999px; }
+		.mcontainer{margin-top:60px;}
+		.m-header-title{position:fixed;top:0px;left:0px; }
+		.m-center{ padding:0px; }
+		.m-header-tab-btns{position:fixed;top:30px;}
+		.m-mini-btn{ margin-right:3px;margin-left:0px; }
+	</style>
+	{/literal}
+	<!-- 添加用户 -->
+	<div class="mcontainer">
+		<div class="m-main" style="padding:0px 5px 0px 5px;">
+			<div class="m-header-title">
+				<span class="m-title" style="display:inline-block;width:100%;margin:0 auto;padding:5px 0px;text-align:center;">{$lang.add_goods}</span>
+				<div class="m-header-r-btns-con">
+					<a href="javascript: alert('{$lang.save}');void(0);" class="m-header-r-btns m-mini-save">{$lang.save}</a>
+					<a href="javascript: _EXIT();" class="m-header-r-btns m-mini-close">{$lang.exit}</a>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="goods-form" action="{$__CURL__}create" method="POST">
+					<div class="m-header-tab-btns tab-btns-mini">
+						<a class="m-mini-btn m-header-tab m-tab-mini">{$lang['goods_con']}<i></i></a>
+						<a class="m-mini-btn m-header-tab m-tab-mini m-tab-on" ref="m-tab-con1">{$lang['goods_base']}<i></i></a>
+						<a class="m-mini-btn m-header-tab m-tab-mini" ref="m-tab-con2">{$lang['goods_detail']}<i></i></a>
+						<a class="m-mini-btn m-header-tab m-tab-mini" ref="m-tab-con3">{$lang['goods_parts']}<i></i></a>
+						<a class="m-mini-btn m-header-tab m-tab-mini" ref="m-tab-con4" style="width:100px;">{$lang['goods_seo']}<i style="left:50px;"></i></a>
+					</div>
+					<div class="m-tab-list">
+						<!-- Start 1 -->
+						<div id="m-tab-con1" class="base-con m-tab-cons">
+							<div class="upload-con">
+								<table>
+									<thead>
+										<tr>
+											<th>
+												<div class="add-pic-title">
+													<a href="javascript:void(0);" id="add_pic_btn" ></a>
+													<a href="javascript:void(0);" id="set_pic_size">{$lang['set_pic_size']}</a>
+												</div>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<!-- 大图预览 S-->
+												<div class="view-main-pic">
+													<p><br /><br />此处显示商品页面默认图片列表 <br /> [您还未上传商品图片!]</p>
+													<!-- <img class="view-pic-img" src="{$__AIMAGES__}/img/weixin.jpg" width="230" height="230" border="0"/> -->
+												</div>
+												<!-- 大图预览 E-->
+												<!-- 小图列表 S-->
+												<div class="view-pic-img-list">
+													<!-- <div class="view-pic-img-list-box">
+														<span>
+															<img class="view-pic-img-list-s" src="{$__AIMAGES__}/img/weixin.jpg" border="0"/>
+														</span>
+														<div class="view-pic-img-list-btns">
+															<span class="v-p-i-b-vpath">路径</span>
+															<span class="v-p-i-b-del">删除</span>
+														</div>
+													</div> -->
+												</div>
+												<!-- 小图列表 E-->
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<table class="table m-table">
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_name}：</td>
+									<td>
+										<input type="text" name="name" id="name" value="" class="span6 m-input-title"/>
+										<span id="name-tips"></span>
+										<em class="explain">{$lang.goods_name_tips}</em>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_cat}：</td>
+									<td>
+										<select name="cat_id">
+											<option value="0">{$lang.select_cat}</option>
+											{if $cids}
+											{$cids}
+											{/if}
+										</select>
+										<a href="{$__CAPP__}/mall/add_gcat" target="_blank">{$lang.add_goods_cat}</a>
+										<em class="explain">{$lang.goods_cat_tips}</em>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_type}：</td>
+									<td>
+										<select name="type_id">
+											<option value="0">{$lang.select_type}</option>
+											{if $tids}
+											{foreach from=$tids item=tid}
+											<option value="{$tid.id}">{$tid.name}</option>
+											{/foreach}
+											{/if}
+										</select>
+										<a href="{$__CAPP__}/mall/add_gcat" target="_blank">{$lang.add_goods_type}</a>
+										<em class="explain">{$lang.goods_type_tips}</em>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_keywords}：</td>
+									<td>
+										<input type="text" name="keywords" id="keywords" class="span6"/>
+										<em class="explain">{$lang.goods_keywords_tips}</em>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_brand}：</td>
+									<td>
+										<select name="brand_id" class="span2">
+											<option value="0">{$lang.select_brand}</option>
+											{if $brands}
+											{foreach from=$brands item=brand}
+											<option value="{$brand.id}">{$brand.brand_name}</option>
+											{/foreach}
+											{/if}
+										</select>
+										<em class="explain">{$lang.goods_brand_tips}</em>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_bno}：</td>
+									<td>
+										<input type="text" name="bno" id="keywords" class="bno"/>
+										<em class="explain">{$lang.goods_bno_tips}</em>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_unit}：</td>
+									<td>
+										<input type="text" name="unit" id="unit" class="span1"/>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_market}：</td>
+									<td>
+										<input type="text" name="market" id="market" placeholder="0.00" class="span1"/>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_cost}：</td>
+									<td>
+										<input type="text" name="cost" id="cost" placeholder="0.00" class="span1"/>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_sale}：</td>
+									<td>
+										<input type="text" name="sale" id="sale" placeholder="0.00"  class="span1"/>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_weight}：</td>
+									<td>
+										<input type="text" name="weight" id="weight" placeholder="0.00"  class="span1"/>
+										<em class="explain">{$lang.goods_weight_tips}</em>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_store}：</td>
+									<td>
+										<input type="text" name="store" id="store" placeholder="0.00"  class="span1"/>
+										<em class="explain">{$lang.goods_store_tips}</em>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg">{$lang.goods_intro}：</td>
+									<td>
+										<textarea name="intro" id="intro" rows="5" class="span6"></textarea>
+										<span id="intro-tips"></span>
+										<em class="explain">{$lang.goods_intro_tips}</em>
+									</td>
+								</tr>
+								<tr>
+									<td width="10%" class="alignr-bg"> {$lang.goods_status}：</td>
+									<td>
+										<div class="m-lock-div">
+											<input type="hidden" name="disabled" id="disabled" value="1" />
+											<span class="m-lock-btns"><i class="on_off_btn"></i></span>
+											<span class="m-disabled-tips">{$lang['disabled_false']}</span>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div> <!-- END 1 -->
+						<!-- Detail S -->
+						<table class="table m-table m-tab-cons" id="m-tab-con2">
+							<tr>
+								<td width="10%" class="alignr-bg"> {$lang.goods_detail}：</td>
+								<td>
+									<textarea name="detail" id="detail"></textarea>
+									<script type="text/javascript">
+										var editor = new UE.ui.Editor();
+	    									editor.render("detail");
+	    									/*editor.ready(function(){
+												editor.setContent('{$lang.put_goods_desc}');
+											})*/
+									</script>
+									<em class="explain">{$lang.goods_detail_tips}</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr-bg">{$lang.upload_pics}：</td>
+								<td><span id="add_pics_btn"></span><span id="btnCancel" onclick="cancelQueue(swfus);"></span></td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr-bg">{$lang.upload_status}：</td>
+								<td><div style="padding:10px;" id="fsUploadProgress"></div></td>
+							</tr>	
+						</table>
+						<!-- Detail E -->
+						<!-- 配件 S -->
+						<table class="table m-table m-tab-cons" id="m-tab-con3">
+							<tr>
+								<td width="10%" class="alignr"></td>
+								<td><a href="javascript:goods._ADD_PARTS();void(0);">+{$lang.goods_add_parts}</a></td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr">{$lang.parts_list}：</td>
+								<td>
+									<input type="hidden" name="parts" id="parts" value="" />
+									<div class="parts-list-con">
+										<ul class="parts-lsit-ul">
+											<!-- <li class="parts-lsit-li" id="parts-lsit-li-1">
+												<div class="parts-img">
+													<a href=""><img src="{$__UPLOAD__}/users/headport/100/user_13633632006024.png" alt=""></a>
+												</div>
+												<div class="parts-info">
+													<strong>e途V50 智能云导航仪+电子狗+行车记录仪+倒车后视全功能车用后视镜</strong>
+													<p>
+														<dl>
+														    <dd><b>库　存：</b><span class="label label-info">100</span></dd>
+														    <dd><b>市场价：</b><span class="label label-info">100.00</span></dd>
+														    <dd><b>销售价：</b><span class="label label-info">100.00</span></dd>
+														</dl>
+													</p>
+													<p class="btns">
+														<a href="javascript:_VIEW_GOODS(1);void(0);">{$lang.view_goods}</a>
+														<a href="javascript:_CANCEL_GOODS(1);void(0);">{$lang.cancel}</a>
+													</p>
+												</div>
+											</li> -->
+										</ul>
+									</div>
+								</td>	
+							</tr>
+						</table>
+						<!-- 配件 E -->
+						<!-- SEO S -->
+						<table class="table m-table m-tab-cons" id="m-tab-con4">
+							<tr>
+								<th width="10%" class="alignr-bg"></th>
+								<th>{$lang.seo}</th>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr-bg">{$lang.page_title}：</td>
+								<td>
+									<input type="text" name="page_title" id="page_title" class="span6" />
+									<em class="explain">{$lang.put_page_title_tips} ({$lang.goods_seo_title_tips})</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr-bg">{$lang.page_keywords}：</td>
+								<td>
+									<input type="text" name="page_keywords" id="page_keywords" class="span6" />
+									<em class="explain">{$lang.put_page_keywords_tips} ({$lang.goods_seo_keywords_tips})</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" class="alignr-bg">{$lang.page_desc}：</td>
+								<td>
+									<textarea name="page_desc" id="page_desc" rows="5" class="span6"></textarea>
+									<em class="explain">{$lang.put_page_desc_tips} ({$lang.goods_seo_desc_tips})</em>
+								</td>
+							</tr>
+						</table>
+						<!-- SEO E -->
+					</div>
+					<div class="m-footer-c-btns-con">
+						<div class="m-footer-btns">
+							<input type="submit" name="submit" value="{$lang['close_add']}" id="submit" class="m-input-btns" />
+							<a href="javascript: window.history.back(-1);" class="m-input-btns m-header-r-btns">{$lang['save_add']}</a>
+							<a href="javascript: window.history.back(-1);" class="m-input-btns m-header-r-btns">{$lang['save_dang']}</a>
+							<input type="reset" name="reset" value="{$lang['reset']}" id="reset" class="m-input-btns" />
+							<a href="javascript:_EXIT();void(0);" class="m-input-btns m-header-r-btns">{$lang['close']}</a>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="clear"></div>
+			<p class="flash" id="flash_part" style="display:none;"></p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#keywords').tagsInput({ defaultText:'{$lang.add_keywords}', width:'450', height:'80' });
+			$('input[name="banner_select"]').click(function(){
+				if($('#is_local').attr('checked')){
+					$('.upload_btns').show();
+					$('#banner').attr('readonly', 'true');
+					$('#banner').val('');
+				}else{
+					$('.upload_btns').hide();
+					$('#banner').removeAttr('readonly');
+					$('#banner').val('http://');
+					$('#banner').focusout(function(){
+						if($('#banner').val() !== 'http://'){
+							$('#divFileProgressContainer').show();
+							$('#thumbnails').attr({ 'src': $('#banner').val(), width:150});
+						}else{
+							return false;
+						}
+					});
+				}
+			});
+			
+			//可用性
+			$('.on_off_btn').click(function(){
+				var disabled = $('#disabled').val();
+				if(disabled == 1){
+					$('.on_off_btn').animate({ left: '0px' });
+					$('#disabled').val(0);
+					$('.m-disabled-tips').text('{$lang['disabled_true']}');
+				}else if(disabled == 0){
+					$('.on_off_btn').animate({ left: '50px' });
+					$('#disabled').val(1);
+					$('.m-disabled-tips').text('{$lang['disabled_false']}');
+				}
+			});
+			//Create
+			$('#name').live('focusin focusout', function(){ tips('#name'); });
+			$('#keywords').live('focusin focusout', function(){ tips_success('#keywords'); });
+
+			$('#goods-form').submit(function(){
+				editor.sync();
+
+				if($('#name').val() == '') { return tips_error($('#name')); }
+
+				$(this).ajaxSubmit({
+					success: function(data){
+						_Dat(data);
+						return;
+						if(data === 'OK'){
+							_POP({ title: '{$lang.add_goods}', content: '{$lang.add}{$lang.success}', icon: 'success' });
+							window.location.href="{$__CURL__}index";
+						}else{
+							_POP({ title: '{$lang.add_goods}', content: '{$lang.add}{$lang.fail}', icon: 'error' });
+						}
+					}
+				}); 
+				return false;
+			});
+
+			//删除缩略图
+			goods._DEL_PIC = function(id, pics, index){
+				$.post('{$__CURL__}del_pic', { pics: pics }, function(data){
+					if('OK' === data){
+						del_hidden_put(index);
+						$('#view-pic-img-list-box' + index).remove();
+						if($('.view-pic-img-list-box').length == 0){
+							$('.view-main-pic').empty();
+							$('.view-main-pic').html('<p><br /><br />此处显示商品页面默认图片列表 <br /> [您还未上传商品图片!]</p>')
+						}
+					}
+				});
+			}
+
+			//取消配件
+			goods._CANCEL_GOODS = function(id){
+				$('#parts-lsit-li-'+id).fadeOut(function(){ $(this).remove(); });
+			}
+			//添加配件
+			var id_index = 0;
+			var id_arr = new Array();
+			goods._ADD_PARTS = function(){
+				window.top.art.dialog.open('{$__CURL__}parts', 
+											{	id: 'SELECT_GOODS',
+												title:'{$lang.select_parts}', 
+												width: '50%', 
+												height: '50%',
+												okVal: '{$lang.goods_add_parts}',
+												cancelVal: '{$lang.cancel}',
+												ok: function(){
+													var parts = art.dialog.data('parts');
+													if(parts !== ''){
+														this.close();
+														$('#parts').val(parts);
+														parts = parts.split(',');
+														for(var i = 0; i < parts.length; i++) {
+															if(id_arr.in_array(parts[i])){
+																$('#flash_part').html('{$lang.part_exists}').stop().fadeIn('slow', function(){
+																	setTimeout(function(){ $('#flash_part').html('').stop().fadeOut('slow'); }, 500);
+																});
+																continue;
+															}else{
+																id_arr.push(parts[i]);
+																$('.parts-lsit-ul').append(part_li(parts[i]));
+															}
+														};
+													}
+												},
+												cancel: function(){ this.close(); }
+											}, false);
+			}
+			function part_li(id){
+				var parts_list_li = '<li class="parts-lsit-li" id="parts-lsit-li-'+id+'">'+
+										'<div class="parts-img">'+
+											'<a href=""><img src="{$__UPLOAD__}/users/headport/100/user_13633632006024.png" alt=""></a>'+
+										'</div>'+
+										'<div class="parts-info">'+
+											'<strong>e途V50 智能云导航仪+电子狗+行车记录仪+倒车后视全功能车用后视镜</strong>'+
+											'<p>'+
+												'<dl>'+
+												    '<dd><b>库　存：</b><span class="label label-info">100</span></dd>'+
+												    '<dd><b>市场价：</b><span class="label label-info">100.00</span></dd>'+
+												    '<dd><b>销售价：</b><span class="label label-info">100.00</span></dd>'+
+												'</dl>'+
+											'</p>'+
+											'<p class="btns">'+
+												'<a href="javascript:goods._VIEW_GOODS('+id+');void(0);">{$lang.view_goods}</a>'+
+												'<a href="javascript:goods._CANCEL_GOODS('+id+');void(0);">{$lang.cancel}</a>'+
+											'</p>'+
+										'</div>'+
+									'</li>';
+				return $(parts_list_li);
+			}
+			//查看配件
+			goods._VIEW_GOODS = function(id){
+				var url = '{$__CURL__}edit/id/'+id;
+				_PUP(url);
+			}
+			
+		});//end ready.
+		function _PUP(url){
+			window.open(url,'add_goods','top=0,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no, status=no');
+		}
+		function _EXIT(){
+			art.dialog.confirm('{$lang.is_exit}', function(){
+				window.close();
+			});
+		}
+		
+	</script>
+
+{include file="../footer.html"}

@@ -1,0 +1,122 @@
+{include file="../header_content.html"}
+	<script type="text/javascript" src="http://api.51ditu.com/js/maps.js" ></script>
+	<script type="text/javascript" src="http://api.51ditu.com/js/ezmarker.js"></script>
+	<script type="text/javascript" src="http://api.51ditu.com/js/ipposition.js"></script>
+	<!-- 添加用户 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<span class="m-title">{$lang.view_resnet}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<div class="m-tab-list">
+					<table class="table m-table m-tab-cons" id="m-tab-con1">
+						<tr>
+							<td width="10%" class="alignr">{$lang.net_name}：</td>
+							<td>
+								<strong>{$resnet.net_name}</strong>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%" class="alignr">{$lang.net_address}：</td>
+							<td>
+								<strong>{$resnet.net_address}</strong>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%" class="alignr">{$lang.net_hotline}：</td>
+							<td>
+								<strong>{$resnet.net_hotline}</strong>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%" class="alignr">{$lang.net_tid}：</td>
+							<td>
+								<strong>{$resnet.net_type}</strong>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%" class="alignr">{$lang.net_u_name}：</td>
+							<td>
+								<strong>{$resnet.net_u_name}</strong>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%" class="alignr">{$lang.net_u_phone}：</td>
+							<td>
+								<strong>{$resnet.net_u_phone}</strong>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%" class="alignr">{$lang.net_region}：</td>
+							<td>
+								<strong>{$resnet.net_region_name}</strong>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%" class="alignr">{$lang.net_map}：</td>
+							<td>
+								<div id="myMap" style="position:relative; width:100%; height:400px;"></div>
+								<script type="text/javascript">
+									var maps = new LTMaps( "myMap" ); 
+									var point = new LTPoint( {$resnet.net_mapx} , {$resnet.net_mapy} );
+									maps. centerAndZoom (  point, {$resnet.net_mapz} );
+									var control = new LTStandMapControl();  
+									maps.addControl( control );
+
+									var marker = new LTMarker( point );
+									maps.addOverLay( marker );
+									var infoWin = new LTInfoWindow( marker );
+									infoWin.setTitle('{$lang.net_info}');
+									infoWin.setWidth(300);
+									var ihtml = '<p style="text-align:left;"><strong>{$lang.net_name}：</strong>{$resnet.net_name}</p>';
+									ihtml += '<p style="text-align:left;"><strong>{$lang.net_address}：</strong>{$resnet.net_address}</p>';
+									ihtml += '<p style="text-align:left;"><strong>{$lang.net_hotline}：</strong>{$resnet.net_hotline}</p>';
+									infoWin.setLabel( ihtml );
+									maps.addOverLay( infoWin );
+								</script>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%" class="alignr">{$lang.net_pic}：</td>
+							<td>
+								<img id="thumbnails" src="{$resnet.net_pic}" width="200" border="0" />
+							</td>
+						</tr>
+						<tr>
+							<td width="10%" class="alignr">{$lang.net_msg}：</td>
+							<td>
+								<div style="text-align:left;padding:10px;background:#E8E8E8;">{$resnet.net_msg}</div>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%" class="alignr"> {$lang.net_status}：</td>
+							<td>
+								<div class="m-lock-div">
+									{if $resnet.disabled eq 1}
+									<span class="m-lock-btns"><i class="on_off_btn" style="left:50px;"></i></span>
+									<span class="m-disabled-tips">{$lang['disabled_false']}</span>
+									{else}
+									<span class="m-lock-btns"><i class="on_off_btn" style="left:0px;"></i></span>
+									<span class="m-disabled-tips">{$lang['disabled_true']}</span>
+									{/if}
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+		});
+	</script>
+
+{include file="../footer.html"}

@@ -1,0 +1,135 @@
+@CHARSET "UTF-8";
+/*
+ * Author: Rodey
+ * Date: 2013-3-2
+ */
+* {
+	font-family: Microsoft YaHei,"Helvetica Neue", Helvetica, Arial, sans-serif;;
+}
+body{
+	padding:0px;
+	margin:0px;
+	color:#555;
+	font-size:12px;
+	font-family:Microsoft YaHei,"Helvetica Neue", Helvetica, Arial, sans-serif;;
+}
+.login-main{ width:600px;height:300px;padding: 0px;margin: 0 auto;position:fixed;}
+.login-con{width:600px;height:300px;margin:0 auto;background:#1E788C;position:relative;
+	-webkit-transition: all .25s linear;
+		   -moz-transition: all .25s linear;
+		    -ms-transition: all .25s linear;
+		     -o-transition: all .25s linear;
+		        transition: all .25s linear;
+}
+.login-con:hover{
+	box-shadow: rgba(150,150,150,0.8) 0px 0px 3px 1px;
+	-webkit-transform: translateY(-5px);
+   	-moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -o-transform: translateY(-5px);
+    transform: translateY(-5px);
+    -webkit-transition: all .25s linear;
+	   -moz-transition: all .25s linear;
+	    -ms-transition: all .25s linear;
+	     -o-transition: all .25s linear;
+	        transition: all .25s linear;
+}
+.login-con:hover .login-headport{box-shadow: rgba(150,150,150,0.8) 0px 0px 3px 1px;}
+.login-headport{width:100px;height:100px;margin:0 auto;position: absolute;top:-50px;left:245px;
+	background:#E5E5E5 url(../images/logo-login-100x100.png) no-repeat center center;
+	border:solid 5px rgba(30,120,140,1);
+	border-radius:50%; 
+	-o-border-radius:50%;
+	-ms-border-radius:50%;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+}
+.login-title{position: absolute;left:10px;top:10px;font-size: 16px;color:white;}
+.login-title2{position: absolute;left:370px;top:10px;font-size: 20px;color:white;}
+.login-title2 a{color:white;font-size: 16px;}
+.login-title3{position: absolute;right:15px;bottom:0px;font-size:12px;color:#06FEF2;}
+.login-title3 a{color:#00D1C7;font-size:12px;}
+.login-title3 a:hover{color:#222;}
+.flash_login{position:absolute;left:10px;top: 45px;display:none;color:yellow;font-size:12px;}
+.login-time{position: absolute;right:15px;top:0px;width:90px;height:30px;background:white;padding:0px 10px;}
+
+.login-form-con{padding:80px 0px 0px 0px;float:left;}
+.login-form .login-piv{
+	padding:0px;
+	margin:3px 0;
+	position: relative;
+}
+.login-form .login-piv input{
+	height:30px;
+	line-height: 30px;
+	width:320px;
+	padding:5px 25px;
+	color:#222;
+	font-size:14px;
+	background-color: #ffffff;
+	border: 1px solid #ffffff;
+	box-shadow: 1px 0px 5px 0px rgba(0,0,0,.3) inset;
+	-o-box-shadow: 1px 0px 5px 0px rgba(0,0,0,.3) inset;
+	-ms-box-shadow: 1px 0px 5px 0px rgba(0,0,0,.3) inset;
+	-moz-box-shadow: 1px 0px 5px 0px rgba(0,0,0,.3) inset;
+	-webkit-box-shadow: 1px 0px 5px 0px rgba(0,0,0,.3) inset;
+}
+.login-form .login-piv label{
+	display: inline-block;
+	vertical-align: middle;
+}
+.login-form .login-piv i{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	position:absolute;
+	left:6px;
+	top:14px;
+	margin: 0px;
+	opacity: 0.5;
+}
+.login-form .login-piv #code-img{
+	display:block;
+	position:absolute;
+	left:155px;
+	bottom: 15px;
+	height:42px;
+	line-height: 42px;
+	border:none;
+}
+.login-form .login-piv #code{
+	width: 80px;
+}
+.login-form .login-in{
+	position:absolute;
+	right:15px;
+	top:82px;
+	display:block;
+	width:200px;
+	height:163px;
+	font-size: 50px;
+	font-weight: normal;
+	text-align: center;
+	text-indent: -9999px;
+	border:none;
+	background: #01D0C6 url(../images/login-in-bg.png) no-repeat center center;
+	box-shadow: 0px 0px 3px 0px rgba(0,0,0,.2) inset;
+	-o-box-shadow: 0px 0px 3px 0px rgba(0,0,0,.2) inset;
+	-ms-box-shadow: 0px 0px 3px 0px rgba(0,0,0,.2) inset;
+	-moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,.2) inset;
+	-webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,.2) inset;
+	-webkit-transition: all .25s linear;
+	   -moz-transition: all .25s linear;
+	    -ms-transition: all .25s linear;
+	     -o-transition: all .25s linear;
+	        transition: all .25s linear;
+}
+.login-form .login-in:hover{
+	background: #00F7ED url(../images/login-in-bg.png) no-repeat center center;
+	-webkit-transition: all .25s linear;
+	   -moz-transition: all .25s linear;
+	    -ms-transition: all .25s linear;
+	     -o-transition: all .25s linear;
+	        transition: all .25s linear;
+}
+.loging{display:none;width:200px;height:200px;margin:0 auto;padding:0px;}

@@ -1,0 +1,70 @@
+{include file="../header_content.html"}
+
+	<link rel="stylesheet" href="{$__SYSJS__}/keywords/jquery.keywordsinput.css" />	
+	<script type="text/javascript" src="{$__SYSJS__}/keywords/jquery.keywordsinput.min.js"></script>
+	<!-- keyword列表 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}list" class="m-header-btns">{$lang['kw_list']}</a>
+				<a href="{$__CURL__}add" class="m-header-btns">{$lang['kw_add']}</a>
+				<span class="m-title">{$lang['kws_edit']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form action="" onsubmit="return false;" method="POST">
+					<table class="table table-condensed m-table">
+						{foreach key=k item=keyword from=$keywords}
+						<tr>
+							<td> 
+								<input type="hidden" name="id[]" value="{$keyword.id}" />
+								<input type="text" name="keyword_names[]" id="keyword_names" value="{$keyword.keyword_name}"> 
+							</td>
+						</tr>
+						{/foreach}
+					</table>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#submit').click(function(){
+				var ids = '';
+				var keyword_names = '';
+				 $.each($('input[name="id[]"]'), function(v){
+					ids += $(this).val() + ',';
+				})
+				 $.each($('input[name="keyword_names[]"]'), function(v){
+					keyword_names += $(this).val() + ',';
+				})
+				 var reg = /,$/gi;
+				ids = ids.replace(reg, '');
+				keyword_names = keyword_names.replace(reg, '');
+				//_Dat(ids + '<br />' + keyword_names);
+				
+				$.post(base+'/admin/keyword/edit_kws', 
+					{ id: ids, keywords: keyword_names },
+					 function(data){
+					 	if(data === 'OK') {
+							_POP({ title:'{$lang.kw_edit}',content:'{$lang.edit_success}！',icon:'success' });
+							window.location.href = base+'/admin/keyword/index';
+						}else{
+							_POP({ title:'{$lang.kw_edit}',content:'{$lang.edit_fail}！',icon:'error' });
+						}
+				});
+			});
+		});//end
+	</script>
+
+{include file="../footer.html"}

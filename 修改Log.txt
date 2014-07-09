@@ -1,0 +1,69 @@
+1、libs\core\controller.class.php on line 93 => define('CURL', $this->vars['__CURL__']);
+
+2、libs\core\controller.class.php on line 152 => if(CACHE){
+
+3、libs\url.class.php on line 30 add=>
+
+if(empty($paths) || empty($paths[0]))
+{
+	$paths[0] = $paths[1] = 'index';
+}
+
+修改为：
+if(empty($paths) || empty($paths[0]))
+{
+	$paths[0] = $paths[1] = get_cfgs('default_controller');
+}
+
+4、libs\core\mysql.class.php on line 40 注释, 在app.class.php line54 已经定义过了 
+
+5、libs\core\mysql.class.php if($options['where']){ 替换成 if(isset($options['where'])){  此处将isset改为!empty会不会更合适？
+
+6、libs\core\mysql.class.php if($options['filed']){ 替换成 if(isset($options['filed'])){  此处将isset改为!empty会不会更合适？
+mysql.class.php 还有很多类似的错误
+
+7、apps\admin\views\main\index.html on line 83 =>
+
+<div class="m-info">
+	<span>{$lang['team_copyright']}：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$lang['team_complan']}</span>
+	<span>{$lang['team_plan']}：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$lang['team_planer']}</span>
+	<span>{$lang['team_dev']}：&nbsp; {$lang['team_devlopers']}</span>
+	<span>{$lang['team_ogsite']}：<a href="{$lang['ogsite_url']}" target="_blank">{$lang['ogsite_url']}</a></span>
+	<span>{$lang['team_blog']}：<a href="{$lang['blog_url']}" target="_blank">{$lang['blog_url']}</a></span>
+</div>
+
+改为：
+
+<div class="m-info m-team">
+	<span>{$lang['team_copyright']}：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$lang.team_complan}</span>
+	<span>{$lang['team_plan']}：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$lang.team_planer}</span>
+	<span>{$lang['team_dev']}：&nbsp; {$lang.team_developers}</span>
+	<span>{$lang['team_ui']}：&nbsp; {$lang.team_planer}</span>
+	<span>{$lang['team_server']}：&nbsp; <a href="http://www.aliyun.com/" target="_blank">{$lang.team_server_aliyun}</a></span>
+	<span>{$lang['team_ogsite']}：<a href="{$lang['ogsite_url']}" target="_blank">{$lang['ogsite_url']}</a></span>
+	<span>{$lang['team_blog']}：<a href="{$lang['blog_url']}" target="_blank">{$lang['blog_url']}</a></span>
+</div>
+提示：在修改上面之前，还必须在 data\lang\cn\admin\main.lang.php中田间如下几行：
+'team' 	=> '开发团队',
+'team_copyright'=> '版权所有',
+'team_complan' 	=> '深圳市盛艺网络科技有限公司',
+'team_plan'  	=> '总策划',
+'team_planer' 	=> '罗勇（Rodey）',
+'team_dev'		=> '开发与支持团队',
+'team_developers'=> '罗勇(Rodey)、徐文湖(Kevin)',
+'team_ui' 		=> 'UI设计与支持',
+'team_server' 	=> '服务器支持',
+'team_server_aliyun' 	=> '阿里云服务器 ECS',
+'team_ogsite' 	=> '官方网站',
+'ogsite_url' 	=> 'http://www.systacm.com',
+'team_blog' 	=> '个人博客',
+'blog_url' 		=> 'http://www.roadey.com',
+
+
+8、libs\helper\pagetion_helper.php on line 2 => 此常量不对，改为：if(!defined('ACT')) die('ACT Undefined， Access Violation！'); 
+
+9、libs\helper\image_helper.php on line 2 => 此常量不对，改为：if(!defined('ACT')) die('ACT Undefined， Access Violation！');
+
+10、在index.php里加 error_reporting(1); 显示所有错误报告
+
+

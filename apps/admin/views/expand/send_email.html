@@ -1,0 +1,157 @@
+{include file="../header_content.html"}
+	<link rel="stylesheet" href="{$__SYSJS__}/jscal2/jscal2.css" />
+	<link rel="stylesheet" href="{$__SYSJS__}/jscal2/win2k.css" />
+	<script type="text/javascript" src="{$__SYSJS__}/jscal2/jscal2.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/jscal2/cn.js"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_config.js"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_all.js"></script>
+	<script type="text/javascript" src="{$__SYSJS__}/jQuery.artTxtCount.js"></script>
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}subemail" class="m-header-btns" title="{$lang['subemail_list']}">{$lang['subemail_list']}</a>
+				<span class="m-title">{$lang['subemail_push']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center" style="position:relative;">
+				<!-- 发送表单 Start -->
+				<form action="{$__CURL__}email_sending" id="send-mails-form" class="send-mails-form" method="POST" accept-charset="utf-8" style="display:block;">
+					<table>
+						<tr>
+							<td class="alignr">{$lang['subemail_addr']}：</td>
+							<td>
+								<textarea name="emails" id="emails"  placeholder="{$lang['subemail_addr_formate']}" class="span4 asms-input" style="height:150px;"></textarea>
+								<em class="explain">{$lang['subemail_addr_tips']}</em>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%" class="alignr">{$lang['subemail_title']}：</td>
+							<td>
+								<input type="text" name="etitle" id="etitle" class="span6 m-input-title"/>
+								<span id="etitle-tips"></span>
+								<em class="explain">{$lang['subemail_title_tips']}</em>
+							</td>
+						</tr>
+						<tr>
+							<td class="alignr">{$lang['subemail_content']}：</td>
+							<td>
+								<textarea name="econtent" id="econtent"></textarea>
+								<em class="explain">{$lang['subemail_content_tips']}</em>
+								<script type="text/javascript">
+									var editor = new UE.ui.Editor();
+									editor.render("econtent");
+								</script>
+							</td>
+						</tr>
+						<tr>
+							<td class="alignr">{$lang['subemail_sendtime']}：</td>
+							<td>
+								<div class="time-div">
+								    <input class="span3" name="send_time" value="{$smarty.now|date_format:'%Y-%m-%d %H:%M:%S'}" id="send_time" type="text" class="select-tile span4 asms-input" />
+								    <label id="start_time_l" class="m-mini-btn m-mini-time"></label>
+									<em class="explain">{$lang['subemail_sendtime_tips']}</em>
+								</div>
+								{literal}
+								<script type="text/javascript">
+									Calendar.setup({ 
+										trigger: 'start_time_l',
+										inputField : "send_time",
+										dateFormat: "%Y-%m-%d %H:%M:%S",
+										showTime: true,
+										weekNumbers: true 
+									});
+								</script>
+								{/literal}
+							</td>
+						</tr>
+					</table>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+				<!-- 发送表单 End -->
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+		<!-- 邮件列表 Start -->
+		<div class="subemails-list-con">
+			<h2 class="subemails-list-title">邮件列表</h2>
+			<ul class="subemails-list-ul">
+				{if is_array($subemails)}
+					{foreach item=subemail from=$subemails}
+					<li><a href="javascript:_SELECT_EMAIL('{$subemail.email}');void(0);">{$subemail.email} ({$subemail.name})</a></li>
+					{/foreach}
+				{else}
+					{$subemails}
+				{/if}
+				<!-- <li><a href="javascript:_SELECT_EMAIL('admin@systacm.com');void(0);">admin@systacm.com</a></li>
+				<li><a href="javascript:_SELECT_EMAIL('info@systacm.com');void(0);">info@systacm.com</a></li>
+				<li><a href="javascript:_SELECT_EMAIL('rodey@systacm.com');void(0);">rodey@systacm.com</a></li>
+				<li><a href="javascript:_SELECT_EMAIL('rodeyluo@gmail.com');void(0);">rodeyluo@gmail.com</a></li>
+				<li><a href="javascript:_SELECT_EMAIL('453474593@qq.com');void(0);">453474593@qq.com</a></li>
+				<li><a href="javascript:_SELECT_EMAIL('luoyong19871112@163.com');void(0);">luoyong19871112@163.com</a></li> -->
+			</ul>
+			<a href="javascript:void(0);" class="subemails-list-open-btn">打开邮件列表</a>
+		</div>
+		<!-- 邮件列表 End -->
+		<div class="scroll_loading_item">
+			<embed class="embed" src="{$__AIMAGES__}/send_loading.swf" type="application/x-shockwave-flash" width="200" height="100" wmode="transparent"></embed>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//页面操作
+			var flag = true;
+			$('.subemails-list-open-btn').bind('click dbclick', function(){
+				if(flag){
+					$('.subemails-list-con').stop().animate({ right: 0 });
+					flag = false;
+				}else{
+					$('.subemails-list-con').stop().animate({ right: -298 });
+					flag = true;
+				}
+			});
+			
+			$('#etitle').artTxtCount($('#etitle-tips'), 200);
+			//提交
+			$('#emails').live('focusin focusout', function(){ tips('#emails'); });
+			$('#etitle').live('focusin focusout', function(){ tips('#etitle'); });
+			$('#econtent').live('focusin focusout', function(){ tips('#econtent'); });
+			$('#send-mails-form').submit(function(){
+				editor.sync();
+				if($('#emails').val() == '') { return tips_error($('#emails')); }
+				if($('#etitle').val() == '') { return tips_error($('#etitle')); }
+				if($('#econtent').val() == '') { return tips_error($('#econtent')); }
+				$('.scroll_loading_item').show();
+				$(this).ajaxSubmit({
+					success: function(data){
+						if(data){
+							_POP({ title: '{$lang.subemail_push}', width: 400, content: data, icon: 'success', time: 10 });
+						}
+						$('.scroll_loading_item').hide();
+					}
+				}); 
+				return false;
+			});
+			
+		});//end
+		function _SELECT_EMAIL(email){
+			 var emails = $('#emails').val();
+			 if(emails == '' || emails.length == 0){
+			 	$('#emails').val(email);
+			 }else{
+			 	if(isEmail(email)){
+			 		$('#emails').val(emails + ",\n" + email);
+			 	}else{
+			 		_Dat('不是有效的邮箱地址！');
+			 	}
+			 }
+		}
+	</script>
+{include file="../footer.html"}

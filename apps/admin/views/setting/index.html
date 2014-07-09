@@ -1,0 +1,559 @@
+{include file="../header_content.html"}
+	
+	<link rel="stylesheet" href="{$__SYSJS__}/formValidator/roadey.css" />
+	<script src="{$__SYSJS__}/formValidator/formValidator.min.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		
+	});//end ready
+	</script>
+	<!-- 添加用户 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-center">
+				<form id="config_form" action="{$__CURL__}mod_set" method="POST">
+					<div class="m-header-tab-btns tab-btns-mini">
+						<a class="m-mini-btn m-header-tab m-tab-mini m-tab-on" ref="m-tab-con1">{$lang.site_set}</a>
+						<a class="m-mini-btn m-header-tab m-tab-mini" ref="m-tab-con2">{$lang.masker_set}</a>
+						<a class="m-mini-btn m-header-tab m-tab-mini" ref="m-tab-con3">{$lang.attachment_set}</a>
+						<a class="m-mini-btn m-header-tab m-tab-mini" ref="m-tab-con4">{$lang.email_set}</a>
+						<a class="m-mini-btn m-header-tab m-tab-mini" ref="m-tab-con5">{$lang.phone_set}</a>
+						<a class="m-mini-btn m-header-tab m-tab-mini" ref="m-tab-con6">{$lang.user_set}</a>
+						<a class="m-mini-btn m-header-tab m-tab-mini" ref="m-tab-con7">{$lang.map_set}</a>
+						<a class="m-mini-btn m-header-tab m-tab-mini" ref="m-tab-con8">{$lang.safe_set}</a>
+						<a class="m-mini-btn m-header-tab m-tab-mini create-set" ref="m-tab-con9">{$lang.create_set}</a>
+					</div>
+					<div class="m-tab-list">
+						<table class="table m-table m-tab-cons" id="m-tab-con1">
+							<tr class="m-table-theader">
+								<th>{$lang['var_info']}</th>
+								<th>{$lang['var_value']}</th>
+								<th>{$lang['var_name']}</th>
+								<th>{$lang['var_type']}</th>
+								<th>{$lang['var_group_type']}</th>
+								<th>{$lang['handle']}</th>
+							</tr>
+							{if is_array($bases)}
+							{foreach item=base from=$bases}
+							<tr>
+								<td class="alignr" style="padding-right:10px;">{$base.var_info}：</td>
+								<td>
+									<input type="hidden" name="ids[]" value="{$base.id}">
+									{if $base.var_type=='int'}
+									<input type="text" name="mod__{$base.var_name}" id="{$base.var_name}" value="{$base.var_value}" class="span3"/>
+									{elseif $base.var_type=='string'}
+									<input type="text" name="mod__{$base.var_name}" id="{$base.var_name}" value="{$base.var_value}" class="span6"/>
+									{elseif $base.var_type==bigstring}
+									<textarea name="mod__{$base.var_name}" rows="3" class="span6">{$base.var_value}</textarea>
+									{elseif $base.var_type==bool}
+										{if $base.var_value==1}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$base.var_name}" value="1" checked />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$base.var_name}" value="0" />{$lang.close}</label>
+										{else}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$base.var_name}" value="1" />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$base.var_name}" value="0" checked />{$lang.close}</label>
+										{/if}
+									{/if}
+									<em class="explain">{if $base.var_rmark}{$base.var_rmark}{/if}</em>
+								</td>
+								<td>{$base.var_name}</td>
+								<td>[ {$base.var_type} ]</td>
+								<td>
+									{if $base.group_type == 0}{$lang['sys_var']}{else}{$lang['custom_var']}{/if}
+								</td>
+								<td>
+									{if $base.group_type == 0}
+									<a href="javascript:void(0);"  class="m-mini-btn m-mini-nodel" title="{$lang['delete_no']}">{$lang['delete_no']}</a>
+									{else}
+									<a href="javascript:_D('{$base.id}', '{$__CURL__}del_var');void(0);"  class="m-mini-btn m-mini-del" data-id="{$base.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+									{/if}
+								</td>
+							</tr>
+							{/foreach}
+							{/if}
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con2">
+							<tr class="m-table-theader">
+								<th>{$lang.var_info}</th>
+								<th>{$lang.var_value}</th>
+								<th>{$lang.var_name}</th>
+								<th>{$lang.var_type}</th>
+								<th>{$lang['var_group_type']}</th>
+								<th>{$lang['handle']}</th>
+							</tr>
+							{if is_array($waters)}
+							{foreach item=water from=$waters}
+							<tr>
+								<td class="alignr" style="padding-right:10px;">{$water.var_info}：</td>
+								<td>
+									<input type="hidden" name="ids[]" value="{$water.id}">
+									{if $water.var_type=='int'}
+									<input type="text" name="mod__{$water.var_name}" id="{$water.var_name}" value="{$water.var_value}" class="span3"/>
+									{elseif $water.var_type=='string'}
+										{if $water.var_name == 'water_masker_path'}
+											<input type="text" name="mod__{$water.var_name}" id="{$water.var_name}" value="{$water.var_value}" class="span6"/>
+											<img src="{$water.var_value}" />
+										{else}
+											<input type="text" name="mod__{$water.var_name}" id="{$water.var_name}" value="{$water.var_value}" class="span6"/>
+										{/if}
+									{elseif $water.var_type==bigstring}
+									<textarea name="mod__{$water.var_name}" rows="3" class="span6">{$water.var_value}</textarea>
+									{elseif $water.var_type==bool}
+										{if $water.var_value==1}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$water.var_name}" value="1" checked />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$water.var_name}" value="0" />{$lang.close}</label>
+										{else}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$water.var_name}" value="1" />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$water.var_name}" value="0" checked />{$lang.close}</label>
+										{/if}
+									{/if}
+									<em class="explain">{if $water.var_rmark}{$water.var_rmark}{/if}</em>
+								</td>
+								<td>{$water.var_name}</td>
+								<td>[ {$water.var_type} ]</td>
+								<td>
+									{if $water.group_type == 0}{$lang['sys_var']}{else}{$lang['custom_var']}{/if}
+								</td>
+								<td>
+									{if $water.group_type == 0}
+									<a href="javascript:void(0);"  class="m-mini-btn m-mini-nodel" title="{$lang['delete_no']}">{$lang['delete_no']}</a>
+									{else}
+									<a href="javascript:_D('{$water.id}', '{$__CURL__}del_var');void(0);"  class="m-mini-btn m-mini-del" data-id="{$water.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+									{/if}
+								</td>
+							</tr>
+							{/foreach}
+							{/if}
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con3">
+							<tr class="m-table-theader">
+								<th>{$lang.var_info}</th>
+								<th>{$lang.var_value}</th>
+								<th>{$lang.var_name}</th>
+								<th>{$lang.var_type}</th>
+								<th>{$lang['var_group_type']}</th>
+								<th>{$lang['handle']}</th>
+							</tr>
+							{if is_array($attacs)}
+							{foreach item=attac from=$attacs}
+							<tr>
+								<td class="alignr" style="padding-right:10px;">{$attac.var_info}：</td>
+								<td>
+									<input type="hidden" name="ids[]" value="{$attac.id}">
+									{if $attac.var_type=='int'}
+									<input type="text" name="mod__{$attac.var_name}" id="{$attac.var_name}" value="{$attac.var_value}" class="span3"/>
+									{elseif $attac.var_type=='string'}
+									<input type="text" name="mod__{$attac.var_name}" id="{$attac.var_name}" value="{$attac.var_value}" class="span6"/>
+									{elseif $attac.var_type==bigstring}
+									<textarea name="mod__{$attac.var_name}" rows="3" class="span6">{$attac.var_value}</textarea>
+									{elseif $attac.var_type==bool}
+										{if $attac.var_value==1}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$attac.var_name}" value="1" checked />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$attac.var_name}" value="0" />{$lang.close}</label>
+										{else}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$attac.var_name}" value="1" />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$attac.var_name}" value="0" checked />{$lang.close}</label>
+										{/if}
+									{/if}
+									<em class="explain">{if $attac.var_rmark}{$attac.var_rmark}{/if}</em>
+								</td>
+								<td>{$attac.var_name}</td>
+								<td>[ {$attac.var_type} ]</td>
+								<td>
+									{if $attac.group_type == 0}{$lang['sys_var']}{else}{$lang['custom_var']}{/if}
+								</td>
+								<td>
+									{if $attac.group_type == 0}
+									<a href="javascript:void(0);"  class="m-mini-btn m-mini-nodel" title="{$lang['delete_no']}">{$lang['delete_no']}</a>
+									{else}
+									<a href="javascript:_D('{$attac.id}', '{$__CURL__}del_var');void(0);"  class="m-mini-btn m-mini-del" data-id="{$attac.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+									{/if}
+								</td>
+							</tr>
+							{/foreach}
+							{/if}
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con4">
+							<tr class="m-table-theader">
+								<th>{$lang.var_info}</th>
+								<th>{$lang.var_value}</th>
+								<th>{$lang.var_name}</th>
+								<th>{$lang.var_type}</th>
+								<th>{$lang['var_group_type']}</th>
+								<th>{$lang['handle']}</th>
+							</tr>
+							{if is_array($emails)}
+							{foreach item=email from=$emails}
+							<tr>
+								<td class="alignr" style="padding-right:10px;">{$email.var_info}：</td>
+								<td>
+									<input type="hidden" name="ids[]" value="{$email.id}">
+									{if $email.var_type=='int'}
+									<input type="text" name="mod__{$email.var_name}" id="{$email.var_name}" value="{$email.var_value}" class="span3"/>
+									{elseif $email.var_type=='string'}
+									<input type="text" name="mod__{$email.var_name}" id="{$email.var_name}" value="{$email.var_value}" class="span6"/>
+									{elseif $email.var_type==bigstring}
+									<textarea name="mod__{$email.var_name}" rows="3" class="span6">{$email.var_value}</textarea>
+									{elseif $email.var_type==bool}
+										{if $email.var_value==1}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$email.var_name}" value="1" checked />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$email.var_name}" value="0" />{$lang.close}</label>
+										{else}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$email.var_name}" value="1" />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$email.var_name}" value="0" checked />{$lang.close}</label>
+										{/if}
+									{/if}
+									<em class="explain">{if $email.var_rmark}{$email.var_rmark}{/if}</em>
+								</td>
+								<td>{$email.var_name}</td>
+								<td>[ {$email.var_type} ]</td>
+								<td>
+									{if $email.group_type == 0}{$lang['sys_var']}{else}{$lang['custom_var']}{/if}
+								</td>
+								<td>
+									{if $email.group_type == 0}
+									<a href="javascript:void(0);"  class="m-mini-btn m-mini-nodel" title="{$lang['delete_no']}">{$lang['delete_no']}</a>
+									{else}
+									<a href="javascript:_D('{$email.id}', '{$__CURL__}del_var');void(0);"  class="m-mini-btn m-mini-del" data-id="{$email.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+									{/if}
+								</td>
+							</tr>
+							{/foreach}
+							{/if}
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con6">
+							<tr class="m-table-theader">
+								<th>{$lang.var_info}</th>
+								<th>{$lang.var_value}</th>
+								<th>{$lang.var_name}</th>
+								<th>{$lang.var_type}</th>
+								<th>{$lang['var_group_type']}</th>
+								<th>{$lang['handle']}</th>
+							</tr>
+							{if is_array($mbs)}
+							{foreach item=mb from=$mbs}
+							<tr>
+								<td class="alignr" style="padding-right:10px;">{$mb.var_info}：</td>
+								<td>
+									<input type="hidden" name="ids[]" value="{$mb.id}">
+									{if $mb.var_type=='int'}
+									<input type="text" name="mod__{$mb.var_name}" id="{$mb.var_name}" value="{$mb.var_value}" class="span3"/>
+									{elseif $mb.var_type=='string'}
+									<input type="text" name="mod__{$mb.var_name}" id="{$mb.var_name}" value="{$mb.var_value}" class="span6"/>
+									{elseif $mb.var_type==bigstring}
+									<textarea name="mod__{$mb.var_name}" rows="3" class="span6">{$mb.var_value}</textarea>
+									{elseif $mb.var_type==bool}
+										{if $mb.var_value==1}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$mb.var_name}" value="1" checked />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$mb.var_name}" value="0" />{$lang.close}</label>
+										{else}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$mb.var_name}" value="1" />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$mb.var_name}" value="0" checked />{$lang.close}</label>
+										{/if}
+									{/if}
+									<em class="explain">{if $mb.var_rmark}{$mb.var_rmark}{/if}</em>
+								</td>
+								<td>{$mb.var_name}</td>
+								<td>[ {$mb.var_type} ]</td>
+								<td>
+									{if $mb.group_type == 0}{$lang['sys_var']}{else}{$lang['custom_var']}{/if}
+								</td>
+								<td>
+									{if $mb.group_type == 0}
+									<a href="javascript:void(0);"  class="m-mini-btn m-mini-nodel" title="{$lang['delete_no']}">{$lang['delete_no']}</a>
+									{else}
+									<a href="javascript:_D('{$mb.id}', '{$__CURL__}del_var');void(0);"  class="m-mini-btn m-mini-del" data-id="{$mb.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+									{/if}
+								</td>
+							</tr>
+							{/foreach}
+							{/if}
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con7">
+							<tr class="m-table-theader">
+								<th>{$lang.var_info}</th>
+								<th>{$lang.var_value}</th>
+								<th>{$lang.var_name}</th>
+								<th>{$lang.var_type}</th>
+								<th>{$lang['var_group_type']}</th>
+								<th>{$lang['handle']}</th>
+							</tr>
+							{if is_array($maps)}
+							{foreach item=map from=$maps}
+							<tr>
+								<td class="alignr" style="padding-right:10px;">{$map.var_info}：</td>
+								<td>
+									<input type="hidden" name="ids[]" value="{$map.id}">
+									{if $map.var_type=='int'}
+									<input type="text" name="mod__{$map.var_name}" id="{$map.var_name}" value="{$map.var_value}" class="span3"/>
+									{elseif $map.var_type=='string'}
+									<input type="text" name="mod__{$map.var_name}" id="{$map.var_name}" value="{$map.var_value}" class="span6"/>
+									{elseif $map.var_type==bigstring}
+									<textarea name="mod__{$map.var_name}" rows="3" class="span6">{$map.var_value}</textarea>
+									{elseif $map.var_type==bool}
+										{if $map.var_value==1}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$map.var_name}" value="1" checked />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$map.var_name}" value="0" />{$lang.close}</label>
+										{else}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$map.var_name}" value="1" />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$map.var_name}" value="0" checked />{$lang.close}</label>
+										{/if}
+									{/if}
+									<em class="explain">{if $map.var_rmark}{$map.var_rmark}{/if}</em>
+								</td>
+								<td>{$map.var_name}</td>
+								<td>{$map.var_type}</td>
+								<td>
+									{if $map.group_type == 0}{$lang['sys_var']}{else}{$lang['custom_var']}{/if}
+								</td>
+								<td>
+									{if $map.group_type == 0}
+									<a href="javascript:void(0);"  class="m-mini-btn m-mini-nodel" title="{$lang['delete_no']}">{$lang['delete_no']}</a>
+									{else}
+									<a href="javascript:_D('{$map.id}', '{$__CURL__}del_var');void(0);"  class="m-mini-btn m-mini-del" data-id="{$map.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+									{/if}
+								</td>
+							</tr>
+							{/foreach}
+							{/if}
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con8">
+							<tr class="m-table-theader">
+								<th>{$lang.var_info}</th>
+								<th>{$lang.var_value}</th>
+								<th>{$lang.var_name}</th>
+								<th>{$lang.var_type}</th>
+								<th>{$lang['var_group_type']}</th>
+								<th>{$lang['handle']}</th>
+							</tr>
+							{if is_array($safes)}
+							{foreach item=safe from=$safes}
+							<tr>
+								<td class="alignr" style="padding-right:10px;">{$safe.var_info}：</td>
+								<td>
+									<input type="hidden" name="ids[]" value="{$safe.id}">
+									{if $safe.var_type=='int'}
+									<input type="text" name="mod__{$safe.var_name}" id="{$safe.var_name}" value="{$safe.var_value}" class="span3"/>
+									{elseif $safe.var_type=='string'}
+									<input type="text" name="mod__{$safe.var_name}" id="{$safe.var_name}" value="{$safe.var_value}" class="span6"/>
+									{elseif $safe.var_type==bigstring}
+									<textarea name="mod__{$safe.var_name}" rows="3" class="span6">{$safe.var_value}</textarea>
+									{elseif $safe.var_type==bool}
+										{if $safe.var_value==1}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$safe.var_name}" value="1" checked />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$safe.var_name}" value="0" />{$lang.close}</label>
+										{else}
+										<label style="padding-right:30px;"><input type="radio" name="mod__{$safe.var_name}" value="1" />{$lang.open}</label>
+										<label><input type="radio" name="mod__{$safe.var_name}" value="0" checked />{$lang.close}</label>
+										{/if}
+									{/if}
+									<em class="explain">{if $safe.var_rmark}{$safe.var_rmark}{/if}</em>
+								</td>
+								<td>{$safe.var_name}</td>
+								<td>[ {$safe.var_type} ]</td>
+								<td>
+									{if $safe.group_type == 0}{$lang['sys_var']}{else}{$lang['custom_var']}{/if}
+								</td>
+								<td>
+									{if $safe.group_type == 0}
+									<a href="javascript:void(0);"  class="m-mini-btn m-mini-nodel" title="{$lang['delete_no']}">{$lang['delete_no']}</a>
+									{else}
+									<a href="javascript:_D('{$safe.id}', '{$__CURL__}del_var');void(0);"  class="m-mini-btn m-mini-del" data-id="{$safe.id}" title="{$lang['delete']}">{$lang['delete']}</a>
+									{/if}
+								</td>
+							</tr>
+							{/foreach}
+							{/if}
+						</table>
+						
+					</div>
+					<div class="m-input-div form-btns">
+						<input type="submit" name="mod__submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+						<a href="javascript: _BUILD_CONFIG('{$__CURL__}build_config');void(0);" class="m-input-btns">{$lang.build_config}</a>
+					</div>
+				</form>
+				<form id="create-form" action="{$__CURL__}create_set" method="POST" accept-charset="utf-8">
+					<table class="table m-table m-tab-cons" id="m-tab-con9">
+							<tr>
+								<td class="alignr">{$lang.var_type}：</td>
+								<td>
+									<label style="padding-right:30px;"><input type="radio" name="var_type" class="string" value="string" checked />{$lang.string}</label>
+									<label style="padding-right:30px;"><input type="radio" name="var_type" class="bigstring" value="bigstring" />{$lang.bigstring}</label>
+									<label style="padding-right:30px;"><input type="radio" name="var_type" class="bool" value="bool" />{$lang.bool}</label>
+									<label style="padding-right:30px;"><input type="radio" name="var_type" class="int" value="int" />{$lang.int}</label>
+									<em class="explain">{$lang.var_type_isnotnull}</em>
+								</td>	
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.var_name}：</td>
+								<td><input type="text" name="var_name" id="var_name" value="" class="span2" /><em class="explain">{$lang.var_name_isnotnull}</em></td>	
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.var_value}：</td>
+								<td>
+									<div class="var_value_div" style="float:left;">
+										<input type="text" name="var_value" id="var_value" value="" class="span4" />
+										<em class="explain">{$lang.var_value_isnotnull}</em>
+									</div>
+								</td>	
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.var_info}：</td>
+								<td><input type="text" name="var_info" id="var_info" value="" class="span6 title" /><em class="explain">{$lang.var_info_isnotnull}</em></td>	
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.var_rmark}：</td>
+								<td><input type="text" name="var_rmark" id="var_rmark" value="" class="span6 title" /><em class="explain">{$lang.var_rmark_isnull}</em></td>	
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.var_group}：</td>
+								<td>
+									<select name="group_id" class="span2">
+										<option value="1">{$lang.site_set}</option>
+										<option value="2">{$lang.masker_set}</option>
+										<option value="3">{$lang.attachment_set}</option>
+										<option value="4">{$lang.email_set}</option>
+										<option value="5">{$lang.phone_set}</option>
+										<option value="6">{$lang.user_set}</option>
+										<option value="7">{$lang.map_set}</option>
+										<option value="8">{$lang.safe_set}</option>
+									</select>
+									<em class="explain">{$lang.var_group_isnotnull}</em>
+								</td>	
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.save_notice}：</td>
+								<td><em class="explain em-warn">{$lang.save_rmark}</em></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div class="m-input-div">
+										<input type="submit" name="submit" value="{$lang.save_var}" id="submit" class="m-input-btns" />
+										<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+										<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+									</div>
+								</td>
+							</tr>
+						</table>
+				</form>
+			</div>
+			<div class="clear"></div>
+			<div class="types_div_con" style="display:none;">
+				<div class="types-div">
+					<div class="string_div">
+						<input type="text" name="var_value" id="var_value" value="" class="span4" placeholder="value"/>
+						<em class="explain">{$lang.var_value_string}</em>
+					</div>
+					<div class="bigstring_div">
+						<textarea name="var_value" id="var_value" rows="5" class="span6" placeholder="value"></textarea>
+						<em class="explain">{$lang.var_value_bigstring}</em>
+					</div>
+					<div class="bool_div">
+						<input type="radio" name="var_value" id="var_value" value="1"/>{$lang.var_value_true}&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="var_value" id="var_value" value="0"/>{$lang.var_value_false}
+						<em class="explain">{$lang.var_value_bool}</em>
+					</div>
+					<div class="int_div">
+						<input type="number" name="var_value" id="var_value" value="" class="span4" placeholder="0" />
+						<em class="explain">{$lang.var_value_int}</em>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var types_div;
+		$(document).ready(function(){
+			types_div = $('.types_div_con').html();
+			$('.types_div_con').empty();
+			//add field
+			$('input[name="var_type"]').click(function(){
+				if($(this).hasClass('string')){
+					$('.var_value_div').html($(types_div).find('.string_div').html());
+				}else if($(this).hasClass('bigstring')){
+					$('.var_value_div').html($(types_div).find('.bigstring_div').html());
+				}else if($(this).hasClass('bool')){
+					$('.var_value_div').html($(types_div).find('.bool_div').html());
+				}else if($(this).hasClass('int')){
+					$('.var_value_div').html($(types_div).find('.int_div').html());
+				}
+			});
+
+			$('.m-tab-mini').click(function(){
+				if($(this).hasClass('create-set'))
+					$('.form-btns').hide();
+				else
+					$('.form-btns').show();
+			});
+			//Create
+			$('#var_name').live('focusin focusout', function(){ 
+				tips_check('#var_name','{$__CURL__}check_var','{$lang.var_name_isnotnull}','{$lang.var_name_bein}','{$lang.var_name_beun}');
+			});
+			$('#var_info').live('focusin focusout', function(){ tips('#var_info'); });
+			$('#var_value').live('focusin focusout', function(){ tips_success('#var_value'); });
+			$('#var_rmark').live('focusin focusout', function(){ tips_success('#var_rmark'); });
+			$('#var_type').live('focusin focusout', function(){ tips('#var_type'); });
+			$('#group_id').live('focusin focusout', function(){ tips('#group_id'); });
+
+
+			$('#create-form').submit(function(){
+				if($('#var_name').val() == ''){ return tips_error('#var_name'); }
+				{literal}
+				if(!/^[a-zA-Z0-9_]{1,}$/.test($('#var_name').val())) { return tips_error('#var_name'); }
+				{/literal}
+				if($('#var_value').val() == ''){ return tips_error('#var_value'); }
+				if($('#var_info').val() == ''){ return tips_error('#var_info'); }
+				if($('#var_type').val() == ''){ return tips_error('#var_type'); }
+				if($('#group_id').val() == ''){ return tips_error('#group_id'); }
+				$(this).ajaxSubmit({
+					success: function(data){
+						if(data === 'OK'){
+							_POP({ title: '{$lang.save_var}', content: '{$lang.save_var}{$lang.success}', icon: 'success' });
+							window.location.href="{$__CURL__}index";
+						}else{
+							_POP({ title: '{$lang.save_var}', content: '{$lang.save_var}{$lang.fail}', icon: 'error' });
+						}
+					}
+				}); 
+				return false;
+			});
+			//mod
+			$('#config_form').submit(function(){
+				$(this).ajaxSubmit({
+					success: function(data){
+						if(data === 'OK'){
+							_POP({ title: '{$lang.save_var}', content: '{$lang.save_var}{$lang.success}', icon: 'success' });
+							window.location.href="{$__CURL__}index";
+						}else{
+							_POP({ title: '{$lang.save_var}', content: '{$lang.save_var}{$lang.fail}', icon: 'error' });
+						}
+					}
+				});
+				return false;
+			});
+		});//end ready
+		function _BUILD_CONFIG(url){
+			art.dialog.confirm('{$lang.build_config_tips}', function(){
+				art.dialog.prompt('输入您要生成的文件名，必须以(_config.php)结尾！建议为：sys_config.php', function(data){
+					if(data == '_config.php' || data == ''){
+						_Dat('生成配置文件名不能为空，建议为sys_config.php');
+						return;
+					}
+					$.post(url, { filename:data }, function(data){
+						if(data === 'OK')
+							_POP({ title:'{$lang.build_config}',content:'{$lang.build_config}{$lang.success}！',icon:'success' });
+						else 
+							_POP({ title:'{$lang.build_config}',content:'{$lang.build_config}{$lang.fail}！',icon:'error' });
+					});
+				}, 'sys_config.php');
+			}, function(){
+				this.close();
+			});
+		}
+	</script>
+
+{include file="../footer.html"}

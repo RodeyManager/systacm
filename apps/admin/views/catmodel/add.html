@@ -1,0 +1,114 @@
+{include file="../header_content.html"}
+	
+	<link rel="stylesheet" href="{$__SYSJS__}/formValidator/roadey.css" />
+	<script src="{$__SYSJS__}/formValidator/formValidator.min.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_config.js"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_all.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.formValidator.initConfig({ autotip:true, formid:"user_form", submitOnce:true, onerror:function(msg){ art.dialog.alert(msg);} });
+		
+	});
+	</script>
+	<!-- 添加用户 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['catm_list']}</a>
+				<span class="m-title">{$lang['add_catm']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="catmodel-form" action="{$__CURL__}create" method="POST">
+					<div class="m-header-tab-btns">
+						<a class="m-mini-btn m-header-tab m-tab-on" ref="m-tab-con1">{$lang.base_info}</a>
+						<a class="m-mini-btn m-header-tab" ref="m-tab-con2">{$lang.template_info}</a>
+					</div>
+					<div class="m-tab-list">
+						<table class="table m-table m-tab-cons" id="m-tab-con1">
+							<tr>
+								<td width="10%">{$lang.catm_name}：</td>
+								<td><input type="text" name="name" id="name"  class="span4"/></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.catm_mtable}：</td>
+								<td><input type="text" name="mtable" id="mtable"  class="span4"/></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.catm_mintro}：</td>
+								<td><textarea name="mintro" id="mintro" class="span6 m-textarea" style="height:80px;"></textarea></td>
+							</tr>
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con2">
+							<tr>
+								<td width="10%">{$lang.catm_template}：</td>
+								<td>
+									<select name="type_id" class="span4" >
+										<option value="0">{$lang.please_select}</option>}
+										{if $types}
+										{foreach from=$types item=type key=k}
+										<option value="{$k}">--> {$type}</option>
+										{/foreach}
+										{/if}
+									</select>
+								</td>
+							<tr>
+							</tr>
+								<td width="10%">{$lang.catm_list_template}：</td>
+								<td>
+									<select name="type_id" class="span4" >
+										<option value="0">{$lang.please_select}</option>}
+										{if $types}
+										{foreach from=$types item=type key=k}
+										<option value="{$k}">--> {$type}</option>
+										{/foreach}
+										{/if}
+									</select>
+								</td>
+							<tr>
+							</tr>
+								<td width="10%">{$lang.catm_show_template}：</td>
+								<td>
+									<select name="type_id" class="span4" >
+										<option value="0">{$lang.please_select}</option>}
+										{if $types}
+										{foreach from=$types item=type key=k}
+										<option value="{$k}">--> {$type}</option>
+										{/foreach}
+										{/if}
+									</select>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$('#catmodel-form').ajaxForm({
+				success: function(data){
+					if(data === 'OK'){
+						_POP({ title: '{$lang.add_catm}', content: '{$lang.add}{$lang.success}', icon: 'success' });
+						window.location.href="{$__CURL__}index";
+					}else{
+						_POP({ title: '{$lang.add_catm}', content: '{$lang.add}{$lang.fail}', icon: 'error' });
+					}
+				}
+			});
+			
+		});//end ready.
+	</script>
+
+{include file="../footer.html"}

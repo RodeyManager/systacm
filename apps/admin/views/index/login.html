@@ -1,0 +1,107 @@
+{include file="../header_login.html"}
+
+
+	<div class="login-main">
+		<div class="login-con">
+			<div class="login-headport"></div>
+			<span class="login-title">盛艺SYSTacm应用内容管理系统</span>
+			<span class="login-title2"><a href="http://www.systacm.com/default/index/about" target="_blank">关于盛艺</a></span>
+			<p class="flash_login">登录失败,用户名或密码错误,请重新输入!</p>
+			<p class="login-title3">建议使用<a href="http://www.google.cn/intl/zh-CN/chrome/" target="_blank">谷歌</a>或者<a href="http://chrome.360.cn/" target="_blank">360极速浏览器提速</a></p>
+			<div class="login-time">
+				<embed src="{$__AIMAGES__}/login-time.swf" width="90" height="30" type="application/x-shockwave-flash"></embed>
+			</div>
+			<div class="login-form-con">
+				<form id="login-form" action="{$__CURL__}login_in" method="POST" class="login-form">
+					<input type="hidden" name="token" value="{$__TOKEN__}" />
+					<p class="login-piv">
+						<label for="uname" title="请输入用户名"><i class="lab-username icon-user"></i><input type="text" name="uname" id="uname" /></label>
+					</p>
+					<p class="login-piv">
+						<label for="upass" title="请输入密码"><i class="lab-password icon-lock"></i><input type="password" name="upass" id="upass" /></label>
+					</p>
+					<p class="login-piv">
+						<label title="请输入验证码"><i class="lab-code icon-qrcode"></i><input type="text" name="code" id="code" value="" /></label>
+						<img id="code-img" src="{$__CURL__}code" onclick="javascript:this.src='{$__CURL__}code?tm='+Math.random();" style="display:block;cursor:pointer;"/>
+					</p>
+					<input type="submit" value="登录" name="login_in" class="login-in" />
+				</form>
+			</div>
+		</div>
+		<div class="loging">
+			<embed src="{$__AIMAGES__}/loging.swf" type="application/x-shockwave-flash" width="200" height="200" wmode="transparent"></embed>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+    $(document).ready(function(){
+    	$('.login-main').css({ 
+    		left: ($(window).width() - $('.login-main').width()) / 2,
+    		top:  ($(window).height() - $('.login-main').height()) / 2
+    	})
+    	$(window).resize(function(event) {
+    		$('.login-main').css({ 
+	    		left: ($(window).width() - $('.login-main').width()) / 2,
+	    		top:  ($(window).height() - $('.login-main').height()) / 2
+	    	})
+    	});
+    	$('#login-form').submit(function(){	
+			$(this).ajaxSubmit({
+				beforeSubmit: function(){
+					if($('#uname').val() == ''){ 
+						$('#uname').css('border','solid 1px red');return false;
+					}else{
+						$('#uname').css('border','solid 1px white');
+					}
+					if($('#upass').val() == ''){ 
+						$('#upass').css('border','solid 1px red');return false;
+					}else{
+						$('#upass').css('border','solid 1px white');
+					}
+					if($('#code').val() == ''){ 
+						$('#code').css('border','solid 1px red');return false;
+					}else{
+						$('#code').css('border','solid 1px white');
+					}
+					$('.login-con').hide();
+					$('.loging').show();
+				},
+				success: function(data){
+					if(data === 'OK'){
+						window.location.href="{$__CURL__}index";
+					}else if(data === 'ULOGIN'){
+						UT('登录失败，非法登录！');
+					}else if(data === 'UNAMENO'){
+						UT('登录失败，用户名不能为空，请输入用户名！');
+					}else if(data === 'UPASSNO'){
+						UT('登录失败，密码不能为空，请输入登录密码！');
+					}else if(data === 'CODENO'){
+						UT('登录失败，验证码不能为空，请输入验证码！');
+					}else if(data === 'CODE=NO'){
+						UT('登录失败，验证码不正确，请重新输入验证码！');
+					}else if(data === 'UNO'){
+						UT('登录失败，用户名或者密码错误，请重新输入！');
+					}else{
+						UT('登录失败,用户名或者密码错误,请重新输入!');
+					}
+				},
+				error: function(){
+					UT('登录失败,系统错误,请联系系统管理员!');
+					$('.login-con').show();
+					$('.loging').hide();
+				}
+			}); 
+			return false;
+		});
+
+
+    }); // end ready
+
+	function UT(text){
+		$('.flash_login').html(text).fadeIn();
+		$('.login-con').show();
+		$('.loging').hide();
+	}
+	</script>
+
+{include file="../footer.html"}

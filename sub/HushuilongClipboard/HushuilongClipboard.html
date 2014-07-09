@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+	<head>
+		<title>HushuilongClipboard test</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css" media="screen">
+		html, body { height:100%; background-color: #ffffff;}
+		body { margin:0; padding:0; overflow:hidden; }
+		#flashContent { width:100%; height:100%; }
+		</style>
+	<script src='HushuilongClipboard.js'></script>
+	</head>
+	<body>
+		<div style='border:1px solid red;margin:100px;width:200px;height:200px;' id='flash_content_outer'>
+			<div style='border:1px solid green;margin:100px;width:100px;height:100px;' id='flash_content_inner'>
+				<span id='flash_content'></span>
+				<span id='flash_content2'></span>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+/**
+ * author: hushuilong
+ * email: hushuilong@gmail.com
+ */
+HushuilongClipboard.init('flash_content','inbox_copy.png',89,25).setText('HushuilongClipboard',function(res){
+	alert('HushuilongClipboard: ' + res.toString());
+});
+HushuilongClipboard.init('flash_content2','sendfile_copy.png',87,26).setText('HushuilongClipboard2',function(res){
+	alert('HushuilongClipboard2: ' + res.toString());
+});
+
+</script>
+

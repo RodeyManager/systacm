@@ -1,0 +1,143 @@
+{include file="../header_content.html"}
+	<!-- 在线充值 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['user_list']}</a>
+				<a href="{$__CURL__}add" class="m-header-btns">{$lang['add_user']}</a>
+				<span class="m-title">{$lang.recharge}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="recharge-form" name="recharge-form" action="{$__CURL__}put_recharge" method="POST">
+					<input type="hidden" name="user_ids" id="user_ids" value="" />
+					<div class="m-tab-list">
+						<table class="table m-table m-tab-cons" id="m-tab-con1">
+							<tr>
+								<td class="alignr">{$lang.rech_type}：</td>
+								<td>
+									<input type="radio" name="rech_type" id="rech_type" value="1" checked />{$lang.point}&nbsp;&nbsp;
+									<input type="radio" name="rech_type" id="rech_type" value="2" />{$lang.money}
+								</td>
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.put_money}：</td>
+								<td>
+									<input type="text" name="money" id="money" autocomplete="off" placeholder="0.00" class="span2">
+									<em class="explain">{$lang.put_money_tips}</em>
+								</td>
+							</tr>
+							<tr>	
+								<td class="alignr">{$lang.select_user}：</td>
+								<td>
+									<div class="time-div">
+										<input type="text" name="to_user" id="to_user" value="" autocomplete="off" placeholder="{$lang.put_select_user}" class="span4 asms-input" />
+										<i data-value="" class="m-mini-btn m-mini-user" title="{$lang.select_user}" style="left:275px;"></i>
+										<em class="explain">{$lang.sms_is_nut_content}</em>
+										<ul class="autocomplate span4" style="display:none;"></ul>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="alignr">{$lang.sms_type}：</td>
+								<td>
+									<input type="checkbox" name="sms_type[]" value="email" checked />&nbsp;{$lang.email_sms}&nbsp;&nbsp;
+									<input type="checkbox" name="sms_type[]" value="sms" checked />&nbsp;{$lang.send_sms}&nbsp;&nbsp;
+									<input type="checkbox" name="sms_type[]" value="phone" />&nbsp;{$lang.phone_sms}&nbsp;&nbsp;
+								</td>
+							</tr>	
+							<tr>
+								<td class="alignr">{$lang.sms_content}：</td>
+								<td>
+									<textarea name="content" id="content" rows="5" placeholder="请输入通知信息" class="span4" ></textarea>
+									<em class="explain">{$lang.sms_content_tips}</em>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#to_user').keyup(function(){
+				var keyword = $(this).val();
+				$.ajax({
+					type: 'POST',
+					url: '{$__CURL__}getComplates',
+					data: { keyword: keyword },
+					dataType: 'html',
+					success: function(data){
+						if(data == '') return;
+						console.log(data);
+						$('.autocomplate').html(data);
+						$('.autocomplate').show();
+						$('.autocomplate').find('li').live('click', function(){
+							$('#to_id').val($(this).text());
+							$('.autocomplate').hide().empty();
+						});
+						$(document).live('click', function(){ $('.autocomplate').hide().empty(); });
+					},
+					error: function(){
+						$('.autocomplate').hide().empty();
+					}
+				});
+				return false;
+			});
+			$('#to_user').keydown(function(){
+				//$('.autocomplate').empty();
+			});
+			//选择用户
+			$('.m-mini-user').live('click', function(){
+				window.top.art.dialog.open('{$__CURL__}user_list', 
+						{	id: 'SELECT_USER',
+							title:'{$lang.select_user}', 
+							width: '80%', 
+							height: '80%',
+							okVal: '{$lang.select_user}',
+							cancelVal: '{$lang.cancel}',
+							ok: function(){
+								var user = art.dialog.data('user');
+								var user_ids = art.dialog.data('user_ids');
+								if(user !== '')	$('#to_user').val(user);
+								if(user_ids !== '')	$('#user_ids').val(user_ids);
+								this.close();
+							},
+							cancel: function(){ this.close(); }
+						}, false);
+			});
+			//提交
+			$('#money').live('focusin focusout', function(){ tips('#money'); });
+			$('#to_user').live('focusin focusout', function(){ tips('#to_user'); });
+			$('#recharge-form').submit(function(){
+				if($('#money').val() == '') { return tips_error($('#money')); }
+				if($('#to_user').val() == '') { return tips_error($('#to_user')); }
+
+				$(this).ajaxSubmit({
+					success: function(data){
+						/*_Dat(data);
+						return;*/
+						if(data === 'OK'){
+							_POP({ title: '{$lang.recharge}', content: '{$lang.add}{$lang.success}', icon: 'success' });
+							window.location.href="{$__CURL__}index";
+						}else{
+							_POP({ title: '{$lang.recharge}', content: '{$lang.add}{$lang.fail}', icon: 'error' });
+						}
+					}
+				}); 
+				return false;
+			});
+		});
+	</script>
+
+{include file="../footer.html"}

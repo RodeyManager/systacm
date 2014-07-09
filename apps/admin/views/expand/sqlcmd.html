@@ -1,0 +1,134 @@
+{include file="../header_content.html"}
+	<script src="{$__AJS__}/HushuilongClipboard/HushuilongClipboard.js"></script>
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}database" class="m-header-btns">{$lang['backup']}</a>
+				<a href="{$__CURL__}database_list" class="m-header-btns">{$lang['restore']}</a>
+				<span class="m-title">{$lang['table_list']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form action="" method="POST">
+					<input type="hidden" name="tables" value="" />
+					<table class="table table-condensed m-table">
+							<tr>
+								<td class="alignr">{$lang.select_table}：</td>
+								<td  class="span5">
+									<select name="table_name" id="table_name" class="span5">
+									{if is_array($tables)}
+									{foreach item=table from=$tables}
+										<option value="{$table.table}">{$table.name}  【{$lang['t_rows']}:{$table.rows} - {$lang['t_length']}:{$table.length} - {$lang['t_free']}:{$table.free}】</option>
+									{/foreach}
+									{else}
+										<option value="">ERROR</option>
+									{/if}
+									</select>
+								</td>
+								<td class="alignf">
+									<a href="javascript:_DTable('check', '{$__CURL__}htable');void(0);"  class="m-mini-btn m-mini-check" data-id="{$table.table}" title="{$lang['check_table']}">{$lang['check_table']}</a>
+									<a href="javascript:_DTable('optimize', '{$__CURL__}htable');void(0);"  class="m-mini-btn m-mini-optimize" data-id="{$table.table}" title="{$lang['optimize_table']}">{$lang['optimize_table']}</a>
+									<a href="javascript:_DTable('repair', '{$__CURL__}htable');void(0);"  class="m-mini-btn m-mini-repair" data-id="{$table.table}" title="{$lang['repair_table']}">{$lang['repair_table']}</a>
+									<a href="javascript:_DTable('analyze', '{$__CURL__}htable');void(0);"  class="m-mini-btn m-mini-analyze" data-id="{$table.table}" title="{$lang['analyze_table']}">{$lang['analyze_table']}</a>
+									<a href="javascript:_GET_TABLE_FORMATION('formation', '{$__CURL__}get_table_formation');void(0);" data-table="{$table.table}" data-type="formation" data-url="{$__CURL__}get_table_formation"  class="m-mini-btn m-mini-formation" data-id="{$table.table}" title="{$lang['formation_table']}">{$lang['formation_table']}</a>
+								</td>
+							</tr>
+					</table>
+				</form>
+				<form id="sqlcmd-form" action="{$__CURL__}run_sql" method="POST">
+					<table class="table table-bordered m-table">
+						<tr>
+							<td class="alignf" width="10%">{$lang.run_sql}：</td>
+							<td>
+								<input type="radio" name="sqlcmd_type" value="1" checked/> {$lang.one_row} &nbsp;
+								<input type="radio" name="sqlcmd_type" value="2" /> {$lang.multi_row} &nbsp;
+								<input type="radio" name="sqlcmd_type" value="3" /> {$lang.complex_row} &nbsp;
+							</td>
+						</tr>
+						<tr>	
+							<td colspan="2"><textarea name="sqlcmd" id="sqlcmd" rows="10" style="width:90%;" placeholder="{$lang.one_row_synbom}"></textarea></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input type="submit" name="run_ubmit" value="{$lang.run_sql}" class="m-input-btns" /></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<table>
+				<tr><th>{$lang.sql_result}：</th></tr>
+			</table>
+			<div class="sql_result" style="height: 350px;width:100%;margin:20px auto;overflow-y:scroll;">
+
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="formation-info" style="display:none;position:relative;">
+			<div id="copy-con" class="copy-con" style="position:relative;">
+				<p class="formation-content" style="max-height: 400px;overflow-y: scroll;"></p>
+				<span id="copy-span" class="copy-div m-input-btns" style="position:absolute;right:0;bottom:0;"></span>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var swf = '{$__AJS__}/HushuilongClipboard/HushuilongClipboard.swf';
+		var btn = 'copy-span';
+		var img = '{$__AJS__}/HushuilongClipboard/copy_btn.png';
+		$(document).ready(function(){
+			$('input[name="sqlcmd_type"]').click(function(){
+				if($(this).val() == '1'){
+					$('#sqlcmd').attr('placeholder', "{$lang.one_row_synbom}");
+				}else if($(this).val() == '2'){
+					$('#sqlcmd').attr('placeholder', "{$lang.multi_row_synbom}");
+				}else{
+					$('#sqlcmd').attr('placeholder', "{$lang.complex_row_synbom}");
+				}
+			});
+
+			$('#sqlcmd-form').submit(function(){
+				if($('#sqlcmd').val() == '') { _Dat('SQL 语句不能为空！请填写 SQL 语句。'); return false; }
+				$(this).ajaxSubmit({
+					success: function(data){
+						$('.sql_result').html(data);
+					}
+				});
+				return false;
+			});
+
+		});//end
+		//修改表
+		function _DTable(type, url){
+			var table_name = $('#table_name').val();
+		    $.post(url, { name: table_name, type: type }, function(data){
+				if(data === 'OK') 
+					_POP({ title:'{$lang.handle}',content:'{$lang.handle}{$lang.success}！',icon:'success' });
+				else 
+					_POP({ title:'{{$lang.handle}}',content:'{$lang.handle}{$lang.fail}！',icon:'error' });
+				window.location.reload();
+			});
+		}
+		function _GET_TABLE_FORMATION(type, url){
+			var table_name = $('#table_name').val();
+			var content = $('.formation-info');
+			$.post(url, { name: table_name, type: type }, function(data){
+				$('.formation-content').html(data);
+				art.dialog({
+					id: 'FORMATION_TABLE',
+					title: name + ' {$lang.formation_table}',
+					content: content.html(),
+					cancelVal: '{$lang.close}',
+					cancel: function(){ this.close(); }
+				});
+				copy(swf, btn, img);
+			});
+		}
+		function copy(swf, btn, img){
+			var text = $('.formation-content').html();
+			HushuilongClipboard.init(swf, btn, img, 100, 25).setText(text ,function(res){
+				_POP({ content:'复制成功', icon:'success', time:0.5 });
+			});
+		}
+	</script>
+{include file="../footer.html"}

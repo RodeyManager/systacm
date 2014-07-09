@@ -1,0 +1,89 @@
+{include file="../header.html"}
+	
+	<!-- 用户修改 -->
+	<div class="mcontainer">
+		<div class="m-u-show">
+			<form action="{$__CURL__}admin/user/edit">
+				<fieldset>
+					<legend>{$lang.base_info}</legend>
+					<table class="table table-bordered m-table">
+						<tr>
+							<td colspan="2"><img src="{$user.gravatar}" alt="{$user.name}"></td>
+						</tr>
+						<tr>
+							<td>{$lang.user_name}：</td>
+							<td>{$user.name}</td>
+						</tr>
+						<tr>
+							<td>{$lang.user_true_name}：</td>
+							<td>{$user.true_name}</td>
+						</tr>
+						<tr>
+							<td>{$lang.user_nick_name}：</td>
+							<td>{$user.nick_name}</td>
+						</tr>
+						<tr>
+							<td>{$lang.email}：</td>
+							<td>{$user.email}</td>
+						</tr>
+						<tr>
+							<td>{$lang.phone}：</td>
+							<td>{$user.phone}</td>
+						</tr>
+						<tr>
+							<td>{$lang.tel}：</td>
+							<td>{$user.tel}</td>
+						</tr>
+						<tr>
+							<td>{$lang.user_point}</td>
+							<td>{$user.point}</td>
+						</tr>
+						<tr>
+							<td>{$lang.address}：</td>
+							<td>{$user.address}</td>
+						</tr>
+						<tr>
+							<td>{$lang.user_intro}：</td>
+							<td>{$user.intro}</td>
+						</tr>
+						<tr>
+							<td>{$lang.user_signa}：</td>
+							<td>{$user.signa}</td>
+						</tr>
+						<tr>
+							<td>{$lang.user_ip}：</td>
+							<td>{$user.ip}</td>
+						</tr>
+						<tr>
+							<td>{$lang.user_reg_time}：</td>
+							<td>{$user.reg_time|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+						</tr>
+						<tr>
+							<td>{$lang.user_level}：</td>
+							<td>{$user.level}</td>
+						</tr>
+						<tr>
+							<td>{$lang.is_disabled}：</td>
+							<td>{$user.disabled}</td>
+						</tr>
+						<tr>
+							<td>{$lang.last_login_time}：</td>
+							<td>{$user.last_login_time|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+						</tr>
+						<tr>
+							<td>{$lang.last_login_ip}：</td>
+							<td>{$user.last_login_ip}</td>
+						</tr>
+						<tr>
+							<td>{$lang.last_update_time}</td>
+							<td>{$user.update_time}</td>
+						</tr>
+					</table>
+				</fieldset>
+
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+{include file="../footer.html"}

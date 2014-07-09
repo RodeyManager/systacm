@@ -1,0 +1,59 @@
+.onShow, .onFocus, .onError, .onCorrect, .onSuccess{
+	padding: 4px 25px 4px 25px;
+	font-size: 12px;
+	vertical-align:middle;
+	text-indent: 6px;
+	line-height: 22px;
+	display:inline-block;
+	margin-left:20px;
+	background: url(images/validator_msg_icon.png) no-repeat left top;
+}
+
+.onShow
+{
+   background-position: left -90px;
+}
+.onFocus
+{
+    background-position: left -60px;
+}
+.onError
+{
+    background-position: left -30px;
+}
+.onCorrect, .onSuccess
+{
+    background-position: left top;
+}
+.onLoad
+{
+	padding: 4px 25px 4px 25px;
+	font-size: 12px;
+	vertical-align:middle;
+	text-indent: 6px;
+	line-height: 22px;
+	display:inline-block;
+	margin-left:20px;
+    background:#E9FFEB url(images/onLoad.gif) no-repeat left center;
+}
+
+.input_error {
+	border:#C1C1C1 1px solid;font-size:14px;padding:4px 5px 4px;background-color:#FBFBFB;background-position:0 -72px;color:#444;
+	background-color:#FBE2E2;background-position:0 -144px;border-color:#D28C8C;color:#A63B3B
+}
+
+.input_focus {
+	border:#C1C1C1 1px solid;font-size:14px;padding:4px 5px 4px;background-color:#FBFBFB;background-position:0 -72px;color:#444;
+    background-color:#FFC;background-position:0 -108px;border-color:#C6C69E
+}
+
+.input_show {
+    border:#C1C1C1 1px solid;font-size:14px;padding:4px 5px 4px;background-color:#FBFBFB;background-position:0 -72px;color:#444
+}
+.input_correct {
+    border:#C1C1C1 1px solid;font-size:14px;padding:4px 5px 4px;background-color:#FBFBFB;background-position:0 -72px;color:#444
+}
+
+body{
+	
+}

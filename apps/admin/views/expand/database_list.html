@@ -1,0 +1,76 @@
+{include file="../header_content.html"}
+	
+	<div class="mcontainer">
+		<div class="m-main">
+			<form id="backup-form" action="{$__CURL__}export" method="POST">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}database" class="m-header-btns">{$lang['backup']}</a>
+				<span class="m-title">{$lang['tb_list']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<input type="hidden" name="tables" value="" />
+				<table class="table table-condensed m-table">
+					<tr class="m-table-theader">
+						<th><input type="checkbox" id="check_box" onclick="_S('check[]');" /></th>
+						<th>{$lang['tb_name']}</th>
+						<th>{$lang['tb_size']}</th>
+						<th>{$lang['tb_shunt']}</th>
+						<th>{$lang['tb_time']}</th>
+						<th>{$lang['handle']}</th>
+					</tr>
+					{if is_array($files)}
+					{foreach item=file from=$files}
+						<tr>
+							<td><input type="checkbox" value="{$file.name}" name="check[]" /></td>
+							<td>{$file.name}</td>
+							<td>{$file.size}&nbsp;&nbsp;M</td>
+							<td>{$file.shunt}</td>
+							<td>{$file.time}</td>
+							<td>
+								<a href="javascript:_IMPORT('{$file.name}', '{$__CURL__}import');void(0);"  class="m-mini-btn m-mini-restore" data-id="{$file.name}" title="{$lang['restore']}">{$lang['restore']}</a>
+								<a href="javascript:_D('{$file.name}', '{$__CURL__}del_backfile');void(0);"  class="m-mini-btn m-mini-del" data-id="{$file.name}" title="{$lang['delete']}">{$lang['delete']}</a>
+							</td>
+						</tr>
+					{/foreach}
+					{else}
+						<tr>
+							<td colspan="7">{$tables}</td>
+						</tr>	
+					{/if}
+				</table>
+			</div>
+			<div class="m-footer">
+					<div class="m-footer-left">
+						<label class="m_select_all m-f-btn" data-selected="{$lang['select_all']}" data-unselected="{$lang['unselect_all']}" for="check_box">{$lang['select_all']}</label>
+						<a href="javascript:_DS('{$__CURL__}del_backfile');void(0);" class="m_delete m-f-btn">{$lang['delete']}</a>
+					</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+		});//end
+		function _IMPORT(name, url){
+			if(name == '' || url == '') return;
+			art.dialog.confirm('{$lang.is_restore}', function(){
+				$.post(url, { name: name }, function(data){
+					data = data.split('-+-');
+					if(data[0] === 'OK') 
+						_POP({ title:'{$lang.restore}',content:'{$lang.restore}{$lang.success}！<br /><hr />'+data[1],icon:'success', time: 20 });
+					else 
+						_POP({ title:'{$lang.restore}',content:'{$lang.restore}{$lang.fail}！',icon:'error' });
+				});
+			}, function(){
+				this.close();
+			});
+			
+		}
+	</script>
+{include file="../footer.html"}

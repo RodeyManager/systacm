@@ -1,0 +1,2 @@
+[ERROR] - [2013-04-15 00:03:19] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-15 00:03:19] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`

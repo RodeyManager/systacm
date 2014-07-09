@@ -1,0 +1,121 @@
+{include file="../header_content.html"}
+
+	<link rel="stylesheet" href="{$__SYSJS__}/Tags/jquery.tagsinput.css" />	
+	<script type="text/javascript" src="{$__SYSJS__}/Tags/jquery.tagsinput.min.js"></script>
+	<link rel="stylesheet" href="{$__SYSJS__}/formValidator/roadey.css" />
+	<script src="{$__SYSJS__}/formValidator/formValidator.min.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.formValidator.initConfig({ autotip:true, formid:"role-form", submitOnce:true, onerror:function(msg){ art.dialog.alert(msg);} });
+		$("#name").formValidator({ onshow:"{$lang.v_p_name}",onfocus:"{$lang.v_name_len}" })
+					.inputValidator({ min:2,max:30,onerror:"{$lang.v_name_len}" })
+					.regexValidator({ regexp:"reg_name",datatype:"enum",onerror:"{$lang.role_name}{$lang.v_format_fail}" });
+	});
+	</script>
+	<!-- Tag列表 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}list" class="m-header-btns">{$lang['role_list']}</a>
+				<a href="{$__CURL__}add" class="m-header-btns">{$lang['role_add']}</a>
+				<span class="m-title">{$lang['roles_edit']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="role-form" name="role-form" action="{$__CURL__}mod" method="POST">
+					<input type="hidden" name="id" id="role_id" value="{$role.id}" />				
+					<table class="table table-condensed m-table">
+						<tr>
+							<td width="10%" style="border:none">{$lang['role_name']}：</td>
+							<td style="border:none">
+								<input type="text" name="name" id="name" value="{$role.name}" />
+							</td>
+						</tr>
+						<tr>
+							<td>{$lang['role_level']}：</td>
+							<td>
+								<input type="text" name="level" id="level" value="{$role.level}" />
+							</td>
+						</tr>
+						<tr>
+							<td>{$lang.role_module}</td>
+							<td>
+								<input type="text" name="module" id="module" value="{$role.module}" />
+							</td>
+						</tr>
+						<tr>
+							<td>{$lang.role_method}</td>
+							<td><input type="text" name="method" id="method" value="{$role.method}" /></td>
+						</tr>
+						<tr>
+							<td>{$lang.is_disabled}：</td>
+							<td>
+							{if $role.disabled == 1}
+								<i data-id="{$role.id}" data-value="{$role.disabled}" class="m-mini-btn m-mini-lock m-mini-inlock" title="{$role.lock}"></i>
+							{else}
+								<i data-id="{$role.id}" data-value="{$role.disabled}" class="m-mini-btn m-mini-lock m-mini-unlock" title="{$role.lock}"></i>
+							{/if}
+							</td>
+						</tr>
+					</table>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#module').tagsInput({ width: '50%', height: '100', defaultText: 'Add a module' });
+			$('#method').tagsInput({ width: '50%', height: '100', defaultText: 'Add a method' });
+			$('#role-form').ajaxForm({
+				success: function(data){
+					if(data === 'OK') {
+						_POP({ title:'{$lang.role_edit}',content:'{$lang.edit_success}！',icon:'success' });
+						window.location.href = "{$__CURL__}index";
+					}else{
+						_POP({ title:'{$lang.role_edit}',content:'{$lang.edit_fail}！',icon:'error' });
+					}
+				},
+				error: function(data){
+					_Dat(data);
+				}
+			});
+
+			//解锁,枷锁
+			$('.m-mini-lock').click(function(){
+				var id = $(this).data('id');
+				var disabled = $(this).data('value');
+				var than = $(this);
+				if(disabled == 1)
+					content = '{$lang.role_inlock_success}！';
+				else
+					content = '{$lang.role_unlock_success}！';
+				$.post('{$__CURL__}locked', { id:id, disabled:disabled }, function(data){
+					if(data === 'OK') {
+						_POP({ title:'{$lang.inlock}',content:content, icon:'success' });
+						if(disabled == 1){
+							than.removeClass('m-mini-inlock').addClass('m-mini-unlock');
+							than.data('value', 0);
+						}else{
+							than.removeClass('m-mini-unlock').addClass('m-mini-inlock');
+							than.data('value', 1);
+						}
+					}else {
+						_POP({ title:'{$lang.inlock}',content:'{$lang.role_fail}！',icon:'error' });
+						return false;
+					}
+				});
+			});
+		});//end
+	</script>
+
+{include file="../footer.html"}

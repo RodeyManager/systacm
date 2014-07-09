@@ -1,0 +1,15 @@
+[ERROR] - [2013-04-18 22:18:30] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-18 22:18:30] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='1' 
+[ERROR] - [2013-04-18 22:18:30] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='2' 
+[ERROR] - [2013-04-18 22:18:30] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='3' 
+[ERROR] - [2013-04-18 22:18:30] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='4' 
+[ERROR] - [2013-04-18 22:18:30] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='6' 
+[ERROR] - [2013-04-18 22:18:30] - [Mysql] - [Mysql::find] : SELECT  *  FROM `syst_config` WHERE `group_id`='8' 
+[ERROR] - [2013-04-18 22:20:07] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-18 22:20:07] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-18 22:20:07] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-18 22:20:07] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('系统配置', '生成配置文件', '生成配置文件成功', '1', '127.0.0.1', '2', '1366294807')
+[ERROR] - [2013-04-18 22:43:21] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-18 22:43:21] - [Mysql] - [Mysql::getAll] : SELECT * FROM `syst_config`
+[ERROR] - [2013-04-18 22:43:22] - [Mysql] - [Mysql::getFileds] : SHOW COLUMNS FROM `syst_model`
+[ERROR] - [2013-04-18 22:43:22] - [Mysql] - [Mysql::execute] : INSERT INTO `syst_log` (module, action, massage, state, ip, user_id, add_time) VALUES ('系统配置', '生成配置文件', '生成配置文件成功', '1', '127.0.0.1', '2', '1366296202')

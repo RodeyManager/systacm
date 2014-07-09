@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{$title}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		.main{ width: 1000px;margin:0 auto; background:#89e4d3;}
+	</style>
+</head>
+<body>
+
+	<div class="main">
+		<h1>{$name}</h1><br />
+		<h5>模板中的全局变量</h5>
+		<hr style="height:1px;color:white;width:100%;" />
+		当前应用名称：<em>{$__APP__}</em><br />
+		当前模块（控制器）名称：<em>{$__C__}</em><br />
+		当前操作（方法）名称：<em>{$__M__}</em><br />
+		当前URL（包括操作名称）:<em>{$__URL__}</em><br />
+		当前URL（不包括操作名称）:<em>{$__CURL__}</em><br />
+		网站URL地址：<em>{$__BASE__}</em><br />
+		<A href="{$__CURL__}add_user">add</A><br />
+		<A href="{$__CURL__}add_comment">add</A>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,13 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^.*(.css|.js|.gif|.png|.jpg|.jpeg)$
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,PT]
+
+
+
+
+#RewriteCond %{REQUEST_FILENAME} !-f   //如果文件存在，就直接访问文件，不进行下面的RewriteRule.(不是文件或文件不存在就执行重写) 
+#RewriteCond %{REQUEST_FILENAME} !-d   //#如果目录存在就直接访问目录不进行RewriteRule
+#RewriteCond %{REQUEST_URI} !^.*(.css|.js|.gif|.png|.jpg|.jpeg)$ //#如果是这些后缀的文件，就直接访问文件，不进行Rewrite

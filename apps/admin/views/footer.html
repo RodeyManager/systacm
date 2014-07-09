@@ -1,0 +1,37 @@
+
+	<div class="systacm_tips" id="systacm_tips">
+		<p class="s-tips-p"></p>
+	</div>
+
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			/*$( "#aleft-nav-lists" ).accordion({
+				header: "h3",
+				heightStyle: "content"
+			});*/
+			//Left Menu样式
+			$('#aleft-nav-lists ul li').live('click', function(){
+				if($(this).hasClass('on')) return;
+				$('#aleft-nav-lists ul li').removeClass('on');
+				$(this).addClass('on');
+			});
+		});
+		//头部菜单操作
+		function _C(mod, flag){
+			var url = base + '/admin/index/getMenu';
+			var mod = mod;
+			//alert(mod);
+			$.post(url, { mod: mod, flag:flag }, function(data){
+				$('#aleft-nav-lists').html(data);
+				//art.dialog(data);
+			});
+		}
+		//Ajax操作
+		function _A(url){
+			$.post(url, function(data){
+				_POP({ title: '{$lang.up_cache}', content: data, icon: 'success'});
+			});
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+{include file="../header_content.html"}
+	
+	<link rel="stylesheet" href="{$__SYSJS__}/formValidator/roadey.css" />
+	<script src="{$__SYSJS__}/formValidator/formValidator.min.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_config.js"></script>
+	<script type="text/javascript" src="{$__PLUGINS__}/uediter/editor_all.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.formValidator.initConfig({ autotip:true, formid:"user_form", submitOnce:true, onerror:function(msg){ art.dialog.alert(msg);} });
+		
+	});
+	</script>
+	<!-- 添加用户 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['cat_list']}</a>
+				<span class="m-title">{$lang['add_cat']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="category-form" action="{$__CURL__}mod" method="POST">
+					<input type="hidden" name="id" id="id" value="{$cat_current.id}" />
+					<div class="m-header-tab-btns">
+						<a class="m-mini-btn m-header-tab m-tab-on" ref="m-tab-con1">{$lang.base_info}</a>
+						<a class="m-mini-btn m-header-tab" ref="m-tab-con2">{$lang.seo_info}</a>
+						<a class="m-mini-btn m-header-tab" ref="m-tab-con3">{$lang.attr_info}</a>
+						<a class="m-mini-btn m-header-tab" ref="m-tab-con4">{$lang.expand_info}</a>
+						<a class="m-mini-btn m-header-tab" ref="m-tab-con5" id="upload_banner">{$lang.upload_cat_banner}</a>
+					</div>
+					<div class="m-tab-list">
+						<table class="table m-table m-tab-cons" id="m-tab-con1">
+							<tr>
+								<td width="10%">{$lang.cat_parent}：</td>
+								<td>
+									<select name="pid" class="span4" >
+										<option value="0">{$lang.please_select}</option>}
+										<option value="0">{$lang.root_cat}</option>}
+										{if $categorys}
+										{foreach from=$categorys item=pcat}
+											{if $pcat.id eq $cat_current.pid}
+											<option value="{$cat_current.id}" selected="selected"> {$pcat.name}</option>
+											{else}
+											<option value="{$pcat.id}"> {$pcat.name}</option>
+											{/if}
+										{/foreach}
+										{/if}
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.cat_type}：</td>
+								<td>
+									<select name="model_id" class="span4" >
+										<option value="0">{$lang.please_select}</option>}
+										{if $types}
+										{foreach from=$types item=type key=k}
+											{if $type.id eq $cat_current.model_id}
+											<option value="{$type['id']}" selected="selected">--> {$type['name']}/({$type['mtable']})</option>
+											{else}
+											<option value="{$type['id']}">--> {$type['name']}/({$type['mtable']})</option>
+											{/if}
+										{/foreach}
+										{/if}
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.cat_name}：</td>
+								<td><input type="text" name="name" id="name" value="{$cat_current.name}" class="span4"/></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.cat_ename}：</td>
+								<td><input type="text" name="ename" id="ename" value="{$cat_current.ename}" class="span4"/><em class="explain">{$lang.cat_ename_tip}</em></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.cat_link_to}：</td>
+								<td>
+									<input type="text" name="link_to" id="link_to" value="{$cat_current.linkto}" class="span4"/><em class="explain">{$lang.cat_link_to_tip}</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%"> {$lang.cat_is_show}：</td>
+								<td>
+									<div class="m-lock-div">
+										<input type="hidden" name="is_show" id="is_show" value="{$cat_current.is_show}" />
+										{if $cat_current.is_show eq 1}
+										<span class="m-lock-btns"><i class="on_off_btn_show" style="left:50;"></i></span>
+										<span class="m-disabled-tips m-show-tips">{$lang.cat_is_show_yes}</span>
+										{else}
+										<span class="m-lock-btns"><i class="on_off_btn_show" style="left:0;"></i></span>
+										<span class="m-disabled-tips m-show-tips">{$lang.cat_is_show_no}</span>
+										{/if}
+									</div>
+								</td>
+							</tr>
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con2">
+							<tr>
+								<td width="10%">{$lang.seo_title}：</td>
+								<td>
+									<input type="text" name="seo_title" id="seo_title" value="{$cat_current.seo_title}" class="span6" /><em class="explain">{$lang.cat_seo_title_tip}</em>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.seo_keyword}：</td>
+								<td><input type="text"a name="seo_keyword" id="seo_keyword" value="{$cat_current.seo_keyword}" class="span6" /><em class="explain">{$lang.cat_seo_keyword_tip}</em></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.seo_desc}：</td>
+								<td><textarea name="seo_desc" id="seo_desc" class="span6 m-textarea" style="height:80px;">{$cat_current.seo_desc}</textarea><em class="explain">{$lang.cat_seo_desc_tip}</em></td>
+							</tr>
+							<tr>
+								<td width="10%"> {$lang.cat_is_html}：</td>
+								<td>
+									<div class="m-lock-div">
+										<input type="hidden" name="is_html" id="is_html" value="{$cat_current.is_html}" />
+										{if $cat_current.is_html == 1}
+										<span class="m-lock-btns"><i class="on_off_btn_html" style="left:50px;"></i></span>
+										<span class="m-disabled-tips m-html-tips">{$lang.cat_is_html_yes}</span>
+										{else}
+										<span class="m-lock-btns"><i class="on_off_btn_html" style="left:0px;"></i></span>
+										<span class="m-disabled-tips m-html-tips">{$lang.cat_is_html_no}</span>
+										{/if}
+									</div>
+								</td>
+							</tr>
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con3">
+							<tr>
+								<td width="10%">{$lang.template}：</td>
+								<td>
+									<select name="template" class="span4" >
+										<option value="0">{$lang.please_select}</option>
+										
+									</select>
+								</td>
+							<tr>
+							</tr>
+								<td width="10%">{$lang.list_template}：</td>
+								<td>
+									<select name="list_template" class="span4" >
+										<option value="0">{$lang.please_select}</option>
+										
+									</select>
+								</td>
+							<tr>
+							</tr>
+								<td width="10%">{$lang.show_template}：</td>
+								<td>
+									<select name="show_template" class="span4" >
+										<option value="0">{$lang.please_select}</option>}
+										
+									</select>
+								</td>
+							</tr>
+							<!-- 分页设置-->
+							<tr>
+								<td width="10%"> {$lang.cat_page_type}：</td>
+								<td>
+									<div class="m-lock-div">
+										<input type="hidden" name="page_type" id="page_type" value="{$cat_current.page_type}" />
+										{if $cat_current.page_type eq 1}
+										<span class="m-lock-btns"><i class="on_off_btn_page_type" style="left:50px;"></i></span>
+										<span class="m-disabled-tips m-page_type-tips">{$lang.cat_page_type_yes}</span>
+										{else}
+										<span class="m-lock-btns"><i class="on_off_btn_page_type" style="left:0px;"></i></span>
+										<span class="m-disabled-tips m-page_type-tips">{$lang.cat_page_type_no}</span>
+										{/if}
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.cat_page_size}：</td>
+								<td>
+									{if $cat_current.page_type eq 1}
+									<input type="text"a name="page_size" id="page_size" value="{$cat_current.page_size}" class="span6" />
+									{else}
+									<input type="text"a name="page_size" id="page_size" value="" class="span6" readonly />
+									{/if}
+									<em class="explain">{$lang.cat_page_size_tip}</em>
+								</td>
+							</tr>
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con4">
+							<tr>
+								<td width="10%">{$lang.cat_intro}：</td>
+								<td><textarea name="intro" id="intro" class="span6"/>{$cat_current.intro}</textarea></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.cat_content}：</td>
+								<td>
+									<textarea name="content" id="content">{$cat_current.content}</textarea>
+									<script type="text/javascript">
+										var editor = new UE.ui.Editor();
+    									editor.render("content");
+									</script>
+								</td>
+							</tr>
+						</table>
+						<table class="table m-table m-tab-cons" id="m-tab-con5">
+							<input type="hidden" name="banner" id="banner" value="{$cat_current.banner}" />
+							<tr>
+								<td width="10%" colspan="2">
+									<div class="m-banner">
+										<a id="upload-banner" href="javascript:void(0);"><img src="{$__BASE__}/{$cat_current.banner}" width="300"/></a>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td width="10%" colspan="2"></td>
+							</tr>
+							<tr>
+								<td width="10%">{$lang.banner_size}：</td>
+								<td>
+									{$lang.width}：<input type="text" name="banner_width" id="banner_width" value="{$cat_current.banner_width}" size="5" class="span1"/>
+									<br />*
+									<br />
+									{$lang.height}：<input type="text" name="banner_height" id="banner_height" value="{$cat_current.banner_height}" size="5" class="span1"/><em class="explain">{$lang.banner_desize}</em>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="m-input-div">
+						<input type="submit" name="submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+			<div class="clear"></div>
+			<div class="m-upload-div" style="display:none;">
+				<div class="m-upload-banner-content">
+				<form name="upload-banner-form" id="upload-banner-form" action="{$__CURL__}upload_banner" method="POST" enctype="multipart/form-data">
+					{if $cat_current.banner}
+					<img id="u_banner" src="{$__BASE__}/{$cat_current.banner}" width="300" />
+					{else}
+					<img id="u_banner" src="{$__BASE__}/uploadfile/cat/banner/01.jpg" width="300" />
+					{/if}
+					<!-- <img id="u_banner" src="{$__BASE__}/{$cat_current.banner}" width="100" /> -->
+					<input type="file" name="banner_pic" id="banner_pic" /><br />
+					<div class="upload_progress" style="display:none;">
+				        <div class="upload_percent">
+				        	<img src="{$__AIMAGES__}/Loading_bar_1s.gif" alt="" />
+				        </div >
+				        <span class="upload_tips">Uploading...0%</span>
+				    </div>
+					<input type="submit" value="{$lang.upload}" name="sub_banner" id="sub_banner" class="m-input-btns"/>
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var art_upload;
+			$('#upload-banner').click(function(){
+				var upload_tips = $('.upload_tips');
+				var upload_div = $('.m-upload-banner-content').html();
+				$('.m-upload-banner-content').remove();
+				if(art_upload){
+					art.dialog({ id:'UP001' }).show();
+				}else{
+					art_upload = art.dialog({
+						id: 'UP001',
+						title: '{$lang.upload_banner}',
+						content: upload_div
+					});
+				}
+				$('#upload-banner-form').ajaxForm({
+					datatype: 'text',
+					beforeSend: function() {
+						upload_tips.html('Uploading...0%');
+						if($('#banner_pic').val() == ''){
+							_Dat('{$lang.upload_select}');
+							return false;
+						}
+						$('.upload_progress').show();
+				    },
+				    uploadProgress: function(event, position, total, percentComplete) {
+				        var percentVal = 'Uploading...' + percentComplete + '%';
+				        upload_tips.html(percentVal);
+
+				    },
+					success: function(data){
+						data = data.split('--');
+						if(data[2] && data[2].indexOf('uploadfile/') == 0){
+							$('#banner').val(data[2]);
+							$('#banner_width').val(data[0]);
+							$('#banner_height').val(data[1]);
+							$('#banner_pic').val('');
+							$('#upload-banner').find('img').attr('src', '{$__BASE__}/'+data[2]);
+							$('.upload_progress').hide();
+							art.dialog({ id:'UP001' }).hide();
+							art.dialog({ title:'{$lang.upload_success}',time:3, content:'{$lang.upload_success}！', icon:'success' });
+						}else{
+							_Dat('{$lang.upload_fail}！');
+						}
+					}
+				});
+			});
+
+			//可用性 显示
+			$('.on_off_btn_show').click(function(){
+				var is_show = $('#is_show').val();
+				var than = $(this);
+				var tips = $('.m-show-tips');
+				if(is_show == 1){
+					than.animate({ left: '0px' });
+					$('#is_show').val(0);
+					tips.text('{$lang['cat_is_show_no']}');
+				}else if(is_show == 0){
+					than.animate({ left: '50px' });
+					$('#is_show').val(1);
+					tips.text('{$lang['cat_is_show_yes']}');
+				}
+			});
+			//可用性 静态化
+			$('.on_off_btn_html').click(function(){
+				var is_html = $('#is_html').val();
+				var than = $(this);
+				var tips = $('.m-html-tips');
+				if(is_html == 1){
+					than.animate({ left: '0px' });
+					$('#is_html').val(0);
+					tips.text('{$lang['cat_is_html_no']}');
+				}else if(is_html == 0){
+					than.animate({ left: '50px' });
+					$('#is_html').val(1);
+					tips.text('{$lang['cat_is_html_yes']}');
+				}
+			});
+			//可用性 分页模式
+			$('.on_off_btn_page_type').click(function(){
+				var page_type = $('#page_type').val();
+				var than = $(this);
+				var tips = $('.m-page_type-tips');
+				if(page_type == 1){
+					than.animate({ left: '0px' });
+					$('#page_type').val(0);
+					tips.text('{$lang['cat_page_type_no']}');
+					$('#page_size').attr('readonly', 'true');
+				}else if(page_type == 0){
+					than.animate({ left: '50px' });
+					$('#page_type').val(1);
+					tips.text('{$lang['cat_page_type_yes']}');
+					$('#page_size').removeAttr('readonly');
+				}
+			});
+
+			$('#category-form').submit(function(){
+				editor.sync();
+				$(this).ajaxSubmit({
+					success: function(data){
+						if(data === 'OK'){
+							_POP({ title: '{$lang.edit_cat}', content: '{$lang.edit}{$lang.success}', icon: 'success' });
+							window.location.href="{$__CURL__}index";
+						}else{
+							_POP({ title: '{$lang.edit_cat}', content: '{$lang.edit}{$lang.fail}', icon: 'error' });
+						}
+					}
+				}); 
+				return false;
+			});
+			
+		});//end ready.
+	</script>
+
+{include file="../footer.html"}

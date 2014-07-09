@@ -1,0 +1,62 @@
+{include file="../header_content.html"}
+	
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}database" class="m-header-btns">{$lang['table_list']}</a>
+				<span class="m-title">{$lang.file_auto_check}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+				<form id="file_check_form" action="{$__CURL__}file_auto_check" method="POST">
+					<table class="table table-bordered m-table">
+						<tr><th colspan="2" style="text-align:center;">{$lang.file_auto_check}</th></tr>
+						<tr>
+							<td colspan="2">
+								<h4>{$lang.safe_tips}：</h4>
+								<p>{$lang.safe_tips_info}</p>
+							</td>	
+						</tr>
+						<tr>
+							<td class="alignr">{$lang.file_type}：</td>
+							<td class="alignf"><input type="text" name="file_type" value="php|inc" class="span6"><em class="explain">{$lang.file_type_tips}</em></td>
+						</tr>
+						<tr>
+							<td class="alignr">{$lang.file_check_code}：</td>
+							<td class="alignf"><input type="text" name="file_code" value="eval|cmd|system|exec|_GET|_POST|_PUT" class="span6"><em class="explain">{$lang.file_check_code_tips}</em></td>
+						</tr>
+						<tr>
+							<td class="alignr"></td>
+							<td>
+								<input type="submit" name="file_submit" value="{$lang.start_check}" class="m-input-btns" />
+								<a href="javascript:_A('{$__BASE__}/admin/main/up_cache');" class="m-input-btns" style="margin-left:50px;"/>{$lang.up_cache}</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+				<table class="table table-bordered m-table">
+					<tr><th style="text-align:center;">{$lang.check_result}</th></tr>
+					<tr>
+						<td>
+							<table class="result" style="border-width:0 0 0 0;">
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#file_check_form').ajaxForm({
+				success: function(data){
+					$('.result').html(data);
+				}
+			});
+		});//end
+	</script>
+{include file="../footer.html"}

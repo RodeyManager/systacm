@@ -1,0 +1,117 @@
+{include file="../header_content.html"}
+	
+	<link rel="stylesheet" href="{$__SYSJS__}/formValidator/roadey.css" />
+	<script src="{$__SYSJS__}/formValidator/formValidator.min.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript" src="http://api.51ditu.com/js/maps.js" ></script>
+	<script type="text/javascript" src="http://api.51ditu.com/js/ezmarker.js"></script>
+	<script type="text/javascript" src="http://api.51ditu.com/js/ipposition.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		
+	});//end ready
+	</script>
+	<!-- 添加用户 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-center" style="padding:0px;">
+				<form id="map_form" action="{$__CURL__}set_map" method="POST">
+					<div class="m-tab-list" style="position:relative;padding:0px;">
+						<table class="table m-table m-tab-cons" id="m-tab-con1" style="margin-bottom:0;">
+							<caption style="height: 30px;background: #ddd;line-height: 30px;font-size: 14px;font-weight: bold;border-bottom: solid 1px #fff;">{$lang.map_set}</caption>
+							<tr>
+								<td>
+									<div id="myMap" style="position:relative; width:100%; height:400px;"></div>
+								</td>
+							</tr>
+						</table>
+						<div style="margin-bottom: 50px;">
+						<script type="text/javascript">
+							var ez = new LTEZMarker("ezmarker");
+							{if !empty($map)}
+							ez.setValue(new LTPoint( {$map['mapx']} , {$map['mapy']} ) , {$map['mapz']});//设置默认值
+							{/if}
+							ez.setPlaceList(true);//在地图上显示地图搜索控件
+    						ez.setSearch(true);//在地图上显示搜索控件
+						</script>
+						</div>
+					</div>
+					<div class="m-input-div form-btns">
+						<input type="submit" name="mod__submit" value="{$lang.submit}" id="submit" class="m-input-btns" />
+						<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+						<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+					</div>
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		//Map
+		{if empty($map)}
+
+		var ip = new LTIpPosition(run);  
+	    ip.getIpPosition();  
+	    function run(obj)   
+	    {  
+	        var map = new LTMaps( "myMap" );  
+	        map.cityNameAndZoom( obj.name , 5 );  
+	    }
+
+		{else}
+
+		var maps = new LTMaps( "myMap" ); 
+		var point = new LTPoint( {$map['mapx']} , {$map['mapy']} );
+		maps. centerAndZoom (  point, {$map['mapz']} );
+		var control = new LTStandMapControl();  
+		maps.addControl( control );
+
+		var marker = new LTMarker( point );
+		maps.addOverLay( marker );
+		var infoWin = new LTInfoWindow( marker );
+		infoWin.setTitle('{$lang.cfg_company_info}');
+		infoWin.setWidth(300);
+		var ihtml = '<p style="text-align:left;"><strong>{$lang.cfg_company}：</strong>{$map.cfg_company}</p>';
+		ihtml += '<p style="text-align:left;"><strong>{$lang.cfg_address}：</strong>{$map.cfg_address}</p>';
+		ihtml += '<p style="text-align:left;"><strong>{$lang.cfg_website}：</strong><a href="{$map.cfg_website}">{$map.cfg_website}</a></p>';
+		infoWin.setLabel( ihtml );
+		maps.addOverLay( infoWin );
+
+		{/if}
+
+
+		$(document).ready(function(){
+
+			$('.m-tab-mini').click(function(){
+				if($(this).hasClass('create-set'))
+					$('.form-btns').hide();
+				else
+					$('.form-btns').show();
+			});
+			
+			//mod
+			$('#map_form').submit(function(){
+				/*alert($('#ezmarker_x').val());
+
+				return;*/
+				var mapx = $('#ezmarker_x').val();
+				var mapy = $('#ezmarker_y').val();
+				var mapz = $('#ezmarker_z').val();
+				$(this).ajaxSubmit({
+					type: 'POST',
+					data: { mapx: mapx, mapy: mapy, mapz: mapz },
+					success: function(data){
+						if(data === 'OK'){
+							_POP({ title: '{$lang.save_var}', content: '{$lang.save_var}{$lang.success}', icon: 'success' });
+							window.location.href="{$__URL__}";
+						}else{
+							_POP({ title: '{$lang.save_var}', content: '{$lang.save_var}{$lang.fail}', icon: 'error' });
+						}
+					}
+				});
+				return false;
+			});
+		});//end ready
+	</script>
+
+{include file="../footer.html"}

@@ -1,0 +1,533 @@
+{include file="../header_content.html"}
+	<script src="{$__SYSJS__}/jquery.form.js" type="text/javascript" charset="UTF-8"></script>
+	<link rel="stylesheet" href="{$__SYSJS__}/formValidator/roadey.css" />
+	<script src="{$__SYSJS__}/formValidator/formValidator.min.js" type="text/javascript" charset="UTF-8"></script>
+	<script src="{$__SYSJS__}/formValidator/formValidatorRegex.js" type="text/javascript" charset="UTF-8"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$.formValidator.initConfig({ autotip:true, formid:"user_form", submitOnce:true, onerror:function(msg){ art.dialog.alert(msg);} });
+			$("#true_name").formValidator({ empty:true,onshow:"{$lang.v_p_tname}",onfocus:"{$lang.v_tname_len}" })
+					.inputValidator({ min:2,max:30,onerror:"{$lang.v_tname_len}" })
+					.regexValidator({ regexp:"chinese",datatype:"enum",onerror:"{$lang.user_true_name}{$lang.v_format_fail}" });
+			$("#nick_name").formValidator({ onshow:"{$lang.v_p_nname}",onfocus:"{$lang.v_nname_len}" })
+					.inputValidator({ min:2,max:100,onerror:"{$lang.v_nname_len}" })
+					.regexValidator({ regexp:"notempty",datatype:"enum",onerror:"{$lang.user_nick_name}{$lang.v_format_fail}" });
+			$("#tel").formValidator({ empty:true,onshow:"{$lang.v_p_tel}",onfocus:"{$lang.v_format}: (86)(-)(0755)(-)21671712(-)(805)" })
+					.inputValidator({ min:2,max:100,onerror:"{$lang.user_tel}{$lang.v_format_fail}" })
+					.regexValidator({ regexp:"tel",datatype:"enum",onerror:"{$lang.user_tel}{$lang.v_format_fail}" });
+			$("#email").formValidator({ onshow:"{$lang.v_p_email}",onfocus:"{$lang.email}{$lang.v_format_fail}",oncorrect:"{$lang.email}{$lang.v_format_success}" })
+					.inputValidator({ min:2,max:32,onerror:"{$lang.v_email_len}" })
+					.regexValidator({ regexp:"email",datatype:"enum",onerror:"{$lang.email}{$lang.v_format_fail}" });
+					/*.ajaxValidator({
+						type: 'get',
+						datatype: 'html',
+						async: true,
+						url: '{$__CURL__}check_uemail',
+						success: function(data){
+							if(data == '1') 	return true;
+							else				return false;
+						},
+						onerror: "{$lang.v_email_no}",
+						onwait: "{$lang.v_email_ing}"
+					});*/
+			$('#phone').formValidator({ onshow:'{$lang.v_p_phone}', onfocus:'{$lang.v_phone_len}' })
+						.inputValidator({ min:11, max:11, onerror:'{$lang.v_phone_len}' })
+						.regexValidator({ regexp:"mobile", datatype:"enum", onerror:'{$lang.user_phone}{$lang.v_format_fail}'});
+						/*.ajaxValidator({
+							type: 'get',
+							datatype: 'html',
+							async: true,
+							url: '{$__CURL__}check_uphone',
+							success: function(data){
+								if(data == '1') 	return true;
+								else				return false;
+							},
+							onerror: "{$lang.v_phone_no}",
+							onwait: "{$lang.v_phone_ing}"
+						});*/
+			$('#point').formValidator({ onshow:'{$lang.v_p_point}', onfocus:'{$lang.v_point_int}' })
+						.inputValidator({ min:1, max: 11, onerror:'{$lang.v_point_len}'})
+						.regexValidator({ regexp:'num1', datatype:'enum', onerror:'{$lang.v_point_int}'});
+			$('#money').formValidator({ onshow:'{$lang.v_p_money}', onfocus:'{$lang.v_money_int}' })
+						.inputValidator({ min:1, max: 11, onerror:'{$lang.v_money_len}'})
+						.regexValidator({ regexp:'decmal1', datatype:'enum', onerror:'{$lang.v_money_int}'});
+			$("#mod_pass").formValidator({ empty:true,onshow:"{$lang.v_pass_empty}",onfocus:"{$lang.pass_len}",onempty:"{$lang.v_pass_empty}" })
+						.inputValidator({ min:6,max:16,onerror:"{$lang.pass_len}" }).defaultPassed();
+			$("#mod_pass_confirm").formValidator({ empty:true,onshow:"{$lang.v_pass_to}",onfocus:"{$lang.pass_to_no}",oncorrect:"{$lang.pass_to_no}" })
+						.compareValidator({ desid:"mod_pass",operateor:"=",onerror:"{$lang.pass_to_no}" }).defaultPassed();
+
+		});
+	</script>
+	<!-- 添加用户 -->
+	<div class="mcontainer">
+		<div class="m-main">
+			<div class="m-header">
+				<a href="javascript:window.history.back(-1);" class="m-header-btns" title="{$lang['back']}">◀</a>
+				<a href="javascript:window.history.go(1);" class="m-header-btns" title="{$lang['go']}">▶</a>
+				<a href="javascript:window.location.reload();" class="m-header-btns" title="{$lang['refresh']}">۞</a>
+				<a href="{$__CURL__}index" class="m-header-btns">{$lang['user_list']}</a>
+				<a href="{$__CURL__}add" class="m-header-btns">{$lang['add_user']}</a>
+				<span class="m-title">{$lang['edit_user']}</span>
+				<div class="clear"></div>
+			</div>
+			<div class="m-center">
+			<form id="user_form" action="{$__CURL__}update" method="POST">
+				<input type="hidden" name="id" value="{$user.id}" />
+				<div class="m-header-tab-btns">
+					<a class="m-mini-btn m-header-tab m-tab-on" ref="m-tab-con1">{$lang.base_info}</a>
+					<a class="m-mini-btn m-header-tab" ref="m-tab-con2">{$lang.more_info}</a>
+					<a class="m-mini-btn m-header-tab" ref="m-tab-con3" id="upload_headport">{$lang.upload_headport}</a>
+					<a class="m-mini-btn m-header-tab" ref="m-tab-con4">{$lang.mod_pass}</a>
+				</div>
+				<div class="m-tab-list">
+					<table class="table m-table m-tab-cons" id="m-tab-con1">
+						<tr>
+							<td width="10%">{$lang.user_name}：</td><td>{$user.name}</td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.user_nick_name}：</td><td><input type="text" id="nick_name" name="nick_name" value="{$user.nick_name}" /></td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.user_true_name}：</td><td><input type="text" id="true_name" name="true_name" value="{$user.true_name}" /></td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.email}：</td>
+							<td>
+								<div class="time-div">
+									<input type="text" name="email" id="email" value="{$user.email}" class="span3"/>
+									<i data-id="{$user.id}" class="m-mini-btn m-mini-email"></i>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.phone}：</td>
+							<td>
+								<div class="time-div">
+									<input type="text" name="phone" id="phone" value="{$user.phone}" class="span3"/>
+									<i data-id="{$user.id}" class="m-mini-btn m-mini-phone"></i>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.tel}：</td><td><input type="text" id="tel" name="tel" value="{$user.tel}" /></td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.address}：</td><td><input type="text" id="address" name="address" value="{$user.address}" /></td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.user_intro}：</td><td><textarea id="intro" name="intro">{$user.intro}</textarea></td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.user_signa}：</td><td><textarea id="signa" name="signa">{$user.signa}</textarea></td>
+						</tr>
+					</table>
+					<table class="table m-table m-tab-cons" id="m-tab-con2">
+						<tr>
+							<td width="10%">{$lang.sex}：</td>
+							<td>
+								<div class="m-sex-div">
+									<input type="hidden" name="sex" id="sex" value="{$user['sex']}" />
+									{foreach from=$sexs key=key item=sex}
+									{if $key == $user['sex']}
+										<span class="m-mini-btn m-sex-btns m-sex-checked m-sex-{$key}" title="{$sex}" data-value="{$key}"></span>
+									{else}
+										<span class="m-mini-btn m-sex-btns m-sex-{$key}" title="{$sex}" data-value="{$key}"></span>
+									{/if}
+									{/foreach}
+									<span class="m-sex-tips"></span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.user_level}：</td>
+							<td>
+								<div class="m-level-div">
+									<input type="hidden" name="level" id="level" value="{$user['level']}" />
+									{foreach from=$levels item=level}
+										{if $level['value'] == $user['level']}
+										<span class="m-mini-btn m-level-btns m-level-checked m-level-{$level['value']}" title="{$level.name}" data-value="{$level.value}"></span>
+										{else}
+										<span class="m-mini-btn m-level-btns m-level-{$level['value']}" title="{$level.name}" data-value="{$level.value}"></span>
+										{/if}
+									{/foreach}
+									<span class="m-level-tips"></span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.user_group}：</td>
+							<td>
+								<div class="m-group-div">
+									<input type="hidden" name="group" id="group" value="{$user.user_group}" />
+									{foreach from=$groups item=group}
+										{if $group['value'] == $user['user_group']}
+										<span class="m-mini-btn m-group-btns m-group-checked m-group-{$group.value}" title="{$group.name}" data-value="{$group.value}">{$group.name}</span>
+										{else}
+										<span class="m-mini-btn m-group-btns m-group-{$group.value}" data-value="{$group.value}" title="{$group.name}">{$group.name}</span>
+										{/if}
+									{/foreach}
+									<span class="m-group-tips"></span>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.is_disabled}：</td>
+							<td>
+							{if $user.disabled == 1}
+								<i data-id="{$user.id}" data-value="{$user.disabled}" class="m-mini-btn m-mini-lock m-mini-inlock" title="{$user.lock}"></i>
+							{else}
+								<i data-id="{$user.id}" data-value="{$user.disabled}" class="m-mini-btn m-mini-lock m-mini-unlock" title="{$user.lock}"></i>
+							{/if}
+							</td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.point}：</td>
+							<td>
+								<div class="time-div">
+									<input type="text" name="point" id="point" value="{$user.point}" class="span3"/>
+									<i data-id="{$user.id}" class="m-mini-btn m-mini-point"></i>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.money}：</td>
+							<td>
+								<div class="time-div">
+									<input type="text" name="money" id="money" value="{$user.money}" class="span3"/>
+									<i data-id="{$user.id}" class="m-mini-btn m-mini-money"></i>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.birthday}：</td>
+							<td>
+								<link rel="stylesheet" href="{$__SYSJS__}/jscal2/jscal2.css" />
+								<link rel="stylesheet" href="{$__SYSJS__}/jscal2/win2k.css" />
+								<script type="text/javascript" src="{$__SYSJS__}/jscal2/jscal2.js"></script>
+								<script type="text/javascript" src="{$__SYSJS__}/jscal2/cn.js"></script>
+								<div class="time-div">
+								     <input class="span3" name="birthday" value="{$user.birthday|date_format:'%Y-%m-%d'}" id="birthday" type="text" class="select-tile" />
+								     <label id="birthday-l" class="m-mini-btn m-mini-time"></label>
+								</div>
+								<script type="text/javascript">
+									Calendar.setup({
+									    inputField : "birthday",
+									    trigger    : "birthday-l",
+									    dateFormat: "%Y-%m-%d",
+									    showTime: false,
+									    minuteStep: 1,
+									    weekNumbers: true,
+	  									fdow     : 1,
+									    onSelect: function(){
+										    		this.hide();
+										    	}
+									});
+								</script>
+							</td>
+						</tr>
+					</table>
+					<table class="table m-table m-tab-cons" id="m-tab-con3">
+						<input type="hidden" name="headport" id="headport" value="{$user.headport}" />
+						<tr>
+							<td>
+								<div class="m-headport">
+									{if $user.headport}
+										<a id="upload-headport" href="javascript:void(0);"><img src="{$__BASE__}/{$user.headport}" alt="{$user.name}"></a> 
+									{else}
+										<a id="upload-headport" href="javascript:void(0);"><img src="{$__UPLOAD__}/users/headport/user-f.png" alt="{$user.name}"></a>
+									{/if}
+								</div>
+							</td>
+							<td>
+								<STRONG>{$lang.last_update_time}：</STRONG>&nbsp;&nbsp;&nbsp;&nbsp;
+								{$user.update_time|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+						</tr>
+					</table>
+					<table class="table m-table m-tab-cons" id="m-tab-con4">
+						<tr>
+							<th colspan="2" style="font-size: 18px;">{$lang.pass_for_base}</th>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.password}：</td>
+							<td><input type="password" id="mod_pass" name="mod_pass" /></td>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.password_confirm}：</td>
+							<td><input type="password" id="mod_pass_confirm" name="mod_pass_confirm" /></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<a href="javascript:_MPASS('{$__CURL__}mod_pass', true);void(0);" id="sub_mod_pass" class="m-input-btns">{$lang.mod_pass}</a>
+								<a href="javascript:_MPASS('{$__CURL__}mod_pass', false);void(0);" id="reset_mod_pass" class="m-input-btns">{$lang.cancel}</a>
+							</td>
+						</tr>
+						<tr>
+							<th colspan="2" style="font-size: 18px;">{$lang.pass_for_email}</th>
+						</tr>
+						<tr>
+							<td>{$lang.password}：</td>
+							<td>
+								<div class="time-div">
+									<input type="text" name="email_modpass" id="email_modpass" value="" class="span3"/>
+									<i data-id="{$user.id}" class="m-mini-btn m-mini-email_pass" title="{$lang['send_email']}"></i>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th colspan="2" style="font-size: 18px;">{$lang.pass_for_phone}</th>
+						</tr>
+						<tr>
+							<td width="10%">{$lang.password}：</td>
+							<td>
+								<div class="time-div">
+									<input type="text" name="phone_modpass" id="phone_modpass" value="" class="span3"/>
+									<i data-id="{$user.id}" class="m-mini-btn m-mini-phone_pass" title="{$lang['send_phone']}"></i>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="m-input-div">
+					<input type="submit" name="submit" value="{$lang.submit}" id="uedit" class="m-input-btns" />
+					<input type="reset" name="reset" value="{$lang.cancel}" id="reset" class="m-input-btns" />
+					<a href="javascript: window.history.back(-1);" class="m-input-btns">{$lang.return}</a>
+				</div>
+			</form>
+		</div>
+		<div class="clear"></div>
+		<div class="m-upload-headport-div" style="display:none;">
+			<div class="m-upload-headport-content">
+			<form name="upload-headport-form" id="upload-headport-form" action="{$__CURL__}upload_headport" method="POST" enctype="multipart/form-data">
+			{if $user.headport}
+				<img id="u_headport" src="{$__BASE__}/{$user.headport}" alt="{$user.name}">
+			{else}
+				<img id="u_headport" src="{$__UPLOAD__}/users/headport/user-f.png" alt="{$user.name}">
+			{/if}
+				<input type="file" name="headport_pic" id="headport_pic" /><br />
+				<div class="upload_progress" style="display:none;">
+			        <div class="upload_percent">
+			        	<img src="{$__AIMAGES__}/Loading_bar_1s.gif" alt="" />
+			        </div >
+			        <span class="upload_tips">Uploading...0%</span>
+			    </div>
+				<input type="submit" value="{$lang.upload}" name="sub_headport" id="sub_headport" class="m-input-btns"/>
+			</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var art_upload;
+			$('#upload-headport').click(function(){
+				var upload_tips = $('.upload_tips');
+				var upload_div = $('.m-upload-headport-content').html();
+				$('.m-upload-headport-content').remove();
+				if(art_upload){
+					art.dialog({ id:'UP001' }).show();
+				}else{
+					art_upload = art.dialog({
+						id: 'UP001',
+						title: '{$lang.upload_headport}',
+						content: upload_div
+					});
+				}
+				$('#upload-headport-form').ajaxForm({
+					datatype: 'text',
+					data: { id: '{$user.id}'},
+					beforeSend: function() {
+						upload_tips.html('Uploading...0%');
+						if($('#headport_pic').val() == ''){
+							_Dat('{$lang.upload_select}');
+							return false;
+						}
+						$('.upload_progress').show();
+				    },
+				    uploadProgress: function(event, position, total, percentComplete) {
+				        var percentVal = 'Uploading...' + percentComplete + '%';
+				        upload_tips.html(percentVal);
+
+				    },
+					success: function(data){
+						if(data.indexOf('uploadfile/') == 0){
+							$('#headport').val(data);
+							$('#headport_pic').val('');
+							$('#upload-headport').find('img').attr('src', '{$__BASE__}/'+data);
+							$('.upload_progress').hide();
+							art.dialog({ id:'UP001' }).hide();
+							art.dialog({ title:'{$lang.upload_success}',time:3, content:'{$lang.upload_headport_success}！', icon:'success' });
+						}else{
+							_Dat('{$lang.upload_fail}！');
+						}
+					}
+				});
+			});
+
+
+
+			//发短信
+			$('.m-mini-phone').click(function(){ 
+				var obj = new Object(); 
+					obj.id = $(this).data('id');
+					obj.url = base+'/admin/user/send_phone';
+					art.dialog.alert('{$lang.send_phone_fail}');
+			});
+			//发送邮件
+			$('.m-mini-email').click(function(){
+				var id = $(this).data('id');
+				var url = base + '/admin/user/send_email';
+				var email = $('#email').val();
+				$.post(url, { id: id, email: email }, function(data){
+					if(data === 'OK') 
+						_POP({ title:'{$lang.send_email}',content:'{$lang.send_fail}！',icon:'success' });
+					else 
+						_POP({ title:'{$lang.send_email}',content:'{$lang.send_success}！',icon:'error' });
+				});
+			});
+			//加积分
+			$('.m-mini-point').click(function(){
+				var id = '{$user.id}';
+				var url = base + '/admin/user/add_point';
+				var point = $('#point').val();
+				var p = 0;
+				art.dialog.prompt('{$lang.v_p_point}', function(point){
+					p = point;
+					$.post(url, { id: id, point: p}, function(data){
+						if(data === 'OK') {
+							_POP({ title:'{$lang.mod_point}',content:'{$lang.mod_success}！',icon:'success' });
+							$('#point').val(p);
+						}else{
+							_POP({ title:'{$lang.mod_point}',content:'{$lang.mod_fail}！',icon:'error' });
+						}
+					});
+				}, point);
+			});
+			//加金额
+			$('.m-mini-money').click(function(){
+				var id = '{$user.id}';
+				var url = '{$__CURL__}mod_money';
+				var money = $('#money').val();
+				var p = 0;
+				art.dialog.prompt('{$lang.v_p_money}', function(money){
+					p = money;
+					$.post(url, { id: id, money: p}, function(data){
+						if(data === 'OK') {
+							_POP({ title:'{$lang.mod_money}',content:'{$lang.mod_success}！',icon:'success' });
+							$('#money').val(p);
+						}else{
+							_POP({ title:'{$lang.mod_money}',content:'{$lang.mod_fail}！',icon:'error' });
+						}
+					});
+				}, money);
+				
+			});
+			//选择性别
+			$('.m-sex-tips').text($('.m-sex-checked').attr('title'));
+			$('.m-sex-btns').click(function(){
+				$('.m-sex-btns').removeClass('m-sex-checked');
+				$(this).addClass('m-sex-checked');
+				$('#sex').val($(this).data('value'));
+				$('.m-sex-tips').text($(this).attr('title'));
+			});
+			//选择会员级别
+			$('.m-level-tips').text($('.m-level-checked').attr('title'));
+			$('.m-level-btns').click(function(){
+				$('.m-level-btns').removeClass('m-level-checked');
+				$(this).addClass('m-level-checked');
+				$('#level').val($(this).data('value'));
+				$('.m-level-tips').text($(this).attr('title'));
+			});
+			//选择用户组
+			$('.m-group-tips').text($('.m-group-checked').attr('title'));
+			$('.m-group-btns').click(function(){
+				$('.m-group-btns').removeClass('m-group-checked');
+				$(this).addClass('m-group-checked');
+				$('#group').val($(this).data('value'));
+				$('.m-group-tips').text($(this).attr('title'));
+			});
+			//tab
+			$('.m-tab-cons').hide();
+			$('.m-tab-cons:first').show();
+			$('.m-header-tab').click(function(){
+				if($(this).attr('ref') == 'm-tab-con4'){
+					$('#uedit').addClass('m-input-btns-false');
+					$('#uedit').attr('disabled', 'disabled');
+					$('#reset').addClass('m-input-btns-false');
+					$('#reset').attr('disabled', 'disabled');
+				}else{
+					$('#uedit').removeClass('m-input-btns-false');
+					$('#uedit').removeAttr('disabled');
+					$('#reset').removeClass('m-input-btns-false');
+					$('#reset').removeAttr('disabled');
+				}
+				var tab_con_list = $('.m-tab-cons');
+				$('.m-tab-cons').hide();
+				$('#'+ $(this).attr('ref')).fadeIn();
+				$('.m-header-tab').removeClass('m-tab-on');
+				$(this).addClass('m-tab-on');
+			});
+
+			//解锁,枷锁
+			$('.m-mini-lock').click(function(){
+				var id = '{$user.id}';
+				var value = $(this).data('value');
+				var url = base + '/admin/user/lock';
+				var than = $(this);
+				if(value == 1)
+					content = '{$lang.inlock}{$lang.success}！';
+				else
+					content = '{$lang.unlock}{$lang.success}！';
+				$.post(url, { id: id, disabled: value }, function(data){
+					if(data === 'OK') {
+						_POP({ title:'{$lang.user_locked}',content:content, icon:'success' });
+						if(value == 1){
+							than.removeClass('m-mini-inlock').addClass('m-mini-unlock');
+							than.data('value', 0);
+						}else{
+							than.removeClass('m-mini-unlock').addClass('m-mini-inlock');
+							than.data('value', 1);
+						}
+					}else {
+						_POP({ title:'{$lang.user_locked}',content:'{$lang.handle}{$lang.fail}！',icon:'error' });
+						return false;
+					}
+				});
+			});
+			
+			//邮箱修改密码
+			$('.m-mini-email_pass').click(function(){
+				var id = '{$user.id}';
+				var email = '{$user.email}';
+				$.post('{$__CURL__}email_modpass', { id: id, email: email }, function(data){
+					if(data === 'OK') 
+						_POP({ title:'{$lang.send_email}',content:'{$lang.send_success}！',icon:'success' });
+					else 
+						_POP({ title:'{$lang.send_email}',content:'{$lang.send_fail}！',icon:'error' });
+				});
+			});
+			
+		});
+		//修改密码
+		function _MPASS(url, flag){
+			if(!flag){
+				$('#mod_pass').val('');
+				$('#mod_pass_confirm').val('');
+			}else{
+				if(url == '') return false;
+				var pass = $('#mod_pass').val();
+				var pass_to = $('#mod_pass_confirm').val();
+				var id = '{$user.id}';
+				if(pass == ''){ _Dat('{$lang.pass_no_empty}！'); return false; }
+				if(pass.length < 6 || pass.length > 16){ _Dat('{$lang.pass_len}！'); return false; }
+				if(pass != pass_to){ _Dat('{$lang.pass_to_no}！'); return false; }
+				$.post(url, { id: id, pass: pass }, function(data){
+					if(data === 'OK') 
+						_POP({ title:'{$lang.edit}{$lang.password}',content:'{$lang.edit}{$lang.success}！',icon:'success' });
+					else 
+						_POP({ title:'{$lang.edit}{$lang.password}',content:'{$lang.edit}{$lang.success}！',icon:'error' });
+				});
+			}
+		}
+		
+	</script>
+
+{include file="../footer.html"}
