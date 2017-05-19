@@ -277,7 +277,7 @@ if( !function_exists('get_instance')){
 
 		if (isset($_cls[$class]))
 		{
-			return $cls[$class];
+			return $_cls[$class];
 		}
 		if(file_exists($dir . $class . '.class.php')){
 
@@ -289,8 +289,8 @@ if( !function_exists('get_instance')){
 		if($name === false){
 			show_error('ERROR', $class . '：该类没有定义或者类文件不存在！');
 		}
-		$cls[$class] = new $name();
-		return $cls[$class];
+        $_cls[$class] = new $name();
+		return $_cls[$class];
 	}
 }
 

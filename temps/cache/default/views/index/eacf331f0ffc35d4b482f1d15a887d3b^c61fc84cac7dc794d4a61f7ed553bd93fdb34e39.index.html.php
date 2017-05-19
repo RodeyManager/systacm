@@ -1,33 +1,38 @@
-<?php /*%%SmartyHeaderCode:3347535f9831ca00b0-53049891%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:23459591edfbcb9d5d6-94808737%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c61fc84cac7dc794d4a61f7ed553bd93fdb34e39' => 
     array (
       0 => '.\\apps\\default\\views\\index\\index.html',
-      1 => 1378223728,
+      1 => 1495164069,
       2 => 'file',
     ),
-    '074015662311b8bd310e5a7bf5687561b32e2820' => 
+    '9cd68aec235c24b4073e711d98b300b1a6ac7ca7' => 
     array (
-      0 => 'E:\\Nupupw\\htdocs\\systacm\\apps\\default\\views\\header_index.html',
-      1 => 1379113860,
+      0 => 'D:\\Sites\\GitHub\\me\\systacm\\apps\\default\\views\\header_index.html',
+      1 => 1495164068,
       2 => 'file',
     ),
-    'e5d4752d48880341c4a6601d5e641e82ea8a0dab' => 
+    '0ca2057bdc614e49e9053506c9fff2807ec5797a' => 
     array (
-      0 => 'E:\\Nupupw\\htdocs\\systacm\\apps\\default\\views\\footer.html',
-      1 => 1379168982,
+      0 => 'D:\\Sites\\GitHub\\me\\systacm\\apps\\default\\views\\footer.html',
+      1 => 1495164068,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3347535f9831ca00b0-53049891',
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_535f98b7b05472_05767082',
+  'nocache_hash' => '23459591edfbcb9d5d6-94808737',
+  'variables' => 
+  array (
+    '__CURL__' => 0,
+    'lang' => 0,
+  ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_591edfbd2141b5_83510437',
   'cache_lifetime' => 3600,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_535f98b7b05472_05767082')) {function content_535f98b7b05472_05767082($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_591edfbd2141b5_83510437')) {function content_591edfbd2141b5_83510437($_smarty_tpl) {?><!DOCTYPE html>
 <html>
 <head>
 	<title>盛艺设计工作室 - Powered by SYSTacm(盛艺设计)</title>
@@ -43,21 +48,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<meta name="qq" content="453474593" />
 	<meta name="mobile phone number" content="13723722479" />
 	<meta name="website" content="www.systacm.com | www.roadey.com" />
-	<link rel="icon" href="http://systacm.com/favicon.ico" type="image/x-icon" />
-	<link rel="shortcut icon" href="http://systacm.com/favicon.ico" type="image/x-icon" />
-	<link rel="apple-touch-icon" href="http://systacm.com/f-128.png" type="images/x-icon" />
-	<link type="text/css" rel="stylesheet" href="http://systacm.com/statics/css/bootstrap/css/bootstrap.css" />
-	<link type="text/css" rel="stylesheet" href="http://systacm.com/apps/default/views/statics/css/globa.css?v=1398773943" />
-	<link type="text/css" rel="stylesheet" href="http://systacm.com/apps/default/views/statics/css/main.css?v=1398773943" />	
+	<link rel="icon" href="http://www.systacm.me/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="http://www.systacm.me/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="http://www.systacm.me/f-128.png" type="images/x-icon" />
+	<link type="text/css" rel="stylesheet" href="http://www.systacm.me/statics/css/bootstrap/css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="http://www.systacm.me/apps/default/views/statics/css/globa.css?v=1495195581" />
+	<link type="text/css" rel="stylesheet" href="http://www.systacm.me/apps/default/views/statics/css/main.css?v=1495195581" />	
 	<!--[if IE]>
 	<script src=”http://html5shiv.googlecode.com/svn/trunk/html5.js”></script>
 	< ![endif]-->
-	<script src="http://systacm.com/statics/js/jquery-1.9.1.min.js?v=1398773948"></script>
-	<script src="http://systacm.com/statics/js/jquery.easing.js?v=1398773945"></script>
-	<script src="http://systacm.com/statics/css/bootstrap/js/bootstrap.min.js"></script>
-	<script src="http://systacm.com/apps/default/views/statics/js/SY.js?v=1398773943"></script>
-	<script src="http://systacm.com/apps/default/views/statics/js/main.js?v=1398773943"></script>
-	<script> var base = 'http://systacm.com'; var curl = base + '/default/index/'</script>
+	<script src="http://www.systacm.me/statics/js/jquery-1.9.1.min.js?v=1495195586"></script>
+	<script src="http://www.systacm.me/statics/js/jquery.easing.js?v=1495195583"></script>
+	<script src="http://www.systacm.me/statics/css/bootstrap/js/bootstrap.min.js"></script>
+	<script src="http://www.systacm.me/apps/default/views/statics/js/SY.js?v=1495195581"></script>
+	<script src="http://www.systacm.me/apps/default/views/statics/js/main.js?v=1495195581"></script>
+	<script> var base = 'http://www.systacm.me'; var curl = base + '/default/index/'</script>
 </head>
 	
 <style>
@@ -74,12 +79,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<div class="logo" id="logo"><a href=""></a></div>
 			<div class="nav">
 				<ul>
-					<li><a href="http://systacm.com/default/index/index">首页</a><em></em></li>
-					<li><a href="http://systacm.com/default/index/server">产品与服务</a><em></em></li>
-					<li><a href="http://systacm.com/default/index/cases">案例</a><em></em></li>
-					<li><a href="http://systacm.com/default/index/help">帮助</a><em></em></li>
-					<li><a href="http://systacm.com/default/index/about">关于</a><em></em></li>
-					<li><a href="http://systacm.com/default/index/contact">联系</a><em></em></li>
+					<li><a href="http://www.systacm.me/default/index/index">首页</a><em></em></li>
+					<li><a href="http://www.systacm.me/default/index/server">产品与服务</a><em></em></li>
+					<li><a href="http://www.systacm.me/default/index/cases">案例</a><em></em></li>
+					<li><a href="http://www.systacm.me/default/index/help">帮助</a><em></em></li>
+					<li><a href="http://www.systacm.me/default/index/about">关于</a><em></em></li>
+					<li><a href="http://www.systacm.me/default/index/contact">联系</a><em></em></li>
 				</ul>
 			</div>
 		</header><!-- /header -->
@@ -306,7 +311,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<li class="f-sina"><a href="http://weibo.com/systacm/profile" target="_blank" title="新浪微博"></a></li>
 					<li class="f-qq"><a href="http://wpa.qq.com/msgrd?v=3&uin=453474593&site=qq&menu=yes" target="_blank" title="商务合作QQ"></a></li>
 					<li class="f-dd"><a href="javascript:void(0);" target="_blank" title="点点"></a></li>
-					<li class="f-guest"><a href="http://systacm.com/default/index/contact#pages-comment-div" title="留言给我们"></a></li>
+					<li class="f-guest"><a href="http://www.systacm.me/default/index/contact#pages-comment-div" title="留言给我们"></a></li>
 					<li class="f-email"><a href="mailto:rodey@systacm.com?subject=写给盛艺" target="_blank" title="发邮件给我们"></a></li>
 				</ul>
 			</div>
@@ -328,8 +333,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<div class="f-gb-form-right">
 					<div class="pages-comment-div" id="pages-comment-div">
 						<h4 class="p-c-h4 p-c-h4-1">期待合作 -> 提交您的需求给我们，我们会以最快速度回复您！</h4>
-						<form action="http://systacm.com/default/index/comment" onsubmit="return false;" method="POST" class="p-c-form">
-							<input type="hidden" name="token" value="nujp54qeo3l3selc337f0ovfd2"/>
+						<form action="http://www.systacm.me/default/index/comment" onsubmit="return false;" method="POST" class="p-c-form">
+							<input type="hidden" name="token" value="42h71lrd52m7meg1oge3ni3a51"/>
 							<p class="subtip" id="subtip">提交您的需求给我们</p>
 							<p>
 								<input type="text" name="uname" id="uname" class="p-c-input p-c-in" placeholder="您的姓名（Name）*" />
@@ -356,20 +361,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<script type="text/javascript">
 	$(function(){
 		/*var data_pics = new Array(
-			{ bgimg:'http://systacm.com/uploadfile/slider/Banner01.jpg', href: '#' },
-			{ bgimg:'http://systacm.com/uploadfile/slider/Banner02.jpg', href: '#' },
-			{ bgimg:'http://systacm.com/uploadfile/slider/Banner03.jpg', href: '#' },
-			{ bgimg:'http://systacm.com/uploadfile/slider/Banner04.jpg', href: '#' },
-			{ bgimg:'http://systacm.com/uploadfile/slider/banner_img7.png', href: '#' },
-			{ bgimg:'http://systacm.com/uploadfile/slider/banner_img8.png', href: '#' }
+			{ bgimg:'http://www.systacm.me/uploadfile/slider/Banner01.jpg', href: '#' },
+			{ bgimg:'http://www.systacm.me/uploadfile/slider/Banner02.jpg', href: '#' },
+			{ bgimg:'http://www.systacm.me/uploadfile/slider/Banner03.jpg', href: '#' },
+			{ bgimg:'http://www.systacm.me/uploadfile/slider/Banner04.jpg', href: '#' },
+			{ bgimg:'http://www.systacm.me/uploadfile/slider/banner_img7.png', href: '#' },
+			{ bgimg:'http://www.systacm.me/uploadfile/slider/banner_img8.png', href: '#' }
 		);*/
 		var data_pics = new Array(
-			{ bgimg:'http://systacm.com/apps/default/views/statics/images/index-banners/Banner00.jpg', href: 'http://systacm.com', bgcolor: '#E8E335' },
-			{ bgimg:'http://systacm.com/apps/default/views/statics/images/index-banners/Banner01.jpg', href: '#', bgcolor: '#00D1C7' },
-			{ bgimg:'http://systacm.com/apps/default/views/statics/images/index-banners/Banner06.jpg', href: '#', bgcolor: '#BCEB5E' },
-			{ bgimg:'http://systacm.com/apps/default/views/statics/images/index-banners/Banner03.jpg', href: '#', bgcolor: '#00CA79' },
-			{ bgimg:'http://systacm.com/apps/default/views/statics/images/index-banners/Banner04.jpg', href: '#', bgcolor: '#0BB3FF' },
-			{ bgimg:'http://systacm.com/apps/default/views/statics/images/index-banners/Banner05.jpg', href: 'http://systacm.com/default/index/server#pages-s-syphp', bgcolor: '#E5E5E5' }
+			{ bgimg:'http://www.systacm.me/apps/default/views/statics/images/index-banners/Banner00.jpg', href: 'http://www.systacm.me', bgcolor: '#E8E335' },
+			{ bgimg:'http://www.systacm.me/apps/default/views/statics/images/index-banners/Banner01.jpg', href: '#', bgcolor: '#00D1C7' },
+			{ bgimg:'http://www.systacm.me/apps/default/views/statics/images/index-banners/Banner06.jpg', href: '#', bgcolor: '#BCEB5E' },
+			{ bgimg:'http://www.systacm.me/apps/default/views/statics/images/index-banners/Banner03.jpg', href: '#', bgcolor: '#00CA79' },
+			{ bgimg:'http://www.systacm.me/apps/default/views/statics/images/index-banners/Banner04.jpg', href: '#', bgcolor: '#0BB3FF' },
+			{ bgimg:'http://www.systacm.me/apps/default/views/statics/images/index-banners/Banner05.jpg', href: 'http://www.systacm.me/default/index/server#pages-s-syphp', bgcolor: '#E5E5E5' }
 			
 		);
 		SY.Bmenu({ navDiv:'.nav', listTag: 'a', lineClass: '.nav-bottom-line' });

@@ -22,7 +22,7 @@
 					</p>
 					<p class="login-piv">
 						<label title="请输入验证码"><i class="lab-code icon-qrcode"></i><input type="text" name="code" id="code" value="" /></label>
-						<img id="code-img" src="{$__CURL__}code" onclick="javascript:this.src='{$__CURL__}code?tm='+Math.random();" style="display:block;cursor:pointer;"/>
+						<img id="code-img" src="{$__CURL__}code?tm={$time}" onclick="javascript:this.src='{$__CURL__}code?tm='+Math.random();" style="display:block;cursor:pointer;"/>
 					</p>
 					<input type="submit" value="登录" name="login_in" class="login-in" />
 				</form>

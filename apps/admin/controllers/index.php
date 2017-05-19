@@ -41,20 +41,25 @@
 		
 		public function login(){
 			$this->assign('title', '管理员后台登录');
+			$this->assign('time', now_time());
 			$this->display('login');
 		}
 
+        public function getCode(){
+            Echo $_SESSION['code'];
+        }
+
 		public function code(){
+            session_start();
 			load_helper('coder');
 			$coder = new Coder_Helper(array(
-				'width'=>120,
-				'height'=>42,
+				'width'=> 120,
+				'height'=> 42,
 				'length'=> 4,
-				'font' => FONT.'bertram.ttf',
+				'font' => FONT .'bertram.ttf',
 				'font_size' => 18
 			));
 			$coder->showImg();
-			session_start();
 			$_SESSION['code'] = strtoupper($coder->getCode());
 			$this->display();
 		}
@@ -69,8 +74,7 @@
 			$data['uname'] = $_POST['uname'];
 			$data['upass'] = md5(sha1($_POST['upass']));
 			$data['code']  = $_POST['code'];
-			
-			//Bcho($uname.'----'.$upass);
+
 			$login_user = M('user');
 			$admin = $login_user->login($data);
 			if( !$admin ){

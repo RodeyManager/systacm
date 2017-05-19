@@ -1,6 +1,9 @@
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
+.idea
+.svn
+temps
 
 # Folder config file
 Desktop.ini
@@ -26,7 +29,8 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
+Icon
+
 
 # Thumbnails
 ._*

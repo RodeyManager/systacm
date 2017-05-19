@@ -49,8 +49,10 @@ class Coder_Helper {
 
     private function createImg(){
         $this->im = imagecreatetruecolor($this->width, $this->height);
-        $bgColor = imagecolorallocate($this->im, 220, 220, 220);
-        imagefill($this->im, 0, 0, $bgColor);
+        $white = imagecolorallocate($this->im, 255, 255, 255); //第一次调用设置背景色
+//        $black = imagecolorallocate($this->im, 0, 0, 0); //边框颜色
+        imagefilledrectangle($this->im, 0, 0, $this->width, $this->height, $white); //画一矩形填充
+        imagerectangle($this->im, 0, 0, $this->width - 1, $this->height - 1, null); //画一矩形框
     }
 
     private function setDisturb(){

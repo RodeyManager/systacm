@@ -16,8 +16,8 @@
 		public function __construct($db_config = ''){
 
 			if($db_config != ''){
-				if($cb_config['dns']){
-					$dns = explode(':', $cb_config['dns']);
+				if($db_config['dns']){
+					$dns = explode(':', $db_config['dns']);
 					$this->db_config['type'] = $this->db_type = $dns[0];
 					$config = explode(';', $dns[1]);
 					$host = explode('=', $config[0]);
@@ -40,8 +40,6 @@
 			//define('DB_PRE', $this->db_config['prefix']);!
 			/* 创建连接 */
 			$this->connect();
-			/* 选择数据库 */
-			$this->select_db();
 		}
 		
 		/**
@@ -50,21 +48,17 @@
 		 */
 		public function connect(){
 			if(!$this->connented){
-				$this->link = mysql_connect($this->db_config['host'], $this->db_config['user'], $this->db_config['pass']) or die(@mysql_error());
+				$this->link = mysqli_connect(
+				    $this->db_config['host'],
+                    $this->db_config['user'],
+                    $this->db_config['pass'],
+                    $this->db_config['dbname'],
+                    $this->db_config['port']
+                );
 				$this->connented = $this->link ? true : false;
+                mysqli_query($this->link, 'SET NAMES '. $this->db_config['char']);
 			}
 			return $this->connented;
-		}
-
-		/**
-		 * 选择数据库
-		 * @return NULL
-		 */
-		public function select_db(){
-			if($this->link){
-				mysql_select_db($this->db_config['dbname'], $this->link) or die(@mysql_error());
-				mysql_query('SET NAMES '. $this->db_config['char'], $this->link);
-			}
 		}
 
 		/**
@@ -72,7 +66,7 @@
 		 * @return  mysql result 
 		 */
 		protected function query(){
-			$this->queryID = mysql_query($this->sql, $this->link);
+			$this->queryID = mysqli_query($this->link, $this->sql);
 			return $this->queryID;
 		}
 		
@@ -86,7 +80,7 @@
 		public function doSQL($sql = ''){
 			if(empty($sql) || $sql == ''){ return false; }
 			$this->sql = $sql;
-			$this->queryID = mysql_query($this->sql, $this->link);
+			$this->queryID = mysqli_query($this->link, $this->sql);
 			//Bcho($sql);
 			//var_dump($this->queryID);
 			if(DEBUG)	Logging('ERROR', 'Mysql', __METHOD__, $this->sql, 'FILE_LOG');
@@ -110,7 +104,7 @@
 		public function num_fileds($sql){
 			$this->sql = $sql;
 			$this->queryID = $this->query();
-			return mysql_num_fields($this->queryID);
+			return mysqli_num_fields($this->queryID);
 		}
 		/**
 		 * 获取记录总行数
@@ -120,7 +114,7 @@
 		public function num_rows($sql){
 			$this->sql = $sql;
 			$this->queryID = $this->query();
-			return mysql_num_rows($this->queryID);
+			return mysqli_num_rows($this->queryID);
 		}
 
 		/**
@@ -153,7 +147,7 @@
 			if(DEBUG)	Logging('ERROR', 'Mysql', __METHOD__, $this->sql, 'FILE_LOG');
 			//Bcho($this->sql);
 			//var_dump($this->queryID);
-			list($rows) = mysql_fetch_row($this->queryID);
+			list($rows) = mysqli_fetch_row($this->queryID);
 			return $rows;
 		}
 
@@ -174,7 +168,7 @@
 			//Bcho($this->sql);
 			$this->queryID = $this->query();
 			if($this->queryID){
-				$this->rows = mysql_fetch_assoc($this->queryID);
+				$this->rows = mysqli_fetch_assoc($this->queryID);
 				return $this->rows;
 			}else{
 				return false;
@@ -420,7 +414,7 @@
 				$order .= ' ORDER BY ';
 				if(is_array($options['order'])){
 					if(isset($options['order']['type'])){
-						$type_o = $options['order']['type'];
+						$type = $options['order']['type'];
 					}
 					foreach ($options['order'] as $key => $value) {
 						if(!is_string($key)){
@@ -451,7 +445,7 @@
 			//然后执行
 			$this->sql = $sql . $fileds .' FROM `'. $table .'`'. $where . $order . $limit;
 			if(DEBUG)	Logging('ERROR', 'Mysql', __METHOD__, $this->sql, 'FILE_LOG');
-			//Bcho($this->sql);
+//			Bcho($this->sql);
 
 			$this->queryID = $this->query();
 			return $this->record($this->queryID);
@@ -470,7 +464,7 @@
 		}
 		//获取最后新增的ID值
 		public function getLastID(){
-			return mysql_insert_id();
+			return mysqli_insert_id();
 		}
 		
 		/**
@@ -487,13 +481,13 @@
 			$this->sql = 'SHOW COLUMNS FROM `'. $table .'`';
 			if(DEBUG)	Logging('ERROR', 'Mysql', __METHOD__, $this->sql, 'FILE_LOG');
 			//Bcho($this->sql);
-			$this->queryID = mysql_query($this->sql);
+			$this->queryID = mysqli_query($this->link, $this->sql);
 			$fileds = array();
 
 			if($this->queryID){
-				$flen = mysql_num_rows($this->queryID);
-				for ($i=0; $i < mysql_num_rows($this->queryID); $i++) { 
-					$filed_name = mysql_fetch_row($this->queryID);
+				$flen = mysqli_num_rows($this->queryID);
+				for ($i=0; $i < mysqli_num_rows($this->queryID); $i++) {
+					$filed_name = mysqli_fetch_row($this->queryID);
 					//$fileds[] = $filed_name[0];
 					$fkeys[] = $filed_name[0];
 					$fvals[] = $filed_name[0];
@@ -584,17 +578,17 @@
 		
 		//解析输出数据结果集
 		private function record($query){
-			//Bcho(mysql_num_rows($query));
+			//Bcho(mysqli_num_rows($query));
 			if(empty($query)){
 				$query = $this->queryID;
 			}
-			if(mysql_num_rows($query) <= 0){
+			if(mysqli_num_rows($query) <= 0){
 				return FALSE;
-			}elseif(mysql_num_rows($query) == 1){
-				return mysql_fetch_assoc($query);
+			}elseif(mysqli_num_rows($query) == 1){
+				return mysqli_fetch_assoc($query);
 			}else{
 				$rows = array();
-				while($row = mysql_fetch_assoc($query)){
+				while($row = mysqli_fetch_assoc($query)){
 					array_push($rows, $row);
 				}
 				return $rows;
@@ -638,11 +632,11 @@
 			$this->queryID = $this->query();
 			if(!$this->queryID){	show_error('ERROR', '数据库'.$dbname.'目前还没有任何表');}
 			$tables = array();
-			while ($row = mysql_fetch_assoc($this->queryID)) {
+			while ($row = mysqli_fetch_assoc($this->queryID)) {
 		       	//$tables[] = $row[ 'Tables_in_'. $dbname ];
 		       	$tables[] = $row;
 		    }
-		    mysql_free_result($this->queryID);
+		    mysqli_free_result($this->queryID);
 		    if(DEBUG){	Logging('ERROR', 'Mysql', __METHOD__, $this->sql, 'FILE_LOG');}
 		   	return $tables;
 		}
@@ -690,6 +684,7 @@
 			$names = array();
 			$types = array();
 			$is_null = array();
+            $colums = '';
 
 			if(is_null($table))		show_error('ERROR', '参数表名不能为空');
 			/* 字段 */
@@ -936,10 +931,10 @@
 			if(!$this->connented){
 				$this->connect();
 			}
-			return mysql_get_server_info($this->link);
+			return mysqli_get_server_info($this->link);
 		}
 
-		public function __get($keyl){
+		public function __get($key){
 			return $key;
 		}
 

@@ -22,7 +22,8 @@
 						FROM '.DB_PRE.'manager 
 						LEFT JOIN ('.DB_PRE.'user, '.DB_PRE.'role)
 						ON '.DB_PRE.'user.id='.DB_PRE.'manager.uid 
-						AND '.DB_PRE.'manager.role='.DB_PRE.'role.id';				
+						AND '.DB_PRE.'manager.role='.DB_PRE.'role.id';
+//				Bcho($sql);
 				$admin = $this->doSQL($sql);
 				$point = $this->add_point($admin['point'] + 5, $admin['id']);
 				if($point > 0) 	$admin['point'] = $admin['point'] + 5;
@@ -133,7 +134,7 @@
 			$from_email = $emails['from_email'];
 			$from_pass = $emails['from_pass'];
 			$from_name = $emails['from_name'];
-			$data = send_email($smtp, $from_email, $from_pass, $from_name, $to_email, $to_name, $title, $body);
+			$data = send_email($smtp, $from_email, $from_pass, $from_name, $to_email, $to_user, $title, $body);
 			return $data;
 		}
 

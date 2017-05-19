@@ -11,19 +11,19 @@
 	
 	abstract class DB{
 
-		protected $db_config 	= null;		/* 数据库配置 */
-		protected $db_type 		= 'mysql';	/* 数据库类型 */
-		protected $pconnectd 	= false;  	/* 是否永久连接 */
-		protected $con_type  	= 'mysql'; 	/* 数据库链接类型 */
-		protected $sql 			= ''; 		/* SQL语句 */
-		protected $rows 		= array();	/* 执行后的结果集 */
-		protected $cols 		= array();	/* 数据表字段列表 */
-		protected $filedsList   = array();  /* 数据表字段名列表 */
-		protected $result		= '';		/* 当前结果集 */
-		protected $table 		= '';		/* 当前执行的数据表名 */
-		protected $queryID		= '';		/* 当前执行的sql ID */
-		protected $link			= null;		/* 当前数据库连接对象 */
-		protected $connented 	= false;	/* 是否已连接数据库 */
+		public $db_config 	= null;		/* 数据库配置 */
+		public $db_type 	= 'mysqli';	/* 数据库类型 */
+		public $pconnectd 	= false;  	/* 是否永久连接 */
+		public $con_type  	= 'mysqli'; 	/* 数据库链接类型 */
+		public $sql 		= ''; 		/* SQL语句 */
+		public $rows 		= array();	/* 执行后的结果集 */
+		public $cols 		= array();	/* 数据表字段列表 */
+		public $filedsList  = array();  /* 数据表字段名列表 */
+		public $result		= '';		/* 当前结果集 */
+		public $table 		= '';		/* 当前执行的数据表名 */
+		public $queryID		= '';		/* 当前执行的sql ID */
+		public $link		= null;		/* 当前数据库连接对象 */
+		public $connented 	= false;	/* 是否已连接数据库 */
 
 		/**
 		 * 执行查询

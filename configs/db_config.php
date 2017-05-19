@@ -12,8 +12,8 @@
 	/*------------------数据库配置--------------------*/
 	$cfgs['db_config'] = array(
 		'host' 		=> 'localhost', //主机地址
-		'user' 		=> 'systacm',      //用户名
-		'pass'		=> '8289732916',//用户密码
+		'user' 		=> 'root',      //用户名
+		'pass'		=> 'root',//用户密码
 		'dbname'	=> 'systacm',   //数据库名称
 		'prefix'	=> 'syst_',     //数据库前缀
 		'char'		=> 'utf8',      //字符集

@@ -10,7 +10,7 @@
 	 */
 	
 	/* 项目路径 */
-	$cfgs['base_url'] = 'http://systacm.com';
+	$cfgs['base_url'] = 'http://www.systacm.me';
 
 	/* 是否开启 调试模式 */
 	$cfgs['is_debug'] 	= true;
@@ -113,9 +113,9 @@
 
 	/*-------------------邮件配置----------------------*/
 	$cfgs['email'] 	= array(
-		'host' 		=> 'smtp.szhff.com',
+		'host' 		=> 'smtp.qq.com',
 		'port' 		=> '',
-		'from_email'=> 'info@szhff.com',
-		'from_pass' => 'huafeng082500',
+		'from_email'=> '453474593@qq.com',
+		'from_pass' => 'xxxxxxxxxx',
 		'from_name' => 'SYSTacm'
 	);

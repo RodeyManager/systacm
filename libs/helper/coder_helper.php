@@ -1,5 +1,4 @@
-<?php
-if(!defined('ACT')) die('ACT Undefined， Access Violation！');
+<?php if(!defined('ACT')) die('ACT Undefined， Access Violation！');
 
 /**
  * Coder_helper (验证码类)
@@ -21,7 +20,7 @@ class Coder_Helper {
     private $font = '';
     private $font_size = 0;
     private $code;
-    private $im;
+    private $im = null;
 
     public function __construct($vars = array()){
         if(!empty($vars)){
@@ -32,12 +31,13 @@ class Coder_Helper {
         }
     }
 
-    function showImg(){
+    public function showImg(){
+        $this->createCode();
         //创建图片
         $this->createImg();
-        //设置干扰元素
+//        //设置干扰元素
         $this->setDisturb();
-        //设置验证码
+//        //设置验证码
         $this->setCode();
         //输出图片
         $this->outputImg();
@@ -47,10 +47,12 @@ class Coder_Helper {
         return $this->code;
     }
 
-    private function createImg(){
+    public function createImg(){
         $this->im = imagecreatetruecolor($this->width, $this->height);
-        $bgColor = imagecolorallocate($this->im, 220, 220, 220);
-        imagefill($this->im, 0, 0, $bgColor);
+        $white = imagecolorallocate($this->im, 255, 255, 255); //第一次调用设置背景色
+//        $black = imagecolorallocate($this->im, 0, 0, 0); //边框颜色
+        imagefilledrectangle($this->im, 0, 0, $this->width, $this->height, $white); //画一矩形填充
+        imagerectangle($this->im, 0, 0, $this->width - 1, $this->height - 1, null); //画一矩形框
     }
 
     private function setDisturb(){
@@ -69,48 +71,34 @@ class Coder_Helper {
     }
 
     private function createCode(){
-        $str = "23456789abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ";
-        $this->code = substr(str_shuffle($str), 0, $this->length);
-        /*for ($i = 0; $i < $this->length; $i++) {
-            $this->code .= $str{rand(0, strlen($str) - 1)};
-        }*/
+        $str = ''; //用来存储随机码
+        $string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";//随机挑选其中4个字符，也可以选择更多，注意循环的时候加上，宽度适当调整
+        for($i = 0; $i < $this->length; ++$i){
+            $str .= $string[rand(0,35)];
+        }
+        $this->code = $str;
     }
 
     private function setCode(){
-        $this->createCode();
-
-        for ($i = 0; $i < $this->length; $i++) {
+        //将验证码写入图案
+        for ($i = 0; $i < $this->length; ++$i) {
             $color = imagecolorallocate($this->im, rand(0, 50), rand(30, 100), rand(5, 150));
             $size = $this->font_size !== 0 ? intval($this->font_size) : rand(floor($this->height / 2), floor($this->height));
-            $x = floor($this->width / $this->length) * $i + 5;
-            $y = rand(0, $this->height - 20);
+            $x = 13 + $i * ($this->width - 15) / 4;
+            $y = mt_rand(3, $this->height / 3);
             if('' !== $this->font){
                 $size = $this->font_size !== 0 ? intval($this->font_size) : rand(floor($this->height / 2), floor($this->height));
                 $y = rand($this->height / 2, $this->height);
                 imagettftext($this->im, $size, 0, $x, $y, $color, $this->font, $this->code{$i});
             }else{
-                imagechar($this->im, $size, $x, $y, $this->code{$i}, $color);
+                imagechar($this->im, $size, $x, $y, $this->code[$i], $color);
             }
         }
     }
 
     private function outputImg(){
-        //自动检测GD支持的图像类型，并输出图像
-        if(imagetypes() & IMG_GIF){          //判断生成GIF格式图像的函数是否存在
-            header("Content-type: image/gif");  //发送标头信息设置MIME类型为image/gif
-            imagegif($this->im);           //以GIF格式将图像输出到浏览器
-        }elseif(imagetypes() & IMG_JPG){      //判断生成JPG格式图像的函数是否存在
-            header("Content-type: image/jpeg"); //发送标头信息设置MIME类型为image/jpeg
-            imagejpeg($this->im, "", 0.5);   //以JPEN格式将图像输出到浏览器
-        }elseif(imagetypes() & IMG_PNG){     //判断生成PNG格式图像的函数是否存在
-            header("Content-type: image/png");  //发送标头信息设置MIME类型为image/png
-            imagepng($this->im);          //以PNG格式将图像输出到浏览器
-        }elseif(imagetypes() & IMG_WBMP){   //判断生成WBMP格式图像的函数是否存在
-             header("Content-type: image/vnd.wap.wbmp");   //发送标头为image/wbmp
-             imagewbmp($this->im);       //以WBMP格式将图像输出到浏览器
-        }else{                              //如果没有支持的图像类型
-            die("PHP不支持图像创建！");    //不输出图像，输出一错误消息，并退出程序
-        }
+        header("Content-type:image/jpeg"); //以jpeg格式输出，注意上面不能输出任何字符，否则出错
+        imagejpeg($this->im);
     }
 
     function __destruct(){                      //当对象结束之前销毁图像资源释放内存

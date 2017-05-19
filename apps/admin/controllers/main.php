@@ -47,9 +47,6 @@
 			$coder->showImg();
 			session_start();
 			$_SESSION['code'] = strtoupper($coder->getCode());
-			
-
-			
 			$this->display();
 		}
 

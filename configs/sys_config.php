@@ -9,7 +9,7 @@
 
 
 	/*网站地址*/
-	$cfgs['site_url'] = 'http://systacm.com';
+	$cfgs['site_url'] = 'http://www.systacm.me';
 
 	/*网站名称*/
 	$cfgs['site_name'] = '盛艺设计工作室';
@@ -189,4 +189,3 @@
 
 
  //End
-?>
