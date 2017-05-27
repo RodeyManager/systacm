@@ -35,15 +35,14 @@
 			$pagelink = $pagetion->pageLinks();
 			if(!$users) 	$users = '暂无数据';
 
-			$url = 'http://www.gravatar.com/avatar/';
+			$url = 'http://cn.gravatar.com/avatar/';
 			foreach ($users as $key => $value) {
 				//$u = $user->find_by_id($value['id']);
-				if(!empty($value['email'])){
+                if(!empty($value['email'])){
 					$ug = $url . md5($value['email']) . '?r=R&s=100';
-					//if(!$ug)
 				}elseif(!empty($value['headport'])){
-					$ug = BASE_URL . $value['headport'];
-				}else{
+                    $ug = BASE_URL .'/'. $value['headport'];
+                }else{
 					$ug = SYSIMAGES . '/comme/default_gavatar.png';
 				}
 				$users[$key]['gravatar'] = $ug;
